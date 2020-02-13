@@ -113,7 +113,7 @@ Your Databricks cluster must be **running** before installing LiveAnalytics.
 
    `exit`
 
-5. Install a new library on the Databricks cluster, see the [Microsoft documentation](https://docs.databricks.com/libraries.html#install-a-library-on-a-cluster) for details.
+5. Install a new library on your Databricks cluster, see the [Databricks documentation](https://docs.databricks.com/libraries.html#install-a-library-on-a-cluster) for details.
 
 6. Select the following options for the Install Library prompt:
 
