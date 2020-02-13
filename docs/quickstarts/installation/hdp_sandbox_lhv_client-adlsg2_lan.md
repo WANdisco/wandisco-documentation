@@ -82,9 +82,9 @@ Log in to your VM prior to starting these steps.
 
 ## Configuration
 
-### Install LiveAnalytics on Databricks cluster
+### Integrate LiveAnalytics with your Databricks cluster
 
-Your Databricks cluster must be **running** before installing LiveAnalytics.
+Your Databricks cluster must be **running** before integrating LiveAnalytics.
 
 1. On your docker host, log in to a container for the ADLS Gen2 zone.
 
