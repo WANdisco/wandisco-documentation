@@ -67,14 +67,7 @@ Log in to your VM prior to starting these steps.
 
 4. Enter `y` when asked whether to use the HDP sandbox.
 
-5. Follow the prompts to enter your details for the **Storage account**, **Storage container** and **Account Key** as mentioned in the [Info you will require](#info-you-will-require) section.
-
-   Two additional entries will also be needed:
-
-   * default FS: `abfss://<container-name>@<account-name>.dfs.core.windows.net/` _- press enter for the default value._
-   * underlying FS: `abfs://<container-name>@<account-name>.dfs.core.windows.net/` _- press enter for the default value._
-
-6. You have now completed the setup, run the following to start your containers:
+5. You have now completed the setup, run the following to start your containers:
 
    `docker-compose up -d`
 
@@ -125,6 +118,31 @@ Your Databricks cluster must be **running** before integrating LiveAnalytics.
 
 7. Select **Install** and wait for the **Status** of the jar to display as **Installed** before continuing.
 
+### Configure the ADLS Gen2
+
+Please ensure to enter your details for the **Storage account**, **Storage container** and **Account Key** values so that they match your account in Azure.
+The examples shown below are for guidance only.
+
+1. Log in to OneUI via a web browser
+
+    `http://<docker_IP_address>:8081`
+
+    Insert your email address and choose a password. Be sure to make a note of the password you choose.
+
+2. Click on the **Settings** cog in the **ADLS GEN2** zone, and fill in the following details:
+
+* Account Name: `adlsg2storage`
+
+* Container Name: `fusionreplication`
+
+* Account key: `KEY_1_STRING` - the Primary Access Key is now referred to as "Key1" in Microsoft’s documentation. You can get the Access Key from the Microsoft Azure storage account under the **Access Keys** section.
+
+3. Tick the **Use Secure Protocol** box.
+
+4. Click **Apply Configuration**
+
+At this point, OneUI will return to the main page, and there will be a spinning circle where the Settings cog was previously. Wait for that to stop spinning and move on to the next step.
+
 ### Check HDP services are started
 
 The HDP sandbox services can take up to 5-10 minutes to start. You will need to ensure that the HDFS service is started before continuing.
@@ -142,25 +160,19 @@ The HDP sandbox services can take up to 5-10 minutes to start. You will need to 
 
 ### Live Hive activation
 
-1. Log in to the Fusion UI for the HDP zone, and activate the Live Hive plugin.
+1. Go back to the OneUI interface:
 
-   `http://<docker_IP_address>:8083`
+   `http://<docker_IP_address>:8081`
 
-   Username: `admin`
-   Password: `admin`
+2. Click on the **fusion-server-sandbox-hdp** link in the **HCFS HDP** zone. This will open the UI for this zone in a new tab.
 
-2. On the Settings tab, go to *Live Hive: Plugin Activation*.
+3. Click on **Settings -> Live Hive: Plugin Activation**, then scroll back to the top of the page and click **Activate**.
 
-3. Click *Activate* and refresh the page when prompted.
+When prompted click the link to reload the page, then go back to the OneUI tab.
 
 ### Setup Databricks in Fusion
 
-1. Log in to the Fusion UI for the ADLS Gen2 zone.
-
-   `http://<docker_IP_address>:8583`
-
-   Username: `admin`
-   Password: `admin`
+1. Go to the Fusion UI for the ADLS Gen2 zone by clicking on the **fusion-server-adls2** link, which will open in a new tab.
 
 2. Enter your Databricks Configuration details on the Settings page (as mentioned in the [Info you will require](#info-you-will-require) section) and **Update**.
 
@@ -172,40 +184,25 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 ### Create replication rules
 
-1. Log in to the Fusion UI for the HDP zone.
+1. Return to the OneUI interface.
 
-   `http://<docker_IP_address:8083`
+    `http://<docker_IP_address>:8081`
 
-   Username: `admin`
-   Password: `admin`
+2. Click on the plus sign next to **Rules**.
 
-2. Enter the Replication tab, and select to **+ Create** a replication rule.
+3. Set **Rule Name** to `warehouse`
+
+4. Set **Path for all zones** to `/apps/hive/warehouse`
+
+5. Click **Next** then click **FINISH**.
+
+6. Log in to the Fusion UI for the HDP zone by clicking on the **fusion-server-sandbox-hdp** link. This will open in another tab.
+
+7. Enter the Replication tab, and select to **+ Create** a replication rule.
 
 [//]: <INC-846>
 
-3. Create a new HCFS rule using the UI with the following properties:
-
-   * Type = `HCFS`
-
-   * Zones = `adls2, sandbox-hdp` _- Leave as default._
-
-   * Priority Zone = `sandbox-hdp` _- Leave as default._
-
-   * Rule Name = `warehouse`
-
-   * Path for adls2 = `/apps/hive/warehouse`
-
-   * Path for hdp = `/apps/hive/warehouse`
-
-   Click **Add** after entering the Rule Name and Paths.
-
-   * **IMPORTANT - Advanced Options:**
-
-     * Preserve Origin Block Size = `true` _- Click the checkbox to set this to true._
-
-   Click **Create rules (1)** once complete.
-
-4. Create a new Hive rule using the UI with the following properties:
+8. Create a new Hive rule using the UI with the following properties:
 
    On the Replication tab, select to **+ Create** a replication rule again.
 
@@ -219,7 +216,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
    Click **Create rule** once complete.
 
-5. Both rules should now display on the **Replication** tab in the Fusion UI.
+9. Both rules should now display on the **Replication** tab in the Fusion UI.
 
 ### Test replication
 
@@ -231,21 +228,17 @@ Your Databricks cluster must be **running** before testing replication.
 
    a. Log in to the container.
 
-   `docker-compose exec -u hdfs sandbox-hdp bash`
+   `docker-compose exec -u hdfs -w /tmp sandbox-hdp bash`
 
-   b. Change directory to *tmp*.
+   b. Obtain the sample data to be used with the Hive table.
 
-   `cd /tmp/`
+   `curl -LOf https://github.com/pivotalsoftware/pivotal-samples/raw/master/sample-data/customer_addresses_dim.tsv.gz`
 
-   c. Obtain the sample data to be used with the Hive table.
-
-   `curl -o customer_addresses_dim.tsv.gz -Lf 'https://github.com/pivotalsoftware/pivotal-samples/blob/master/sample-data/customer_addresses_dim.tsv.gz?raw=true'`
-
-   d. Create a directory within HDFS for the sample data.
+   c. Create a directory within HDFS for the sample data.
 
    `hdfs dfs -mkdir -p /retail_demo/customer_addresses_dim_hive/`
 
-   e. Place the sample data into HDFS, so that it can be accessed by Hive.
+   d. Place the sample data into HDFS, so that it can be accessed by Hive.
 
    `hdfs dfs -put customer_addresses_dim.tsv.gz /retail_demo/customer_addresses_dim_hive/`
 
@@ -281,7 +274,7 @@ Your Databricks cluster must be **running** before testing replication.
    LOCATION '/retail_demo/customer_addresses_dim_hive/';
    ```
 
-6. Create a second database matching the regex for the Hive replication rule created earlier.
+6. Create a second database matching the Database name in the Hive replication rule created earlier.
 
    `CREATE DATABASE IF NOT EXISTS databricks_demo;`
 
@@ -311,7 +304,7 @@ Your Databricks cluster must be **running** before testing replication.
 
 8. Now insert data into the table:
 
-   `insert into databricks_demo.customer_addresses_dim_hive select * from retail_demo.customer_addresses_dim_hive where state_code ='CA';`
+   `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'CA';`
 
    This launches a Hive job that inserts the data values provided in this example. If successful, the STATUS will be **SUCCEEDED**.
 
@@ -339,7 +332,7 @@ Your Databricks cluster must be **running** before testing replication.
 
    a. Inside the 'Cmd 1' box, add the query:
 
-   `select * from databricks_demo.customer_addresses_dim_hive;`
+   `SELECT * FROM databricks_demo.customer_addresses_dim_hive;`
 
    b. Click 'Run Cell'.
 
@@ -355,7 +348,7 @@ Your Databricks cluster must be **running** before testing replication.
 
    a. Back in the Hive beeline session on the **fusion_sandbox-hdp_1** container, run the following command:
 
-   `insert into databricks_demo.customer_addresses_dim_hive select * from retail_demo.customer_addresses_dim_hive where state_code ='TX';`
+   `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'TX';`
 
    b. Repeat from step 3 to observe the results for Texas.
 
