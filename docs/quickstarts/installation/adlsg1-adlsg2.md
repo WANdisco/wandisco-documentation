@@ -98,7 +98,7 @@ Log in to your VM prior to starting these steps.
 
    Register your email address and password, and log in. Be sure to make a note of the password you choose.
 
-2. On the OneUI dashboard, click on the **Settings** cog for the **adls1** zone, and fill in the details for your ADLS Gen1 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+2. On the OneUI dashboard, click on the **Settings** cog for the **adls1** zone, and fill in the details for your ADLS Gen1 storage account. See the [Info you will need](#info-you-will-need) section for reference.
 
 3. Tick the **Use Secure Protocol** box.
 
@@ -110,7 +110,7 @@ Wait for this to stop spinning and then continue.
 
 ### Configure the ADLS Gen2 zone
 
-1. On the OneUI dashboard, click on the **Settings** cog for the **adls2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+1. On the OneUI dashboard, click on the **Settings** cog for the **adls2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will need](#info-you-will-need) section for reference.
 
 2. Tick the **Use Secure Protocol** box.
 

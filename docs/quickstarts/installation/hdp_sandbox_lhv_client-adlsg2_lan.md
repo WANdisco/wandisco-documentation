@@ -89,7 +89,7 @@ Your Databricks cluster must be **running** before integrating LiveAnalytics.
 
    `curl -v -H "Authorization: Bearer <bearer-token>" -F contents=@/opt/wandisco/fusion/plugins/live-deltalake/live-analytics-databricks-etl-6.0.0.1.jar -F path="/datatransformer.jar" https://<databricks-service-address>/api/2.0/dbfs/put`
 
-   You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](#info-you-will-require) section for reference.
+   You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will need](#info-you-will-need) section for reference.
 
    _Example_
 
@@ -126,7 +126,7 @@ Your Databricks cluster must be **running** before integrating LiveAnalytics.
 
    Insert your email address and choose a password. Be sure to make a note of the password you choose.
 
-2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will need](#info-you-will-need) section for reference.
 
 3. Tick the **Use Secure Protocol** box.
 
@@ -169,7 +169,7 @@ The HDP sandbox services can take up to 5-10 minutes to start. You will need to 
 
 1. Go to the Fusion UI for the ADLS Gen2 zone by clicking on the **fusion-server-adls2** link, which will open a new tab.
 
-2. Enter your Databricks Configuration details on the Settings page (as mentioned in the [Info you will require](#info-you-will-require) section) and **Update**.
+2. Enter your Databricks Configuration details on the Settings page (as mentioned in the [Info you will need](#info-you-will-need) section) and **Update**.
 
    **Fusion UI -> Settings -> Databricks: Configuration**
 
