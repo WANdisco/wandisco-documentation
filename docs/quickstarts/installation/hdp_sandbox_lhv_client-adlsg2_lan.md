@@ -32,7 +32,7 @@ To complete this demo, you will need:
 
 For guidance on how to create a suitable VM with all utilities installed, see our [Azure VM creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide. For guidance on how to install these utilities only, see our [Azure VM preparation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_prep) guide.
 
-### Info you will require
+### Info you will need
 
 * ADLS Gen2 storage account details:
   * [Account name](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) (Example: `adlsg2storage`)
@@ -118,10 +118,7 @@ Your Databricks cluster must be **running** before integrating LiveAnalytics.
 
 7. Select **Install** and wait for the **Status** of the jar to display as **Installed** before continuing.
 
-### Configure the ADLS Gen2
-
-Please ensure to enter your details for the **Storage account**, **Storage container** and **Account Key** values so that they match your account in Azure.
-The examples shown below are for guidance only.
+### Configure the ADLS Gen2 zone
 
 1. Log in to OneUI via a web browser
 
@@ -129,13 +126,13 @@ The examples shown below are for guidance only.
 
    Insert your email address and choose a password. Be sure to make a note of the password you choose.
 
-2. Click on the **Settings** cog in the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
 3. Tick the **Use Secure Protocol** box.
 
 4. Click **Apply Configuration**
 
-At this point, OneUI will return to the main page, and there will be a spinning circle where the Settings cog was previously.
+At this point, OneUI will return to the dashboard, and there will be a spinning circle where the Settings cog was previously.
 
 Wait for this to stop spinning and move on to the next step.
 
