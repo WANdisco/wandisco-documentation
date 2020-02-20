@@ -16,12 +16,12 @@ Fusion also offers replication for associated Hive metadata that can be ingested
 
 ## Disaster Recovery
 
-WANdisco Fusion offers Live replication of data between environments, which allows you to safeguard your data from loss. If disaster does occur, the data will be available on your alternative environment(s). This will allow normal operations to proceed regardless of impact on the affected zone.
+WANdisco Fusion offers live replication of data between environments, which allows you to safeguard your data from loss. If disaster does occur, the data will be available on your alternative environment(s). This will allow normal operations to proceed regardless of impact on the affected zone.
 
 Fusion also offers replication of security policies used in Hadoop distributions such as Ranger and Sentry. This will help provide consistent interaction between all your environments.
 
 ## Hybrid Cloud
-Fusion allows you to divide up your workflows across separate environments through live replication. You can ingest data on-premises (or where ever the data is generated) and query it at scale in another optimized environment. For example, a cloud environment with elastic scaling.
+Fusion allows you to divide up your workflows across separate environments through live replication. You can ingest data on-premise (or where ever the data is generated) and query it at scale in another optimized environment. For example, a cloud environment with elastic scaling.
 
 When running all your work streams on a single cluster, it requires careful coordination with different types of workloads. By using Fusion, you get more control over each environment's performance as you can split this activity across multiple clusters.
 
