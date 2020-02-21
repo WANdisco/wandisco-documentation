@@ -24,6 +24,7 @@ To complete this demo, you will need:
 * Azure Virtual Machine (VM).
   * Minimum size recommendation = **Standard D4 v3 (4 vcpus, 16 GiB memory).**
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
+    * If creating your VM through the Azure portal, you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
 
 * The following utilities must be installed on the VM:
   * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
