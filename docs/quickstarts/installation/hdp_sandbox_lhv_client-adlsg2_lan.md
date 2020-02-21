@@ -16,7 +16,7 @@ What this guide will cover:
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide, see our [Azure VM preparation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_prep) guide for how to install the services only.|
+|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide. See our [Azure VM preparation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_prep) guide for how to install the services only.|
 |---|
 
 To complete this demo, you will need:
