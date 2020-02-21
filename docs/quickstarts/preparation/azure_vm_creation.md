@@ -217,7 +217,7 @@ The two required templates are given below. Create these in the same location on
    |---|---|---|---|
    |Group|`-g`|`GRP`|The [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis) group to use. **Must already exist**.|
    |Resource Group|`-r`|`GRP-my.name1`|The [Azure Resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups) to use. **Must already exist**.|
-   |Location|`l`|`westeurope`|The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.|
+   |Location|`-l`|`westeurope`|The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.|
    |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) to use. **Must already exist**.|
    |Subnet Name|`-s`|`default`|The Azure Virtual Network [Subnet name](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest). **Must already exist**.|
    |VM Name|`-n`|`docker_host01`|Define the Virtual Machine name in Azure.|
