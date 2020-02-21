@@ -6,14 +6,12 @@ sidebar_label: Azure VM preparation
 
 This quickstart helps you prepare an Azure Linux VM suitable for a Fusion installation using docker. It walks you through:
 
-* Installation of utilities.
+* Installation of services.
 * Verification of available storage for docker images.
 
-**This is not required if you have used our [Azure VM creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide, as all utilities and disk requirements will have been included.**
+**This is not required if you have used our [Azure VM creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide, as all services and disk requirements will have been included.**
 
 ## Prerequisites
-
-[//]: <Issues with running out of disk space because of docker images filling up the root partition (see DAP-134). As such, we suggest adding a data disk for storage.>
 
 * Azure VM created and started.
   * Instructions are provided for UbuntuLTS 18.04.
@@ -23,7 +21,7 @@ This quickstart helps you prepare an Azure Linux VM suitable for a Fusion instal
 
 ## Preparation
 
-### Install utilities
+### Install services
 
 1. Log in to the VM via a terminal session.
 
