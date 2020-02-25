@@ -77,75 +77,11 @@ Log in to your VM prior to starting these steps.
 
 ## Configuration
 
-### Integrate LiveAnalytics with your Databricks cluster
-
-Your Databricks cluster must be **running** before integrating LiveAnalytics.
-
-1. On your docker host, log in to a container for the ADLS Gen2 zone.
-
-   `docker-compose exec fusion-server-adls2 bash`
-
-[//]: <Awaiting improvements in ONEUI-1222>
-
-2. Upload the LiveAnalytics 'datatransformer.jar'.
-
-   `curl -v -H "Authorization: Bearer <bearer-token>" -F contents=@/opt/wandisco/fusion/plugins/live-deltalake/live-analytics-databricks-etl-6.0.0.1.jar -F path="/datatransformer.jar" https://<databricks-service-address>/api/2.0/dbfs/put`
-
-   You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](#info-you-will-require) section for reference.
-
-   _Example_
-
-   `curl -v -H "Authorization: Bearer dapibe21cfg45efae945t6f0b57dfd1dffb4" -F contents=@/opt/wandisco/fusion/plugins/live-deltalake/live-analytics-databricks-etl-6.0.0.1.jar -F path="/datatransformer.jar" https://westeurope.azuredatabricks.net/api/2.0/dbfs/put`
-
-   If successful, you will see that the following within the output below:
-
-   ```json
-   < HTTP/1.1 100 Continue
-   < HTTP/1.1 200 OK
-   ```
-
-4. Exit back into the docker host once complete.
-
-   `exit`
-
-5. Install a new library on your Databricks cluster, see the [Databricks documentation](https://docs.databricks.com/libraries.html#install-a-library-on-a-cluster) for details.
-
-6. Select the following options for the Install Library prompt:
-
-   * Library Source = `DBFS`
-
-   * Library Type = `Jar`
-
-   * File Path = `dbfs:/datatransformer.jar`
-
-7. Select **Install** and wait for the **Status** of the jar to display as **Installed** before continuing.
-
-### Configure the ADLS Gen2
-
-Please ensure to enter your details for the **Storage account**, **Storage container** and **Account Key** values so that they match your account in Azure.
-The examples shown below are for guidance only.
-
-1. Log in to OneUI via a web browser
-
-   `http://<docker_IP_address>:8081`
-
-   Insert your email address and choose a password. Be sure to make a note of the password you choose.
-
-2. Click on the **Settings** cog in the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
-
-3. Tick the **Use Secure Protocol** box.
-
-4. Click **Apply Configuration**
-
-At this point, OneUI will return to the main page, and there will be a spinning circle where the Settings cog was previously.
-
-Wait for this to stop spinning and move on to the next step.
-
 ### Check HDP services are started
 
 The HDP sandbox services can take up to 5-10 minutes to start. You will need to ensure that the HDFS service is started before continuing.
 
-1. Log in to the Ambari UI via a web browser.
+1. Log in to Ambari via a web browser.
 
    `http://<docker_IP_address>:8080`
 
@@ -156,27 +92,31 @@ The HDP sandbox services can take up to 5-10 minutes to start. You will need to 
 
 3. Wait until all the HDFS components are showing as **Started**.
 
-### Live Hive activation
+### Configure the ADLS Gen2 zone
 
-1. Go back to the OneUI interface.
+1. Log in to Fusion via a web browser.
 
    `http://<docker_IP_address>:8081`
 
-2. Click on the **fusion-server-sandbox-hdp** link in the **HCFS HDP** zone to open the UI for this zone in a new tab.
+   Insert your email address and choose a password. Be sure to make a note of the password you choose.
 
-3. Click on **Settings -> Live Hive: Plugin Activation**, then scroll back to the top of the page and click **Activate**.
+2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
-4. When prompted reload the page, then go back to the OneUI tab.
+3. Tick the **Use Secure Protocol** box.
 
-### Setup Databricks in Fusion
+4. Click **Apply Configuration**.
 
-[//]: <Awaiting improvements in ONEUI-1222>
+You will be returned to the dashboard and there will be a spinning circle where the Settings cog was previously.
 
-1. Go to the Fusion UI for the ADLS Gen2 zone by clicking on the **fusion-server-adls2** link, which will open a new tab.
+Wait for this to stop spinning and move on to the next step.
 
-2. Enter your Databricks Configuration details on the Settings page (as mentioned in the [Info you will require](#info-you-will-require) section) and **Update**.
+### Configure Fusion Plugin for Databricks Delta Lake
 
-   **Fusion UI -> Settings -> Databricks: Configuration**
+1. Click on the **Settings** cog in the **ADLS GEN2** zone, and fill in the details for your Databricks cluster. See the [Info you will require](#info-you-will-require) section for reference.
+
+2. Click **Activate**.
+
+3. Wait for the plugin status to be **Active** and return to the dashboard.
 
 ## Replication
 
@@ -186,7 +126,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 1. Return to the OneUI interface.
 
-    `http://<docker_IP_address>:8081`
+   `http://<docker_IP_address>:8081`
 
 2. Click on the plus sign next to **Rules**.
 
