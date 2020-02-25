@@ -42,6 +42,7 @@
     ],
     "Operation": [
       "quickstarts/operation/create-rule",
+      "quickstarts/operation/cc",
       "quickstarts/operation/migration",
       "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
