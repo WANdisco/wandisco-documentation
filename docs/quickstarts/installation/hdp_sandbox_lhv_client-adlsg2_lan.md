@@ -130,7 +130,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 4. Click **Next** again to keep the default exclusions.
 
-5. Click the checkbox for **Preserve HCFS Block Size**, then click **FINISH**.
+5. Click the checkbox for **Preserve HCFS Block Size**, then click **Finish**.
 
    The rule will be displayed shortly afterwards.
 
