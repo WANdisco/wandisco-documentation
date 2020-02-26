@@ -114,9 +114,7 @@ Wait for this to stop spinning and move on to the next step.
 
 1. Click on the **Settings** cog in the **ADLS GEN2** zone, and fill in the details for your Databricks cluster. See the [Info you will require](#info-you-will-require) section for reference.
 
-2. Click **Activate**.
-
-3. Wait for the plugin status to be **Active** and return to the dashboard.
+2. Click **Activate** and wait for the status to show as **Active** before continuing.
 
 ## Replication
 
