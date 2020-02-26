@@ -234,7 +234,7 @@ Your Databricks cluster must be **running** before testing replication.
    --------------------------------------------------------------------------------
    ```
 
-   The data will take a few moments to be replicated and appear in the Databricks cluster.
+   _The data will take a couple of minutes to be replicated and appear in the Databricks cluster._
 
 ### Setup Databricks Notebook to view data
 
