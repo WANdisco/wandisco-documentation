@@ -122,23 +122,23 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 ### Create replication rules
 
-1. Return to the OneUI interface.
+1. On the dashboard, click the plus sign next to **Rules**.
 
-   `http://<docker_IP_address>:8081`
+2. Set **Rule Name** to `warehouse`.
 
-2. Click on the plus sign next to **Rules**.
+3. Set **Path for all zones** to `/apps/hive/warehouse`, and click **Next**.
 
-3. Set **Rule Name** to `warehouse`
+4. Click **Next** again to keep the default exclusions.
 
-4. Set **Path for all zones** to `/apps/hive/warehouse`
+5. Click the checkbox for **Preserve HCFS Block Size**, then click **FINISH**.
 
-5. Click **Next** then click **FINISH**.
+   The rule will be displayed shortly afterwards.
 
 6. Log in to the Fusion UI for the HDP zone by clicking on the **fusion-server-sandbox-hdp** link.
 
 7. Enter the Replication tab, and select to **+ Create** a replication rule.
 
-[//]: <INC-846>
+[//]: <DOCU-442>
 
 8. Create a new Hive rule using the UI with the following properties:
 
@@ -152,7 +152,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
    Click **Create rule** once complete.
 
-9. Both rules should now display on the **Replication** tab in the Fusion UI.
+   Both rules should now display on the **Replication** tab.
 
 ### Test replication
 
@@ -160,33 +160,15 @@ Your Databricks cluster must be **running** before testing replication.
 
 1. Return to the terminal session on the **Docker host**.
 
-2. Log in to the **sandbox-hdp** container as the hdfs user and place data into HDFS.
+2. Use beeline on the **sandbox-hdp** container to connect to the Hiveserver2 service as hdfs user.
 
-   a. Log in to the container.
+   `docker-compose exec -u hdfs sandbox-hdp beeline -u jdbc:hive2://sandbox-hdp:10000/ -n hdfs`
 
-   `docker-compose exec -u hdfs -w /tmp sandbox-hdp bash`
-
-   b. Obtain the sample data to be used with the Hive table.
-
-   `curl -LOf https://github.com/pivotalsoftware/pivotal-samples/raw/master/sample-data/customer_addresses_dim.tsv.gz`
-
-   c. Create a directory within HDFS for the sample data.
-
-   `hdfs dfs -mkdir -p /retail_demo/customer_addresses_dim_hive/`
-
-   d. Place the sample data into HDFS, so that it can be accessed by Hive.
-
-   `hdfs dfs -put customer_addresses_dim.tsv.gz /retail_demo/customer_addresses_dim_hive/`
-
-3. Use beeline to start a Hive session and connect to the Hiveserver2 service as hdfs user.
-
-   `beeline -u jdbc:hive2://sandbox-hdp:10000/ -n hdfs`
-
-4. Create a database to store the sample data.
+3. Create a database to store the sample data.
 
    `CREATE DATABASE IF NOT EXISTS retail_demo;`
 
-5. Create a table inside the database that points to the data previously uploaded.
+4. Create a table inside the database that points to the data previously uploaded.
 
    ```sql
    CREATE TABLE retail_demo.customer_addresses_dim_hive
@@ -210,11 +192,11 @@ Your Databricks cluster must be **running** before testing replication.
    LOCATION '/retail_demo/customer_addresses_dim_hive/';
    ```
 
-6. Create a second database matching the Database name in the Hive replication rule created earlier.
+5. Create a second database matching the Database name in the Hive replication rule created earlier.
 
    `CREATE DATABASE IF NOT EXISTS databricks_demo;`
 
-7. Create a table inside this second database:
+6. Create a table inside this second database:
 
    ```sql
    CREATE TABLE databricks_demo.customer_addresses_dim_hive
@@ -236,7 +218,7 @@ Your Databricks cluster must be **running** before testing replication.
    stored as ORC;
    ```
 
-8. Now insert data into the table:
+7. Now insert data into the table:
 
    `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'CA';`
 
@@ -262,31 +244,29 @@ Your Databricks cluster must be **running** before testing replication.
    * Language: **SQL**
    * Cluster: (Choose the cluster used in this demo)
 
-2. You should now see a blank notebook.
-
-   a. Inside the 'Cmd 1' box, add the query:
+2. You should now see a blank notebook. Inside the **Cmd 1** box, add the query:
 
    `SELECT * FROM databricks_demo.customer_addresses_dim_hive;`
 
-   b. Click 'Run Cell'.
+   Click **Run Cell**.
 
 3. Wait for the query to return, then select the drop-down graph type and choose **Map**.
 
-4. Under the Plot Options > remove all Keys > click and drag 'state_code' from the 'All fields' box into the 'Keys' box.
+4. Under the Plot Options, select to remove all Keys.
 
-5. Click Apply.
+5. Click and drag **state_code** from the **All fields** box into the **Keys** box. Click **Apply** afterwards.
 
-6. You should now see a plot of USA with color shading - dependent on the population density.
+   You should now see a plot of USA with color shading - dependent on the population density.
 
-7. If desired, you can repeat this process except using the Texas state code instead of California.
+6. If desired, you can repeat this process except using the Texas state code instead of California.
 
-   a. Back in the Hive beeline session on the **fusion_sandbox-hdp_1** container, run the following command:
+   Back in the Hive beeline session on the **fusion_sandbox-hdp_1** container, run the following command:
 
    `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'TX';`
 
-   b. Repeat from step 3 to observe the results for Texas.
+   Repeat from step 3 to observe the results for Texas.
 
-You have now completed this demo.
+_You have now completed this demo._
 
 ## Troubleshooting
 
