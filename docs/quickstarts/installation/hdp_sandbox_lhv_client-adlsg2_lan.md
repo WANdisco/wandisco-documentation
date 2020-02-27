@@ -213,7 +213,9 @@ Your Databricks cluster must be **running** before testing Hive replication.
 
    `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'CA';`
 
-   This launches a Hive job that inserts the data values provided in this example. If successful, the STATUS will be **SUCCEEDED**.
+   _The data will take a couple of minutes to be replicated and appear in the Databricks cluster. This is because during the first transfer of Hive data, the Datatransformer jar (`etl.jar`) will also be installed in the Databricks library._
+
+   On the terminal, a Hive job will launch that inserts the data values provided in this example. If successful, the STATUS will be **SUCCEEDED**.
 
    ```json
    --------------------------------------------------------------------------------
@@ -224,8 +226,6 @@ Your Databricks cluster must be **running** before testing Hive replication.
    VERTICES: 01/01  [==========================>>] 100%  ELAPSED TIME: X.YZ s
    --------------------------------------------------------------------------------
    ```
-
-   _The data will take a couple of minutes to be replicated and appear in the Databricks cluster._
 
 ### Setup Databricks Notebook to view data
 
