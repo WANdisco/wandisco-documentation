@@ -69,7 +69,7 @@ Log in to your VM prior to starting these steps.
 
 4. Enter `y` when asked whether to use the HDP sandbox.
 
-5. You have now completed the setup, run the following to create and start your containers:
+5. You have now completed the setup, to create and start your containers run:
 
    `docker-compose up -d`
 
@@ -257,12 +257,10 @@ Your Databricks cluster must be **running** before testing Hive replication.
 
    Repeat from step 3 to observe the results for Texas.
 
-_You have now completed this demo._
+_You have now successfully replicated data from your HDP Sandbox to your ADLS Gen2 container and Databricks cluster. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 
 ## Troubleshooting
 
 * See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting) guide for help with this demo.
 
 * See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start) guide for when you wish to safely shutdown or start back up the environment.
-
-Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion.
