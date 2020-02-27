@@ -122,18 +122,14 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 ### Create replication rules
 
-1. On the dashboard, click the plus sign next to **Rules** and select **HCFS**.
-
-2. Create a rule with the following parameters:
+1. On the dashboard, create a **HCFS** rule with the following parameters:
 
    * Rule Name = `warehouse`
    * Path for all zones = `/apps/hive/warehouse`
    * Default exclusions
    * Preserve HCFS Block Size = *True*
 
-   The rule will be displayed shortly after creation.
-
-3. Now create another rule but select **Hive** this time.
+2. Now create a **Hive** rule with the following parameters:
 
    * Rule Name = `Demo`
    * Pattern to match database names = `databricks_demo`
