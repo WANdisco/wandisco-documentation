@@ -16,6 +16,10 @@ sidebar_label: Useful information
 
 ### Container
 
+Build, create and start containers:
+
+`docker-compose up -d`
+
 List all running containers:
 
 `docker-compose ps`
@@ -34,7 +38,7 @@ Restart all containers:
 
 ### Login
 
-Log in to specific container:
+Log in to a specific container:
 
 `docker exec -it <container-name> bash`
 
@@ -106,4 +110,4 @@ _Plugin file names_
 
 `rm -f docker-compose.zone-a-plugin.yml docker-compose.zone-b-plugin.yml`
 
-Now follow one of the [quickstarts](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/quickstart-config) to create a new environment.
+Now follow one of the [quickstarts](../installation/quickstart-config) to create a new environment.
