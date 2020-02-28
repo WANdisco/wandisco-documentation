@@ -50,7 +50,17 @@ Log in to a specific container as root user:
 
 Pull down latest docker container images:
 
+`docker-compose stop`
+
+`git pull`
+
+`./setup-env.sh`
+
 `docker-compose pull`
+
+`docker-compose start`
+
+Depending on which version you are upgrading to, you may be required to recreate your containers rather than starting them. In which case, replace `docker-compose start` with `docker-compose up -d`.
 
 ### Service
 
@@ -98,16 +108,12 @@ Run the setup script again (it will not prompt for any questions), followed by t
 
 ### Create a new environment
 
-If you want to create a new environment, delete the `.yml` and `.env` files that were created after running the setup script. This should be performed after running the `docker-compose down -v` command.
+If you want to create a new environment:
 
-_Default file names_
+`docker-compose down -v`
 
-`rm -f docker-compose.common.yml docker-compose.zone-a.yml docker-compose.zone-b.yml common.env zone_a.env zone_b.env`
+`git clean -xdf`
 
-There may also be plugin `.yml` for a specific zone that requires deletion.
+`./setup-env.sh`
 
-_Plugin file names_
-
-`rm -f docker-compose.zone-a-plugin.yml docker-compose.zone-b-plugin.yml`
-
-Now follow one of the [quickstarts](../installation/quickstart-config.md) to create a new environment.
+The setup script will now prompt you for questions, follow one of the [quickstarts](../installation/quickstart-config.md) to configure your new environment.
