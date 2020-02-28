@@ -131,7 +131,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
    * Pattern to match database names = `databricks_demo`
    * Pattern to match table names = `*`
 
-   Both rules will now be displayed afterwards.
+   Both rules will now be displayed.
 
 ### Test HCFS replication
 
