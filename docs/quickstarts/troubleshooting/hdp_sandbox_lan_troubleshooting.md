@@ -4,9 +4,9 @@ title: Troubleshooting Hortonworks (HDP) Sandbox to Azure Databricks
 sidebar_label: HDP Sandbox to Azure Databricks
 ---
 
-This troubleshooting guide should be used in conjunction with the [HDP Sandbox to Azure Databricks](../installation/hdp_sandbox_lhv_client-adlsg2_lan) guide.
+This troubleshooting guide should be used in conjunction with the [HDP Sandbox to Azure Databricks](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md) guide.
 
-Please see the [Useful information](./useful_info) section for additional commands and help.
+Please see the [Useful information](./useful_info.md) section for additional commands and help.
 
 ## Common issues
 
@@ -45,7 +45,7 @@ To remove from the underlying storage, run the command below and adjust to your 
 
 `curl  -F path="/wandisco-databricks-etl-6.0.1.1.jar" https://<databricks-service-address>/api/2.0/dbfs/delete -H "Authorization: Bearer <bearer-token>"`
 
-You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan#info-you-will-require) section for reference.
+You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md#info-you-will-require) section for reference.
 
 _Example_
 
@@ -93,4 +93,4 @@ To resolve and bring the History Server online, follow the steps below:
 
 ## Rebuild
 
-If looking to start over, follow our [rebuild](./useful_info#rebuild) section for guidance.
+If looking to start over, follow our [rebuild](./useful_info.md#rebuild) section for guidance.

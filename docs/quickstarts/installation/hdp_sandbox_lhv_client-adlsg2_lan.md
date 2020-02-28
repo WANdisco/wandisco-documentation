@@ -16,7 +16,7 @@ What this guide will cover:
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation) guide. See our [Azure VM preparation](../preparation/azure_vm_prep) guide for how to install the services only.|
+|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
 |---|
 
 To complete this demo, you will need:
@@ -27,7 +27,7 @@ To complete this demo, you will need:
 * Azure Virtual Machine (VM).
   * Minimum size recommendation = **Standard D4 v3 (4 vcpus, 16 GiB memory).**
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
-    * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
+    * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
 
 * The following services must be installed on the VM:
   * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -257,6 +257,6 @@ _You have now successfully replicated data from your HDP Sandbox to your ADLS Ge
 
 ## Troubleshooting
 
-* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting) guide for help with this demo.
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help with this demo.
 
-* See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start) guide for when you wish to safely shutdown or start back up the environment.
+* See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.

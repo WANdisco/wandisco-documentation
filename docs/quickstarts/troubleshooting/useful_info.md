@@ -110,4 +110,4 @@ _Plugin file names_
 
 `rm -f docker-compose.zone-a-plugin.yml docker-compose.zone-b-plugin.yml`
 
-Now follow one of the [quickstarts](../installation/quickstart-config) to create a new environment.
+Now follow one of the [quickstarts](../installation/quickstart-config.md) to create a new environment.
