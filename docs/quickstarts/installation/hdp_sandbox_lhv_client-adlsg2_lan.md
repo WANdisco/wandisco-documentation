@@ -73,13 +73,13 @@ Log in to your VM prior to starting these steps.
 
    `docker-compose up -d`
 
-   Docker will now download all required images and create the containers, please wait until this is done.
+   Docker will now download all required images and create the containers.
 
 ## Configuration
 
 ### Check HDP services are started
 
-The HDP sandbox services can take up to 5-10 minutes to start. You will need to ensure that the HDFS service is started before continuing.
+The HDP sandbox services can take up to 5-10 minutes to start. To check that the HDFS service is started:
 
 1. Log in to Ambari via a web browser.
 
@@ -98,17 +98,13 @@ The HDP sandbox services can take up to 5-10 minutes to start. You will need to 
 
    `http://<docker_IP_address>:8081`
 
-   Insert your email address and choose a password. Be sure to make a note of the password you choose.
+   Enter your email address and choose a password you will remember.
 
 2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
 3. Tick the **Use Secure Protocol** box.
 
-4. Click **Apply Configuration**.
-
-You will be returned to the dashboard and there will be a spinning circle where the Settings cog was previously.
-
-Wait for this to stop spinning and move on to the next step.
+4. Click **Apply Configuration** and wait for this to complete.
 
 ### Configure Fusion Plugin for Databricks Delta Lake
 
@@ -135,7 +131,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
    * Pattern to match database names = `databricks_demo`
    * Pattern to match table names = `*`
 
-   Both rules should be displayed afterwards.
+   Both rules will now be displayed afterwards.
 
 ### Test HCFS replication
 
