@@ -23,4 +23,4 @@ Before you can migrate or replicate data, a [replication rule](https://wandisco.
     You can add any other exclusions required.
 
 After a few moments the rule will appear on your dashboard.
-You can now perform a [consistency check](./consistency-check) or [start migrating](./migration) your data.
+You can now perform a [consistency check](./consistency-check.md) or [start migrating](./migration.md) your data.
