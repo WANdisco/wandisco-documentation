@@ -48,25 +48,23 @@ Log in to a specific container as root user:
 
 ### Image
 
-Pull down latest docker container images:
+To use the latest Fusion docker images:
 
-`docker-compose stop`
+`docker-compose down -v`
 
 `git pull`
 
 `./setup-env.sh`
 
-`docker-compose pull`
+`docker-compose up -d`
 
-`docker-compose start`
-
-Depending on which version you are upgrading to, you may be required to recreate your containers rather than starting them. In which case, replace `docker-compose start` with `docker-compose up -d`.
+You will need to recreate replication rules and add previous configuration after performing this.
 
 ### Service
 
 `docker-compose start|stop|restart <service-name>`
 
-_Example to restart Fusion ONEUI Server_
+_Example to restart Fusion UI Server_
 
 `docker-compose restart fusion-oneui-server`
 
