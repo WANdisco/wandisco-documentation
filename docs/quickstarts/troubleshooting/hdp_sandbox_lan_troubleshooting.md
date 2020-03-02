@@ -12,9 +12,9 @@ Please see the [Useful information](./useful_info.md) section for additional com
 
 ### No Route to Host after docker container restart
 
-After restarting a single docker container, such as the HDP sandbox, you may encounter connectivity issues between Fusion and the Sandbox.
+After restarting a single docker container, such as the HDP Sandbox, you may encounter connectivity issues between Fusion and the Sandbox.
 
-The internal IP address of the container can change when restarting the container and Fusion will have cached the old address. This in turn causes the `No Route to Host` error.
+The internal IP address of the container can change when restarting the container and Fusion will have cached the old address. This can cause the `No Route to Host` error.
 
 To resolve, you must restart all containers within the `fusion-docker-compose` directory:
 
