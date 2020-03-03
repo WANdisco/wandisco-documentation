@@ -15,7 +15,7 @@ This quickstart helps you prepare an Azure Linux VM suitable for a Fusion instal
 
 * Azure VM created and started.
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
-  * Sudo access on server (this is normally available by default).
+  * Root or sudo access on server (this is normally available by default).
 * Access to your company's VPN or similar if required.
 
 _These instructions have been tested on Ubuntu LTS._
@@ -28,33 +28,33 @@ _These instructions have been tested on Ubuntu LTS._
 
 2. Run the command below to install Git.
 
-   `sudo apt-get update && sudo apt install -y git`
+   `apt-get update && apt install -y git`
 
 3. Run the commands below to install [Docker](https://docs.docker.com/install/) (v19.03.5 or higher).
 
-   `sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common`
+   `apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common`
 
-   `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
+   `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -`
 
-   `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
+   `add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
 
-   `sudo apt-get update && sudo apt install -y docker-ce docker-ce-cli containerd.io`
+   `apt-get update && apt install -y docker-ce docker-ce-cli containerd.io`
 
 4. Start the Docker service and verify that it is correctly installed.
 
-   `sudo systemctl start docker`
+   `systemctl start docker`
 
-   `sudo docker run hello-world` - This will print an informational message and exit if docker is running correctly.
+   `docker run hello-world` - This will print an informational message and exit if docker is running correctly.
 
-   `sudo systemctl enable docker` - This will enable docker to start up automatically on server reboot.
+   `systemctl enable docker` - This will enable docker to start up automatically on server reboot.
 
 5. Install [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher) by running the commands below.
 
-   `sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+   `curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
 
-   `sudo chmod +x /usr/local/bin/docker-compose`
+   `chmod +x /usr/local/bin/docker-compose`
 
-   `sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
+   `ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose`
 
 6. Verify that Docker Compose is correctly installed.
 
