@@ -30,13 +30,13 @@ We use US English.
 * Clear - must be easily understood by users.
 * Concise - use as few words as possible.
 * Correct - technically and grammatically correct .
-* Current - this is difficult! The docs team don’t have time to test all the documentation for updates and rely on timely information from other teams.
+* Current - the docs team rely on timely information from other teams to keep the docs up to date.
 * Complete - info must be complete and if relevant give references to more information.
 * Consistent - use consistent language and format.
 
 Therefore, general guidelines for use of language are:
 
-* Keep it short and simple - se short words, short sentences, short paragraphs, etc. Write in the simplest form to avoid confusing users.
+* Keep it short and simple - use short words, short sentences, short paragraphs, etc. Write in the simplest form to avoid confusing users.
 * Use [active voice](https://www.grammarly.com/blog/active-vs-passive-voice/) - make the content user-centric. Address the user directly. Write as if the user has asked you how to do something.
 * Use present tense - unless an action will happen in the future.
 * Use terms and phrases consistently - technical writing is the opposite of creative writing in that you should repeat words rather than try to think of different words that mean the same thing.
@@ -69,7 +69,7 @@ If there are any missing, please add them! https://wandisco.github.io/wandisco-d
 
 ### Titles, sidebars and headings
 
-For page titles and sidebar/ToC, use capital letters at the start of significant words. Prepositions such as of and from should be in lower case unless they begin the title.
+For page titles and sidebar/ToC, use capital letters at the start of significant words. Prepositions such as 'of' and 'from' should be in lower case unless they begin the title.
 
 Title/sidebar examples:
 - Installation of WANdisco Fusion in Docker
@@ -230,7 +230,7 @@ This is not inline with the first letter of the step.
 Use these if there is no order or priority to the list items.
 The same formatting concerns as above apply.
 
-You canadd unordered lists into a numbered step.
+You can add unordered lists into a numbered step.
 
 _Example_
 ```text
@@ -271,7 +271,7 @@ If moving a page or removing a subsection, ensure you update any affected links.
 Links are very useful as they help reduce duplication and add detail without making a doc too long.
 If you link externally, link to the official documentation where possible.
 
-The on screen text must indicate where the link will take you and not just be 'this section' etc.
+The on-screen text must indicate where the link will take you and not just be 'this section' etc.
 
 _External link example_
 ```text
