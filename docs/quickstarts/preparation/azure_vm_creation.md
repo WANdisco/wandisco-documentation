@@ -43,7 +43,7 @@ The two required templates are given below. Create these in the same location on
    IMAGE=''
 
    print_usage() {
-     echo "Usage: ./create_docker_vm.sh -g AZ-RESOURCE-GROUP -l LOCATION -v AZ-VNET -a AZ-VNET-RESOURCE-GROUP -s AZ-SUBNET-NAME -n VM-NAME -u VM-USERNAME -t VM-TYPE -d VM-DISK-SIZE (GB) -i OPERATING-SYSTEM"
+     echo "Usage: ./create_docker_vm.sh -g AZ-VM-RESOURCE-GROUP -l LOCATION -v AZ-VNET -a AZ-VNET-RESOURCE-GROUP -s AZ-SUBNET-NAME -n VM-NAME -u VM-USERNAME -t VM-TYPE -d VM-DISK-SIZE (GB) -i OPERATING-SYSTEM"
 
      echo "Example: ./create_docker_vm.sh -g DEV-john.smith1 -l westeurope -v DEV-westeurope-vnet -a DEV -s default -n johnsmith-docker -u john -t Standard_D4_v3 -d 32 -i UbuntuLTS"
    }
@@ -217,7 +217,7 @@ The two required templates are given below. Create these in the same location on
    |---|---|---|---|
    |Resource Group|`-g`|`GRP-my.name1`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) to use for the VM. **Must already exist**.|
    |Location|`-l`|`westeurope`|The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.|
-   |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/cli/azure/network/vnet?view=azure-cli-latest) to use. **Must already exist**.|
+   |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/cli/azure/network/vnet?view=azure-cli-latest) to use for the VM. **Must already exist**.|
    |VNET Resource Group|`-a`|`GRP`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) that the chosen VNET resides in. This is used to obtain the [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). **Must already exist**.|
    |Subnet Name|`-s`|`default`|The Azure Virtual Network [Subnet name](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest). **Must already exist**.|
    |VM Name|`-n`|`docker_host01`|Define the Virtual Machine name in Azure.|
