@@ -9,7 +9,7 @@ This quickstart helps you prepare an Azure Linux VM suitable for a Fusion instal
 * Installation of services.
 * Verification of available storage for docker images.
 
-|This is not required if you have used our [Azure VM Creation](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/preparation/azure_vm_creation) guide, as all services and disk requirements will have been included.|
+|This is not required if you have used our [Azure VM Creation](./azure_vm_creation.md) guide, as all services and disk requirements will have been included.|
 |---|
 
 ## Prerequisites
