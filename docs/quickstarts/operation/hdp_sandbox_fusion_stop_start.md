@@ -59,7 +59,7 @@ If desired, you can now shut down the Docker host.
 
 ## Starting up
 
-Ensure the Docker host is started before continuing.
+Ensure the Docker host is started and that the docker containers have been created previously (using `docker-compose up -d`).
 
 ### Start all containers
 

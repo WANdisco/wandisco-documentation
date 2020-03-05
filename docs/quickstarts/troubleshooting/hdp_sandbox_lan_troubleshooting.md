@@ -4,11 +4,21 @@ title: Troubleshooting Hortonworks (HDP) Sandbox to Azure Databricks
 sidebar_label: HDP Sandbox to Azure Databricks
 ---
 
-This troubleshooting guide should be used in conjunction with the [HDP Sandbox to Azure Databricks](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/hdp_sandbox_lhv_client-adlsg2_lan) guide.
+This troubleshooting guide should be used in conjunction with the [HDP Sandbox to Azure Databricks](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md) guide.
 
-Please see the [Useful information](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/troubleshooting/useful_info) section for additional commands and help.
+Please see the [Useful information](./useful_info.md) section for additional commands and help.
 
 ## Common issues
+
+### No Route to Host after docker container restart
+
+After restarting a single docker container, such as the HDP Sandbox, you may encounter connectivity issues between Fusion and the Sandbox.
+
+The internal IP address of the container can change when restarting the container and Fusion will have cached the old address. This can cause the `No Route to Host` error.
+
+To resolve, you must restart all containers within the `fusion-docker-compose` directory:
+
+`docker-compose restart`
 
 ### Unable to activate Live Hive Plugin
 
@@ -18,10 +28,10 @@ The cause will often be that the HDP sandbox services have not yet fully started
 
 1. Log in to the Ambari UI via a web browser.
 
-`http://<docker_IP_address>:8080`
+   `http://<docker_IP_address>:8080`
 
-Username: `admin`
-Password: `admin`
+   Username: `admin`
+   Password: `admin`
 
 2. Select the **HDFS** service.
 
@@ -36,6 +46,20 @@ ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.
 ```
 
 If encountering this error, run the `docker-compose up -d` command again, and this should initiate the download of the docker images.
+
+### Uninstalling the Datatransformer Jar
+
+Uninstalling the Datatransformer Jar (named `etl.jar` in the Databricks library) from your Databricks cluster will not remove it from storage.
+
+To remove from the underlying storage, run the command below and adjust to your credentials:
+
+`curl  -F path="/wandisco-databricks-etl-6.0.1.1.jar" https://<databricks-service-address>/api/2.0/dbfs/delete -H "Authorization: Bearer <bearer-token>"`
+
+You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md#info-you-will-require) section for reference.
+
+_Example_
+
+`curl  -F path="/wandisco-databricks-etl-6.0.1.1.jar" https://westeurope.azuredatabricks.net/api/2.0/dbfs/delete -H "Authorization: Bearer dapi46c3c339b25473c7ca600df9bb299a83"`
 
 ### Fusion zones not inducted together
 
@@ -76,3 +100,7 @@ To resolve and bring the History Server online, follow the steps below:
 2. Start the Spark2 service.
 
    **Ambari UI -> Spark2 -> Actions -> Start -> CONFIRM START**
+
+## Rebuild
+
+If looking to start over, follow our [rebuild](./useful_info.md#rebuild) section for guidance.

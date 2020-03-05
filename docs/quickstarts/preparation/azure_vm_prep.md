@@ -14,10 +14,11 @@ This quickstart helps you prepare an Azure Linux VM suitable for a Fusion instal
 ## Prerequisites
 
 * Azure VM created and started.
-  * Instructions are provided for UbuntuLTS 18.04.
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
-  * Root access on server (this is normally available by default). All the commands given here should be run as **root** user.
+  * Root or sudo access on server (this is normally available by default).
 * Access to your company's VPN or similar if required.
+
+_These instructions have been tested on Ubuntu LTS._
 
 ## Preparation
 
