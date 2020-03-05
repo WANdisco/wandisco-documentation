@@ -4,48 +4,60 @@ title: Logs
 sidebar_label: Logs
 ---
 
-## Logs
+## Components
 
-The log files for Fusion are split into the various components that make up a Fusion installation. For any one zone, this would include the following:
+Log files are split into the various components that make up a Fusion installation. For any one zone, this would include:
 
 * Fusion Server
-* Fusion IHC Server
-* Fusion UI Server
+* IHC Server
+* UI Server
 
-For Hadoop zones (i.e. CDH or HDP), an additional component will be included:
+For Hadoop zones (i.e. CDH or HDP), additional components could be:
 
-* Fusion NameNode Proxy
+* NameNode Proxy
+* Live Hive Proxy
 
 There is also one component that is not linked to a specific zone:
 
-* Fusion OneUI
+* OneUI
 
-All of these components are split into their specific containers, as shown below from an example output of the `docker ps` command:
+All of these components are contained within their specific containers, as shown below from an example output of `docker-compose ps`:
 
 ```json
-CONTAINER ID        IMAGE                                                   COMMAND                  CREATED             STATUS              PORTS                                                                              NAMES
-c55861163580        wandisco/fusion-ui-server-cdh-6.2.0:2.14.2.1-3594       "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:8083->8083/tcp, 0.0.0.0:8443->8443/tcp                                     fusion-docker-compose_fusion-ui-server-cdh_1
-6df49aab8679        wandisco/fusion-ihc-server-cdh-6.2.0:2.14.2.1-3594      "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:7000->7000/tcp, 0.0.0.0:9001->9001/tcp                                     fusion-docker-compose_fusion-ihc-server-cdh_1
-8383f3ead7b5        wandisco/fusion-nn-proxy-cdh-6.2.0:4.0.0.6-3594         "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:8890->8890/tcp                                                             fusion-docker-compose_fusion-nn-proxy-cdh_1
-62f5f31e5933        wandisco/fusion-ihc-server-s3-asf-2.8.0:2.14.2.1-3594   "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:7500-7501->7500-7501/tcp, 0.0.0.0:9501->9501/tcp                           fusion-docker-compose_fusion-ihc-server-s3_1
-e61981d914d5        wandisco/fusion-ui-server-s3-asf-2.8.0:2.14.2.1-3594    "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:8583->8583/tcp, 0.0.0.0:8943->8943/tcp                                     fusion-docker-compose_fusion-ui-server-s3_1
-293aa53b4032        wandisco/fusion-server-s3-asf-2.8.0:2.14.2.1-3594       "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:8523-8524->8523-8524/tcp, 0.0.0.0:8582->8582/tcp, 0.0.0.0:8584->8584/tcp   fusion-docker-compose_fusion-server-s3_1
-9ecd39131497        wandisco/fusion-oneui:1.0.0                             "/bin/sh -c '/etc/al…"   21 hours ago        Up 52 minutes       0.0.0.0:8081->8080/tcp                                                             fusion-docker-compose_fusion-oneui-server_1
-38c8258e709f        wandisco/fusion-server-cdh-6.2.0:2.14.2.1-3594          "/usr/bin/entrypoint…"   21 hours ago        Up 52 minutes       0.0.0.0:8023-8024->8023-8024/tcp, 0.0.0.0:8082->8082/tcp, 0.0.0.0:8084->8084/tcp   fusion-docker-compose_fusion-server-cdh_1
-f711d5adc3bb        ubuntu                                                  "tail -f /dev/null"      21 hours ago        Up 52 minutes                                                                                          fusion-docker-compose_debug_1
+Name                                         Command                          State   Ports
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+fusion_debug_1                               tail -f /dev/null                Up
+fusion_fusion-ihc-server-adls2_1             /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:7500->7500/tcp, 0.0.0.0:7501->7501/tcp, 0.0.0.0:9502->9502/tcp
+fusion_fusion-ihc-server-sandbox-hdp_1       /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:7000->7000/tcp, 0.0.0.0:9002->9002/tcp
+fusion_fusion-livehive-proxy-sandbox-hdp_1   /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:9083->9083/tcp
+fusion_fusion-nn-proxy-sandbox-hdp_1         /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8890->8890/tcp
+fusion_fusion-oneui-server_1                 /bin/sh -c /etc/alternativ ...   Up      0.0.0.0:8081->8081/tcp
+fusion_fusion-server-adls2_1                 /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:6944->6944/tcp, 0.0.0.0:8523->8523/tcp, 0.0.0.0:8524->8524/tcp, 0.0.0.0:8582->8582/tcp, 0.0.0.0:8584->8584/tcp
+fusion_fusion-server-sandbox-hdp_1           /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:6444->6444/tcp, 0.0.0.0:8023->8023/tcp, 0.0.0.0:8024->8024/tcp, 0.0.0.0:8082->8082/tcp, 0.0.0.0:8084->8084/tcp
+fusion_fusion-ui-server-adls2_1              /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8583->8583/tcp, 0.0.0.0:8943->8943/tcp
+fusion_fusion-ui-server-sandbox-hdp_1        /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8083->8083/tcp, 0.0.0.0:8443->8443/tcp
+fusion_induction_1                           /usr/bin/entrypointd.sh /s ...   Up
+fusion_sandbox-hdp_1                         /sbin/init                       Up      0.0.0.0:50010->50010/tcp, 0.0.0.0:50070->50070/tcp, 8020/tcp, 8042/tcp, 0.0.0.0:8080->8080/tcp, 8088/tcp, 9083/tcp
+fusion_sshd-sandbox-hdp_1                    /usr/local/bin/entrypointd ...   Up      0.0.0.0:2022->22/tcp, 0.0.0.0:8670->8670/tcp
 ```
 
-You can log into a container and view the logs for a specific component in a zone. For example, if you are wanting to view the Fusion Server's logs for the CDH zone, you would run the following command:
+## Viewing log files
 
-`docker exec -u root -it 38c8258e709f /bin/bash`
+### Individual containers
+
+You can log in to a container and view the logs for a specific component in a zone. For example, if you are wanting to view the Fusion Server's logs for the HDP Sandbox zone, run:
+
+`docker-compose exec fusion-server-sandbox-hdp bash`
 
 Once inside, you can access the log directory for the Fusion Server.
 
 `cd /var/log/fusion/server`
 
-### Log locations
+You can view a log file using the standard `vi`, `less` or `more` commands.
 
-For each component, there is a different log directory. The list below highlights the log directory for each component in their individual containers:
+#### Log locations
+
+The list below highlights the log directory for each component in their individual containers:
 
 _Fusion Server:_
 `/var/log/fusion/server/`
@@ -59,71 +71,19 @@ _Fusion UI Server:_
 _Fusion NameNode Proxy:_
 `/var/log/fusion/plugins/live-nn/`
 
+_Fusion Live Hive Proxy:_
+`/var/log/fusion/plugins/live-hive-proxy/`
+
 _Fusion OneUI:_
 `/var/log/fusion/oneui/`
 
 ### Debug container
 
-There is an additional debug container that is started alongside the rest of the Fusion containers (example below).
+The debug container holds all the Fusion log files for each component. You can log into this container to view any log file in either zone.
 
-```json
-CONTAINER ID        IMAGE                                                   COMMAND                  CREATED             STATUS              PORTS                                                                              NAMES
-f711d5adc3bb        ubuntu                                                  "tail -f /dev/null"      21 hours ago        Up 52 minutes                                                                                          fusion-docker-compose_debug_1
-```
+`docker-compose exec debug bash`
 
-This container holds all the Fusion log files for each component. You can log into this container to view any log file of the Fusion component in either zone.
-
-`docker exec -u root -it f711d5adc3bb /bin/bash`
-
-You will be logged inside of the `/debug` directory by default, which contains directories that reference each Fusion component in their specific zone:
-
- _Example of a CDH to S3 environment_
- ```text
- root@f711d5adc3bb:/debug# ls -l
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 ihc-server-cdh
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 ihc-server-s3
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 npx-cdh
- drwxr-xr-x 3 root root 19 Nov 13 18:28 oneui-server
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 server-cdh
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 server-s3
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 ui-server-cdh
- drwxr-xr-x 7 1000 1000 70 Nov 13 18:28 ui-server-s3
- ```
-
-The log locations for each component are slightly different to that of the individual containers.
-
-_Fusion Server:_
-`/debug/server-<zone_name>/server/`
-
-_Fusion IHC Server:_
-`/debug/ihc-server-<zone_name>/ihc/server/`
-
-_Fusion UI Server:_
-`/debug/ui-server-<zone_name>/ui/`
-
-_Fusion NameNode Proxy:_
-`/debug/npx-<zone_name>/plugins/live-nn/`
-
-_Fusion OneUI:_
-`/debug/oneui-server/oneui/`
-
-### Viewing log files
-
-#### Individual containers
-
-If logged into a container for a specified component, you can view a log file using the standard `vi`, `less` or `more` commands.
-
-_Example for the Fusion Server container_
-
-`vi /var/log/fusion/server/fusion-server.log`
-
-#### Debug container
-
-If logged into the debug container, you can only view a log file using the `more` command.
-
-_Example of `more` command for the Fusion Server log in debug container_
-
-`more /debug/server-<zone_name>/server/fusion-server.log`
+You can view a log file using the `more` command.
 
 The `vim` and `less` commands are not available by default, however, they can be installed using the following method:
 
@@ -139,20 +99,49 @@ The `vim` and `less` commands are not available by default, however, they can be
 
    `apt install vim less`
 
-You can now view the log files using any of the `vim`, `less` or `more` commands.
+#### Log locations
 
-_Example for `vim` for the Fusion Server log in debug container_
+You will be logged inside of the `/debug` directory, which contains directories that reference each Fusion component in their specific zone.
 
-`vim /debug/server-<zone_name>/server/fusion-server.log`
+_Example_
+```bash
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 ihc-server-adls2
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 ihc-server-sandbox-hdp
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 livehive-sandbox-hdp
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 npx-sandbox-hdp
+drwxr-xr-x 3 root root 4096 Feb 26 16:47 oneui-server
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 server-adls2
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 server-sandbox-hdp
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 ui-server-adls2
+drwxr-xr-x 7 1000 1000 4096 Feb 26 16:47 ui-server-sandbox-hdp
+```
 
-### Obtaining log files
+The log locations for each component are slightly different to that of the individual containers.
 
-You can copy log files to your Docker host from the containers using a `docker cp` command.
+Fusion Server:
+`/debug/server-<zone-name>/server/`
 
-_Example to copy Fusion Server log from debug container to docker host_
+IHC Server:
+`/debug/ihc-server-<zone-name>/ihc/server/`
 
-`docker ps` _- obtain debug container ID_
+UI Server:
+`/debug/ui-server-<zone-name>/ui/`
 
-`docker cp <DEBUG_CONTAINER_ID>:/debug/server-<zone_name>/server/fusion-server.log .`
+NameNode Proxy:
+`/debug/npx-<zone-name>/plugins/live-nn/`
 
-The command above will copy the file to your current working directory on the docker host. The file can then be transferred to your local machine if desired.
+Live Hive Proxy:
+`/debug/livehive-<zone-name>/plugins/live-hive-proxy/`
+
+OneUI:
+`/debug/oneui-server/oneui/`
+
+## Obtaining log files
+
+You can compress and copy the log files to your Docker host from the debug container.
+
+_Example_
+
+`docker-compose exec -T debug tar -cvzf - /debug > /tmp/logs.tar.gz`
+
+This stores all container log files in a gzip file in the `/tmp` directory on the Docker host. The file can then be transferred to your local machine if desired.
