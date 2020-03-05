@@ -4,7 +4,7 @@ title: Run a Consistency Check
 sidebar_label: Consistency Check
 ---
 
-Once you have [created a replication rule](./create-rule), run a consistency check to compare the contents between all zones.
+Once you have [created a replication rule](./create-rule.md), run a consistency check to compare the contents between all zones.
 
 1. On the **Rules** table, click the refresh icon for the replication rule. This will trigger a consistency check.
 
@@ -12,4 +12,4 @@ Once you have [created a replication rule](./create-rule), run a consistency che
 
    The **Consistency Status** will determine the next steps:
    * **Consistent** - no further action is required.
-   * **Inconsistent** - consider [starting a migration](./migration).
+   * **Inconsistent** - consider [starting a migration](./migration.md).

@@ -14,6 +14,7 @@ We use [Docusaurus](https://docusaurus.io) to create the doc website - www.wandi
 
 There are 2 main branches - master and develop.
 
+
 Use feature branches from develop to make changes. Work is then reviewed and committed using [pull requests to the develop branch](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/proposing-changes-to-your-work-with-pull-requests).
 Feature branches should be deleted when no longer required.
 
@@ -24,6 +25,7 @@ If any emergency fixes are required, these can be done via feature branch/PR fro
 This only changes the [GitHub version of the docs](https://github.com/WANdisco/wandisco-documentation/tree/develop/docs), the docs team will control promoting to the [live/Docusaurus version](https://wandisco.github.io/wandisco-documentation/).
 
 ![Branching strategy](./assets/branching.jpg)
+
 
 ## What it should sound like
 ### Language

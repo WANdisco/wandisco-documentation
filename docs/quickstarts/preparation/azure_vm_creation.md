@@ -32,28 +32,28 @@ The two required templates are given below. Create these in the same location on
    #!/usr/bin/env bash
    set -e
 
-   GROUP=''
    RG=''
    LOCATION=''
    VNET=''
+   VRGROUP=''
    VM_NAME=''
-   ADMIN_USERNAME=''
+   VM_USERNAME=''
    TYPE=''
    DISK=''
    IMAGE=''
 
    print_usage() {
-     echo "Usage: ./create_docker_vm.sh -g AZ-USER-GROUP -r AZ-RESOURCE-GROUP -l LOCATION -v AZ-VNET -s AZ-SUBNET-NAME -n VM-NAME -u VM-USERNAME -t VM-TYPE -d VM-DISK-SIZE (GB) -i OPERATING-SYSTEM"
+     echo "Usage: ./create_docker_vm.sh -g AZ-VM-RESOURCE-GROUP -l LOCATION -v AZ-VNET -a AZ-VNET-RESOURCE-GROUP -s AZ-SUBNET-NAME -n VM-NAME -u VM-USERNAME -t VM-TYPE -d VM-DISK-SIZE (GB) -i OPERATING-SYSTEM"
 
-     echo "Example: ./create_docker_vm.sh -g DEV -r DEV-john.smith1 -l westeurope -v DEV-westeurope-vnet -s default -n johnsmith-docker -u john -t Standard_D4_v3 -d 32 -i UbuntuLTS"
+     echo "Example: ./create_docker_vm.sh -g DEV-john.smith1 -l westeurope -v DEV-westeurope-vnet -a DEV -s default -n johnsmith-docker -u john -t Standard_D4_v3 -d 32 -i UbuntuLTS"
    }
    #Setup of env
-   while getopts "g:G:r:R:l:L:v:V:s:S:n:N:u:U:t:T:d:D:i:I:h:H:" opt; do
+   while getopts "g:G:l:L:v:V:a:A:s:S:n:N:u:U:t:T:d:D:i:I:h:H:" opt; do
      case $opt in
-       g|G) GROUP="${OPTARG}" ;;
-       r|R) RG="${OPTARG}" ;;
+       g|G) RG="${OPTARG}" ;;
        l|L) LOCATION="${OPTARG}" ;;
        v|V) VNET="${OPTARG}" ;;
+       a|A) VRGROUP="${OPTARG}" ;;
        s|S) SUBNAME="${OPTARG}" ;;
        n|N) VM_NAME="${OPTARG}" ;;
        u|U) VM_USERNAME="${OPTARG}" ;;
@@ -67,14 +67,14 @@ The two required templates are given below. Create these in the same location on
    done
 
    #VM Characteristics
-   SUBNETID=$(az network vnet subnet show -g $GROUP -n $SUBNAME --vnet-name $VNET --output tsv --query 'id')
+   SUBNETID=$(az network vnet subnet show -g $VRGROUP -n $SUBNAME --vnet-name $VNET --output tsv --query 'id')
    [ -n "$SUBNETID" ]
 
    echo "Parameters"
-   echo "Group: $GROUP"
    echo "Resource Group: $RG"
    echo "Location: $LOCATION"
    echo "VNET: $VNET"
+   echo "VNET Resource Group: $VRGROUP"
    echo "Subnet Name: $SUBNAME"
    echo "VM Name: $VM_NAME"
    echo "VM Username: $VM_USERNAME"
@@ -215,10 +215,10 @@ The two required templates are given below. Create these in the same location on
 
    |Variable|Flag|Example|Description|
    |---|---|---|---|
-   |Group|`-g`|`GRP`|The [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis) group to use. **Must already exist**.|
-   |Resource Group|`-r`|`GRP-my.name1`|The [Azure Resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups) to use. **Must already exist**.|
+   |Resource Group|`-g`|`GRP-my.name1`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) to use for the VM. **Must already exist**.|
    |Location|`-l`|`westeurope`|The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.|
-   |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) to use. **Must already exist**.|
+   |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/cli/azure/network/vnet?view=azure-cli-latest) to use for the VM. **Must already exist**.|
+   |VNET Resource Group|`-a`|`GRP`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) that the chosen VNET resides in. This is used to obtain the [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). **Must already exist**.|
    |Subnet Name|`-s`|`default`|The Azure Virtual Network [Subnet name](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest). **Must already exist**.|
    |VM Name|`-n`|`docker_host01`|Define the Virtual Machine name in Azure.|
    |VM Username|`-u`|`vm_user`|Define the username to access the Virtual Machine with.|
@@ -232,16 +232,16 @@ The two required templates are given below. Create these in the same location on
 
 3. Run the script using the variables collected above.
 
-   `./create_docker_vm.sh -g GRP -r GRP-my.name1 -l westeurope -v GRP-westeurope-vnet -s default -n docker_host01 -u vm_user -t Standard_D4_v3 -d 32 -i UbuntuLTS`
+   `./create_docker_vm.sh -g GRP-my.name1 -l westeurope -v GRP-westeurope-vnet -a GRP -s default -n docker_host01 -u vm_user -t Standard_D4_v3 -d 32 -i UbuntuLTS`
 
    _Example output_
 
    ```text
    Parameters
-   Group: GRP
    Resource Group: GRP-my.name1
    Location: westeurope
    VNET: GRP-westeurope-vnet
+   VNET Resource Group: GRP
    Subnet Name: default
    VM Name: docker_host01
    VM Username: vm_user

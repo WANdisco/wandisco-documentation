@@ -16,6 +16,10 @@ sidebar_label: Useful information
 
 ### Container
 
+Build, create and start containers:
+
+`docker-compose up -d`
+
 List all running containers:
 
 `docker-compose ps`
@@ -34,7 +38,7 @@ Restart all containers:
 
 ### Login
 
-Log in to specific container:
+Log in to a specific container:
 
 `docker exec -it <container-name> bash`
 
@@ -44,15 +48,23 @@ Log in to a specific container as root user:
 
 ### Image
 
-Pull down latest docker container images:
+To use the latest Fusion docker images:
 
-`docker-compose pull`
+`docker-compose down -v`
+
+`git pull`
+
+`./setup-env.sh`
+
+`docker-compose up -d`
+
+You will need to recreate replication rules and add previous configuration after performing this.
 
 ### Service
 
 `docker-compose start|stop|restart <service-name>`
 
-_Example to restart Fusion ONEUI Server_
+_Example to restart Fusion UI Server_
 
 `docker-compose restart fusion-oneui-server`
 
@@ -94,16 +106,12 @@ Run the setup script again (it will not prompt for any questions), followed by t
 
 ### Create a new environment
 
-If you want to create a new environment, delete the `.yml` and `.env` files that were created after running the setup script. This should be performed after running the `docker-compose down -v` command.
+If you want to create a new environment:
 
-_Default file names_
+`docker-compose down -v`
 
-`rm -f docker-compose.common.yml docker-compose.zone-a.yml docker-compose.zone-b.yml common.env zone_a.env zone_b.env`
+`git clean -xdf`
 
-There may also be plugin `.yml` for a specific zone that requires deletion.
+`./setup-env.sh`
 
-_Plugin file names_
-
-`rm -f docker-compose.zone-a-plugin.yml docker-compose.zone-b-plugin.yml`
-
-Now follow one of the [quickstarts](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/quickstart-config) to create a new environment.
+The setup script will now prompt you for questions, follow one of the [quickstarts](../installation/quickstart-config.md) to configure your new environment.
