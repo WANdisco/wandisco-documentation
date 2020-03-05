@@ -14,32 +14,15 @@ Please see the [Useful information](./useful_info.md) section for additional com
 
 After restarting a single docker container, such as the HDP Sandbox, you may encounter connectivity issues between Fusion and the Sandbox.
 
-The internal IP address of the container can change when restarting the container and Fusion will have cached the old address. This can cause the `No Route to Host` error.
+The internal IP address of the container can change when restarting the container. This can cause the `No Route to Host` error as Fusion will have cached the old address.
 
 To resolve, you must restart all containers within the `fusion-docker-compose` directory:
 
 `docker-compose restart`
 
-### Unable to activate Live Hive Plugin
-
-When trying to activate the Live Hive plugin, it may fail to do so on the first attempt.
-
-The cause will often be that the HDP sandbox services have not yet fully started (this can take up to 5 minutes). You can check this by logging in to the Ambari UI and checking the status of HDFS.
-
-1. Log in to the Ambari UI via a web browser.
-
-   `http://<docker_IP_address>:8080`
-
-   Username: `admin`
-   Password: `admin`
-
-2. Select the **HDFS** service.
-
-3. Wait until all the HDFS components are showing as **Started** and then retry activation of the Live Hive plugin.
-
 ### Error 'connection refused' after starting Fusion for the first time
 
-You may see the following error occur when running `docker-compose up -d` for the first time inside the fusion-docker-compose repository:
+You may see the following error occur when running `docker-compose up -d` for the first time inside the `fusion-docker-compose` directory:
 
 ```json
 ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:52155->[::1]:53: read: connection refused
@@ -53,9 +36,11 @@ Uninstalling the Datatransformer Jar (named `etl.jar` in the Databricks library)
 
 To remove from the underlying storage, run the command below and adjust to your credentials:
 
-`curl  -F path="/wandisco-databricks-etl-6.0.1.1.jar" https://<databricks-service-address>/api/2.0/dbfs/delete -H "Authorization: Bearer <bearer-token>"`
+`curl  -F path="/wandisco-databricks-etl-<databricks-version>.jar" https://<databricks-service-address>/api/2.0/dbfs/delete -H "Authorization: Bearer <bearer-token>"`
 
-You will need to adjust this so that your `<bearer-token>` and `<databricks-service-address>` is used. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md#info-you-will-require) section for reference.
+Add your `<bearer-token>` and `<databricks-service-address>` to this command. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md#info-you-will-require) section for reference.
+
+The `<databricks-version>` can be found by checking the Databricks cluster libraries for the `etl.jar` (**Source** column).
 
 _Example_
 
@@ -63,21 +48,17 @@ _Example_
 
 ### Fusion zones not inducted together
 
-[//]: <DAP-136 workaround>
-
-If the Fusion zones are not inducted together after starting Fusion for the first time (`docker-compose up -d`), you can simply run the same command again to start the induction container:
+If the Fusion zones are not inducted together after starting Fusion for the first time (`docker-compose up -d`), run the same command again to start the induction container:
 
 `docker-compose up -d`
 
 ### Hiveserver2 down after HDP Sandbox is started
 
-The Hiveserver2 component in the HDP sandbox may be down after starting the cluster. If so, try the following steps to start it back up.
+The Hiveserver2 component in the HDP sandbox may be down after starting the cluster. To start it up:
 
-1. On the docker host, change directory to the Fusion docker compose directory and restart the Fusion Server container for the HDP zone.
+1. On the docker host, change to the `fusion-docker-compose` directory and restart the Fusion Server container for the HDP zone.
 
-   `cd /path/to/fusion-docker-compose`
-
-   `docker-compose restart fusion-server-hdp`
+   `docker-compose restart fusion-server-sandbox-hdp`
 
    Wait until the container has finished restarting before continuing.
 
@@ -89,9 +70,9 @@ The Hiveserver2 component in the HDP sandbox may be down after starting the clus
 
 ### Spark2 History Server down after HDP Sandbox is started for first time
 
-When starting the HDP Sandbox for the first time, the Spark2 History Server may be in a stopped state. This is often due to the order in which Spark2 and the WANdisco Fusion client is installed.
+When starting the HDP Sandbox for the first time, the Spark2 History Server may be in a stopped state.
 
-To resolve and bring the History Server online, follow the steps below:
+To bring the History Server online:
 
 1. In the Ambari UI, select to Refresh configs for the WANdisco Fusion service.
 
