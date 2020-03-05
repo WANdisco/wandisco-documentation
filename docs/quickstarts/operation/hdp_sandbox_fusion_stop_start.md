@@ -27,11 +27,7 @@ Wait until all services have shutdown before continuing.
 
 1. Log in to the Docker host via a terminal session.
 
-2. Switch to the fusion-docker-compose directory.
-
-   `cd /path/to/fusion-docker-compose`
-
-3. Stop all containers.
+2. In the `fusion-docker-compose` directory, stop all containers by using:
 
    `docker-compose stop`
 
@@ -63,21 +59,15 @@ Ensure the Docker host is started and that the docker containers have been creat
 
 ### Start all containers
 
-Follow the steps outlined below to start all containers.
-
 1. Log in to the Docker host via a terminal session.
 
-2. Switch to the fusion-docker-compose directory.
-
-   `cd /path/to/fusion-docker-compose`
-
-3. Verify that the containers are stopped.
+2. Switch to the `fusion-docker-compose` directory and verify that the containers are stopped.
 
    `docker-compose ps`
 
    All containers should have an `Exit` state.
 
-4. Start all containers.
+3. Start all containers.
 
    `docker-compose start`
 
