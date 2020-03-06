@@ -1,7 +1,7 @@
 ---
 id: useful_info
-title: Useful information
-sidebar_label: Useful information
+title: Useful Information
+sidebar_label: Useful Information
 ---
 
 ## Reference links
@@ -36,16 +36,6 @@ Restart all containers:
 
 `docker-compose restart`
 
-### Login
-
-Log in to a specific container:
-
-`docker exec -it <container-name> bash`
-
-Log in to a specific container as root user:
-
-`docker exec -u root -it <container-name> bash`
-
 ### Image
 
 To use the latest Fusion docker images:
@@ -62,15 +52,17 @@ You will need to recreate replication rules and add previous configuration after
 
 ### Service
 
+You need to reference the Fusion service name rather than the container name when using docker compose.
+
 `docker-compose start|stop|restart <service-name>`
 
-_Example to restart Fusion UI Server_
+_Example to restart Fusion Server_
 
-`docker-compose restart fusion-oneui-server`
+`docker-compose restart fusion-server-<zone-name>`
 
-### Service names
+#### Service names
 
-#### General services
+##### General
 
 `fusion-ui-server-<zone-name>`
 
@@ -80,25 +72,42 @@ _Example to restart Fusion UI Server_
 
 `fusion-oneui-server`
 
-#### Environment specific services
+##### Environment specific
 
 `fusion-nn-proxy-<zone-name>`
 
 `sshd-<zone-name>`
 
-#### Plugin services
+##### Plugins
 
 `fusion-livehive-proxy-<zone-name>`
 
+##### Sandboxes
+
+`sandbox-hdp`
+
+`sandbox-cdh`
+
+### Login
+
+Log in to a specific container:
+
+`docker-compose exec <service-name> bash`
+
+Log in to a specific container as root user:
+
+`docker-compose exec -u root <service-name> bash`
+
 ## Rebuild
 
-In the event that you need to rebuild your Fusion environment, use the docker compose command shown below to stop and delete all containers and volumes.
+In the event that you need to rebuild your Fusion environment, use:
 
 `docker-compose down -v`
 
-This is a destructive action that cannot be recovered from, you will lose all container data including that stored in the persisted storage directories (e.g. `/etc/wandisco`, `/etc/hadoop`).
+|This is a destructive action that cannot be recovered from. It will stop and delete all containers, volumes and unused networks.|
+|---|
 
-Run the setup script again (it will not prompt for any questions), followed by the docker compose up command to recreate the Fusion environment.
+Run the setup script again (it will not prompt for any questions), followed by the docker compose up command to recreate the environment.
 
 `./setup-env.sh`
 
