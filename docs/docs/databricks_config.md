@@ -16,7 +16,7 @@ See the [Workspace Instance and ID](https://docs.databricks.com/workspace/worksp
 
 ## Bearer Token
 
-You can generate access tokens within the **User Settings** on your Databricks Workspace.
+You can generate bearer/access tokens within the **User Settings** on your Databricks Workspace.
 
 Example: `dapibe21cfg45efae945t6f0b57dfd1dffb4`
 
