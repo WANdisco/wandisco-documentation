@@ -6,20 +6,17 @@ sidebar_label: Logs
 
 ## Components
 
-Log files are split into the various components that make up a Fusion installation. For any one zone, this would include:
+Log files are split into the various components that make up a Fusion installation.
 
-* Fusion Server
-* IHC Server
-* UI Server
+* Fusion Server - one per zone.
+* IHC Server - one per zone.
+* UI Server - one per zone.
+* OneUI - one per installation.
 
 For Hadoop zones (i.e. CDH or HDP), additional components could be:
 
 * NameNode Proxy
 * Live Hive Proxy
-
-There is also one component that is not linked to a specific zone:
-
-* OneUI
 
 All of these components are contained within their specific containers, as shown below from an example output of `docker-compose ps`:
 
@@ -53,8 +50,6 @@ Once inside, you can access the log directory for the Fusion Server.
 
 `cd /var/log/fusion/server`
 
-You can view a log file using the standard `vi`, `less` or `more` commands.
-
 #### Log locations
 
 The list below highlights the log directory for each component in their individual containers:
@@ -79,25 +74,13 @@ _Fusion OneUI:_
 
 ### Debug container
 
-The debug container holds all the Fusion log files for each component. You can log into this container to view any log file in either zone.
+The debug container holds all the Fusion log files for each component. You can log in to this container to view any log file in either zone.
 
 `docker-compose exec debug bash`
 
-You can view a log file using the `more` command.
+The `vim` and `less` commands are not available by default, to install them:
 
-The `vim` and `less` commands are not available by default, however, they can be installed using the following method:
-
-1. Log into the debug container.
-
-   `docker ps` _- obtain debug container ID_
-
-   `docker exec -u root -it <DEBUG_CONTAINER_ID> /bin/bash`
-
-2. Install the `vi` and `less` packages using the Ubuntu package manager.
-
-   `apt-get update`
-
-   `apt install vim less`
+`apt-get update && apt install vim less`
 
 #### Log locations
 

@@ -22,29 +22,13 @@ To resolve, you must restart all containers within the `fusion-docker-compose` d
 
 ### Error 'connection refused' after starting Fusion for the first time
 
-You may see the following error occur when running `docker-compose up -d` for the first time inside the `fusion-docker-compose` directory:
+You may see this error when running `docker-compose up -d` for the first time inside the `fusion-docker-compose` directory:
 
 ```json
 ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:52155->[::1]:53: read: connection refused
 ```
 
-If encountering this error, run the `docker-compose up -d` command again, and this should initiate the download of the docker images.
-
-### Uninstalling the Datatransformer Jar
-
-Uninstalling the Datatransformer Jar (named `etl.jar` in the Databricks library) from your Databricks cluster will not remove it from storage.
-
-To remove from the underlying storage, run the command below and adjust to your credentials:
-
-`curl  -F path="/wandisco-databricks-etl-<databricks-version>.jar" https://<databricks-service-address>/api/2.0/dbfs/delete -H "Authorization: Bearer <bearer-token>"`
-
-Add your `<bearer-token>` and `<databricks-service-address>` to this command. See the [Info you will require](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md#info-you-will-require) section for reference.
-
-The `<databricks-version>` can be found by checking the Databricks cluster libraries for the `etl.jar` (**Source** column).
-
-_Example_
-
-`curl  -F path="/wandisco-databricks-etl-6.0.1.1.jar" https://westeurope.azuredatabricks.net/api/2.0/dbfs/delete -H "Authorization: Bearer dapi46c3c339b25473c7ca600df9bb299a83"`
+Running the `docker-compose up -d` command a second time will fix the issue.
 
 ### Fusion zones not inducted together
 

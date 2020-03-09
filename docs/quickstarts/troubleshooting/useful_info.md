@@ -48,7 +48,7 @@ To use the latest Fusion docker images:
 
 `docker-compose up -d`
 
-You will need to recreate replication rules and add previous configuration after performing this.
+You now need to recreate replication rules and add previous configuration.
 
 ### Service
 
