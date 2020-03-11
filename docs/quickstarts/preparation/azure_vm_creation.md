@@ -1,14 +1,14 @@
 ---
 id: azure_vm_creation
-title: Creating an Azure Linux VM for a Fusion installation
+title: Creating an Azure Linux Virtual Machine for a Fusion installation
 sidebar_label: Azure VM creation
 ---
 
-This quickstart helps you create an Azure Linux VM suitable for a Fusion installation. It walks you through:
+This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable for a Fusion installation. It walks you through:
 
-* Creating an [Azure Linux VM template](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-secured-vm-from-template) script.
 * Creating a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialise the VM and install required services.
-* How to use the Azure Linux VM template script.
+* Obtaining [Azure parameters](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create) to create the VM.
+* Creating the [Linux VM with the Azure CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-cli-complete).
   * Logging in to the VM for the first time.
 
 ## Prerequisites
@@ -17,88 +17,16 @@ This quickstart helps you create an Azure Linux VM suitable for a Fusion install
 
 ### SSH keys
 
-SSH keys will be generated as part of the VM creation process.
-See the Microsoft documentation for further details - [Linux or macOS](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) or [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows).
+There will be an option to use SSH keys as part of the VM creation process. See the Microsoft documentation for further details:
 
-If you already have keys in the default location(s), these keys will be used with the Azure VM and will not be overwritten.
+* [Linux or macOS](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)
+* [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)
 
-## Create templates
+## Create the cloud-init template
 
-The two required templates are given below. Create these in the same location on your local machine with the names given.
+Create this file with the name given in the same location you will run the Azure CLI:
 
-1. `create_docker_vm.sh` - this contains the template options required for the VM.
-
-   ```bash
-   #!/usr/bin/env bash
-   set -e
-
-   RG=''
-   LOCATION=''
-   VNET=''
-   VRGROUP=''
-   VM_NAME=''
-   VM_USERNAME=''
-   TYPE=''
-   DISK=''
-   IMAGE=''
-
-   print_usage() {
-     echo "Usage: ./create_docker_vm.sh -g AZ-VM-RESOURCE-GROUP -l LOCATION -v AZ-VNET -a AZ-VNET-RESOURCE-GROUP -s AZ-SUBNET-NAME -n VM-NAME -u VM-USERNAME -t VM-TYPE -d VM-DISK-SIZE (GB) -i OPERATING-SYSTEM"
-
-     echo "Example: ./create_docker_vm.sh -g DEV-john.smith1 -l westeurope -v DEV-westeurope-vnet -a DEV -s default -n johnsmith-docker -u john -t Standard_D4_v3 -d 32 -i UbuntuLTS"
-   }
-   #Setup of env
-   while getopts "g:G:l:L:v:V:a:A:s:S:n:N:u:U:t:T:d:D:i:I:h:H:" opt; do
-     case $opt in
-       g|G) RG="${OPTARG}" ;;
-       l|L) LOCATION="${OPTARG}" ;;
-       v|V) VNET="${OPTARG}" ;;
-       a|A) VRGROUP="${OPTARG}" ;;
-       s|S) SUBNAME="${OPTARG}" ;;
-       n|N) VM_NAME="${OPTARG}" ;;
-       u|U) VM_USERNAME="${OPTARG}" ;;
-       t|T) TYPE="${OPTARG}" ;;
-       d|D) DISK="${OPTARG}" ;;
-       i|I) IMAGE="${OPTARG}" ;;
-       h|H) print_usage exit 1;;
-       *) print_usage
-          exit 1 ;;
-     esac
-   done
-
-   #VM Characteristics
-   SUBNETID=$(az network vnet subnet show -g $VRGROUP -n $SUBNAME --vnet-name $VNET --output tsv --query 'id')
-   [ -n "$SUBNETID" ]
-
-   echo "Parameters"
-   echo "Resource Group: $RG"
-   echo "Location: $LOCATION"
-   echo "VNET: $VNET"
-   echo "VNET Resource Group: $VRGROUP"
-   echo "Subnet Name: $SUBNAME"
-   echo "VM Name: $VM_NAME"
-   echo "VM Username: $VM_USERNAME"
-   echo "VM Type: $TYPE"
-   echo "Image (OS): $IMAGE"
-   echo "Disk Size: $DISK GB"
-   echo "Subnet ID: $SUBNETID"
-
-   az vm create \
-       --resource-group $RG \
-       --name $VM_NAME \
-       --location $LOCATION \
-       --image $IMAGE \
-       --size $TYPE \
-       --admin-username $VM_USERNAME \
-       --generate-ssh-keys \
-       --storage-sku Standard_LRS \
-       --os-disk-size-gb $DISK \
-       --custom-data cloud-init.txt \
-       --subnet $SUBNETID \
-       --public-ip-address ""
-   ```
-
-2. `cloud-init.txt` - contains initialisation settings for the VM.
+`cloud-init.txt`
 
    ```text
    #cloud-config
@@ -125,7 +53,6 @@ The two required templates are given below. Create these in the same location on
          source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
          key: |
            -----BEGIN PGP PUBLIC KEY BLOCK-----
-
            mQINBFit2ioBEADhWpZ8/wvZ6hUTiXOwQHXMAlaFHcPH9hAtr4F1y2+OYdbtMuth
            lqqwp028AqyY+PRfVMtSYMbjuQuu5byyKR01BbqYhuS3jtqQmljZ/bJvXqnmiVXh
            38UuLa+z077PxyxQhu5BbqntTPQMfiyqEiU+BKbq2WmANUKQf+1AmZY/IruOXbnq
@@ -209,57 +136,127 @@ The two required templates are given below. Create these in the same location on
            groups: [docker]
    ```
 
-## Use the Azure template script to create the VM
+This template contains initialisation parameters for the VM, and pre-installs the required services.
 
-1. Collect all required variables before running the script.
+## Required parameters
 
-   |Variable|Flag|Example|Description|
-   |---|---|---|---|
-   |Resource Group|`-g`|`GRP-my.name1`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) to use for the VM. **Must already exist**.|
-   |Location|`-l`|`westeurope`|The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.|
-   |VNET|`-v`|`GRP-westeurope-vnet`|The [Azure Virtual Network](https://docs.microsoft.com/en-us/cli/azure/network/vnet?view=azure-cli-latest) to use for the VM. **Must already exist**.|
-   |VNET Resource Group|`-a`|`GRP`|The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest) that the chosen VNET resides in. This is used to obtain the [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). **Must already exist**.|
-   |Subnet Name|`-s`|`default`|The Azure Virtual Network [Subnet name](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest). **Must already exist**.|
-   |VM Name|`-n`|`docker_host01`|Define the Virtual Machine name in Azure.|
-   |VM Username|`-u`|`vm_user`|Define the username to access the Virtual Machine with.|
-   |[VM Type](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-list-sizes)|`-t`|`Standard_D4_v3`|Define the Virtual Machine size from the [Azure templates](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes). The `name` value from `az vm list-sizes --location <vm_location>` should be the value here.|
-   |Disk Size|`-d`|`32`|Define the disk space on the Virtual Machine in GigaBytes (GB).|
-   |[Image (OS)](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)|`-i`|`UbuntuLTS`|Define the Virtual Machine's Operating System from the [Azure images](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/cli-ps-findimage). The `urnAlias` value from `az vm image list [--all] [--location]` should be the value here.|
+The variables required to create a suitable VM are:
 
-2. Make the script executable.
+* The name for the VM.
 
-   `chmod +x create_docker_vm.sh`
+  _Example:_ `--name docker_host01`
 
-3. Run the script using the variables collected above.
+* The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-list) to use for the VM. _Must already exist_.
 
-   `./create_docker_vm.sh -g GRP-my.name1 -l westeurope -v GRP-westeurope-vnet -a GRP -s default -n docker_host01 -u vm_user -t Standard_D4_v3 -d 32 -i UbuntuLTS`
+  The `name` value from `az group list --output table` should be used here.
 
-   _Example output_
+  _Example:_ `--resource-group GRP-my.name1`
 
-   ```text
-   Parameters
-   Resource Group: GRP-my.name1
-   Location: westeurope
-   VNET: GRP-westeurope-vnet
-   VNET Resource Group: GRP
-   Subnet Name: default
-   VM Name: docker_host01
-   VM Username: vm_user
-   VM Type: Standard_D4_v3
-   Disk Size: 32 GB
-   Image (OS): UbuntuLTS
-   Subnet ID: /subscriptions/3842fefa-7697-4e7d-b051-a5a3ae601030/resourceGroups/GRP/providers/Microsoft.Network/virtualNetworks/GRP-westeurope-vnet/subnets/default
-   {
-     "fqdns": "",
-     "id": "/subscriptions/3842fefa-7697-4e7d-b051-a5a3ae601030/resourceGroups/GRP-my.name1/providers/Microsoft.Compute/virtualMachines/docker_host01",
-     "location": "westeurope",
-     "macAddress": "00-0D-3A-3A-9D-52",
-     "powerState": "VM running",
-     "privateIpAddress": "172.10.1.10",
-     "publicIpAddress": "",
-     "resourceGroup": "GRP-my.name1",
-     "zones": ""
-   }
+* The admin username to log in to the VM with.
+
+  _Example:_ `--admin-username vm_user`
+
+* The VM size from the [Azure templates](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
+
+  The `name` value from `az vm list-sizes --location <vm-location> --output table` should be used here.
+
+  _Example:_ `--size Standard_D4_v3`
+
+* The storage [SKU type](https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types) to use.
+
+  _Example:_ `--storage-sku Standard_LRS`
+
+* The [image (operating system)](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list).
+
+  The `urnAlias` value from `az vm image list --location <vm-location> --output table` should be used here.
+
+  _Example:_ `--image UbuntuLTS`
+
+* The operating system's disk size (in GB).
+
+  We recommend a minimum of 32 GB as the `/var/lib/docker` directory will need to store large images.
+
+  _Example:_ `--os-disk-size-gb 32`
+
+* The authentication type when logging in to the VM.
+
+  You can choose an admin password or your local SSH public key, or you can choose both.
+
+  1. _Example:_ `--authentication-type ssh --ssh-key-values ~/.ssh/id_rsa.pub`
+  1. _Example:_ `--authentication-type password --admin-password mypassword`
+  1. _Example:_ `--authentication-type all --ssh-key-values ~/.ssh/id_rsa.pub --admin-password mypassword`
+
+* The [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-list) to use for the VM.
+
+  To obtain the subnet id, you will need a virtual network (vnet) and its subnet name.
+
+  To obtain a list of vnets available to your account, use:  
+  `az resource list --location <vm-location> --query "[?type=='Microsoft.Network/virtualNetworks'].{vnetName:name, resourceGroup:resourceGroup}" --output table`
+
+  The `VnetName` and `ResourceGroup` can then be used to obtain a list of subnets for your vnet:   
+  `az network vnet subnet list --vnet-name <vnet-name> -g <vnet-resource-group> --output table`
+
+  The subnet names are listed in the `Name` column.
+
+  You can now obtain the subnet ID by using the `VnetName`, `ResourceGroup` and `Name` values in the following command:  
+  `az network vnet subnet show --vnet-name <vnet-name> -g <vnet-resource-group> -n <subnet-name>  --output tsv --query 'id'`
+
+  The path-style string is then used for the subnet parameter.
+
+  _Example:_  `--subnet /subscriptions/3842fefa-8901-4e7d-c789-a5a3ae567890/resourceGroups/GRP/providers/Microsoft.Network/virtualNetworks/GRP-westeurope-vnet/subnets/default`
+
+### Optional parameters
+
+* The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.
+
+  _Example:_ `--location westeurope`
+
+* Use a private IP address for the VM.
+
+  Prevent a public IP address from being generated by setting the parameter value to none.
+
+  _Example:_ `--public-ip-address ""`
+
+## Create the VM
+
+Create the VM using the information collected above. You must also include the `--custom-data` parameter to reference the `cloud-init.txt` template created earlier.
+
+_Example usage_
+
+```bash
+az vm create \
+--custom-data cloud-init.txt \
+--name docker_host01 \
+--resource-group GRP-my.name1 \
+--admin-username vm_user \
+--size Standard_D4_v3 \
+--storage-sku Standard_LRS \
+--image UbuntuLTS \
+--os-disk-size-gb 32 \
+--authentication-type ssh --ssh-key-values ~/.ssh/id_rsa.pub \
+--subnet /subscriptions/3842fefa-8901-4e7d-c789-a5a3ae567890/resourceGroups/GRP/providers/Microsoft.Network/virtualNetworks/GRP-westeurope-vnet/subnets/default \
+--location westeurope \
+--public-ip-address ""
+```
+
+_Example output_
+
+```json
+{
+  "fqdns": "",
+  "id": "/subscriptions/3842fefa-8901-4e7d-c789-a5a3ae567890/resourceGroups/GRP-my.name4/providers/Microsoft.Compute/virtualMachines/docker_host01",
+  "location": "westeurope",
+  "macAddress": "00-0D-3A-A8-71-A6",
+  "powerState": "VM running",
+  "privateIpAddress": "172.10.1.10",
+  "publicIpAddress": "",
+  "resourceGroup": "GRP-my.name4",
+  "zones": ""
+}
    ```
 
 You can now log in to your Azure VM, for example `ssh vm_user@172.10.1.10`.
+
+##  References
+
+* [Azure parameters for VM creation](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create)
