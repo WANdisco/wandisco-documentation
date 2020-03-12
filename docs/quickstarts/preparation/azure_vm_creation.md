@@ -1,7 +1,7 @@
 ---
 id: azure_vm_creation
 title: Creating an Azure Linux Virtual Machine for a Fusion installation
-sidebar_label: Azure VM creation
+sidebar_label: Azure VM Creation
 ---
 
 This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable for a Fusion installation. It walks you through:
@@ -51,7 +51,7 @@ Create this file with the name `cloud-init.txt` in the same location you will ru
          source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
          key: |
            -----BEGIN PGP PUBLIC KEY BLOCK-----
-           
+
            mQINBFit2ioBEADhWpZ8/wvZ6hUTiXOwQHXMAlaFHcPH9hAtr4F1y2+OYdbtMuth
            lqqwp028AqyY+PRfVMtSYMbjuQuu5byyKR01BbqYhuS3jtqQmljZ/bJvXqnmiVXh
            38UuLa+z077PxyxQhu5BbqntTPQMfiyqEiU+BKbq2WmANUKQf+1AmZY/IruOXbnq
