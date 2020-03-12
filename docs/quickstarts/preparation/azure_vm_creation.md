@@ -51,7 +51,7 @@ Create this file with the name `cloud-init.txt` in the same location you will ru
          source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
          key: |
            -----BEGIN PGP PUBLIC KEY BLOCK-----
-
+           
            mQINBFit2ioBEADhWpZ8/wvZ6hUTiXOwQHXMAlaFHcPH9hAtr4F1y2+OYdbtMuth
            lqqwp028AqyY+PRfVMtSYMbjuQuu5byyKR01BbqYhuS3jtqQmljZ/bJvXqnmiVXh
            38UuLa+z077PxyxQhu5BbqntTPQMfiyqEiU+BKbq2WmANUKQf+1AmZY/IruOXbnq
