@@ -17,16 +17,14 @@ This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable fo
 
 ### SSH keys
 
-There will be an option to use SSH keys as part of the VM creation process. See the Microsoft documentation for further details:
+There is an option to use SSH keys as part of the VM creation process. See the Microsoft documentation for further details:
 
 * [Linux or macOS](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)
 * [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)
 
 ## Create the cloud-init template
 
-Create this file with the name given in the same location you will run the Azure CLI:
-
-`cloud-init.txt`
+Create this file with the name `cloud-init.txt` in the same location you will run the Azure CLI:
 
    ```text
    #cloud-config
@@ -53,6 +51,7 @@ Create this file with the name given in the same location you will run the Azure
          source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
          key: |
            -----BEGIN PGP PUBLIC KEY BLOCK-----
+           
            mQINBFit2ioBEADhWpZ8/wvZ6hUTiXOwQHXMAlaFHcPH9hAtr4F1y2+OYdbtMuth
            lqqwp028AqyY+PRfVMtSYMbjuQuu5byyKR01BbqYhuS3jtqQmljZ/bJvXqnmiVXh
            38UuLa+z077PxyxQhu5BbqntTPQMfiyqEiU+BKbq2WmANUKQf+1AmZY/IruOXbnq
@@ -136,29 +135,29 @@ Create this file with the name given in the same location you will run the Azure
            groups: [docker]
    ```
 
-This template contains initialisation parameters for the VM, and pre-installs the required services.
+This template contains initialization parameters for the VM, and pre-installs the required services.
 
 ## Required parameters
 
 The variables required to create a suitable VM are:
 
-* The name for the VM.
+* The name for the VM (user defined).
 
   _Example:_ `--name docker_host01`
 
 * The [Azure Resource group](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-list) to use for the VM. _Must already exist_.
 
-  The `name` value from `az group list --output table` should be used here.
+  Use the `name` value from `az group list --output table`.
 
   _Example:_ `--resource-group GRP-my.name1`
 
-* The admin username to log in to the VM with.
+* The admin username to log in to the VM with (user defined).
 
   _Example:_ `--admin-username vm_user`
 
 * The VM size from the [Azure templates](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).
 
-  The `name` value from `az vm list-sizes --location <vm-location> --output table` should be used here.
+  Use the `name` value from `az vm list-sizes --location <vm-location> --output table`.
 
   _Example:_ `--size Standard_D4_v3`
 
@@ -168,7 +167,7 @@ The variables required to create a suitable VM are:
 
 * The [image (operating system)](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list).
 
-  The `urnAlias` value from `az vm image list --location <vm-location> --output table` should be used here.
+  Use the `urnAlias` value from `az vm image list --location <vm-location> --output table`.
 
   _Example:_ `--image UbuntuLTS`
 
@@ -195,23 +194,23 @@ The variables required to create a suitable VM are:
 
 * The [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-list) to use for the VM.
 
-  To obtain the subnet id, you will need a virtual network (vnet) and its subnet name.
+  You first need a virtual network (VNet) and its subnet name. Using these, you can get the subnet ID.
 
-  To obtain a list of vnets available to your account, use:
+  1. To get a list of VNets available to your account, use:
 
-  `az resource list --location <vm-location> --query "[?type=='Microsoft.Network/virtualNetworks'].{VNetName:name, ResourceGroup:resourceGroup}" --output table`
+     `az resource list --location <vm-location> --query "[?type=='Microsoft.Network/virtualNetworks'].{VNetName:name, ResourceGroup:resourceGroup}" --output table`
 
-  The **VNetName** and **ResourceGroup** can then be used to obtain a list of subnets for your vnet:
+  1. The **VNetName** and **ResourceGroup** can then be used to list your VNet subnets:
 
-  `az network vnet subnet list --vnet-name <vnet-name> -g <vnet-resource-group> --output table`
+     `az network vnet subnet list --vnet-name <vnet-name> -g <vnet-resource-group> --output table`
 
-  The subnet names are listed in the **Name** column.
+     The subnet names are listed in the **Name** column.
 
-  You can now obtain the subnet ID by using the **VnetName**, **ResourceGroup** and subnet **Name** values in the following command:
+  1. Now get the subnet ID by using the **VNetName**, **ResourceGroup** and subnet **Name** in the following command:
 
-  `az network vnet subnet show --vnet-name <vnet-name> -g <vnet-resource-group> -n <subnet-name>  --output tsv --query 'id'`
+     `az network vnet subnet show --vnet-name <vnet-name> -g <vnet-resource-group> -n <subnet-name>  --output tsv --query 'id'`
 
-  The path-style string is then used for the subnet parameter.
+  Use the output of this last step for the subnet parameter.
 
   _Example:_  `--subnet /subscriptions/3842fefa-8901-4e7d-c789-a5a3ae567890/resourceGroups/GRP/providers/Microsoft.Network/virtualNetworks/GRP-westeurope-vnet/subnets/default`
 
