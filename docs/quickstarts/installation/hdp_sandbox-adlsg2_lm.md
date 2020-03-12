@@ -102,24 +102,38 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 Follow the steps below to demonstrate live replication of HCFS data and Hive metadata from the HDP sandbox to the Azure Databricks cluster.
 
-### Create replication rules
+### Create replication rule
 
 On the dashboard, create a **HCFS** rule with the following parameters:
 
-* Rule Name = `test`
-* Path for all zones = `/apps/hive/warehouse`
+* Rule Name = `migration`
+* Path for all zones = `/retail_demo`
 * Default exclusions
-* Preserve HCFS Block Size = *False*
+* Preserve HCFS Block Size = *True*
 
 ### Test HCFS replication
 
-1. On the terminal for the Docker host, upload a test file to the `/apps/hive/warehouse` path in HDFS on the **sandbox-hdp** container.
+1. On the terminal for the Docker host, upload a test file to the `/retail_demo` path in HDFS on the **sandbox-hdp** container.
 
-   `docker-compose exec -u hdfs sandbox-hdp hdfs dfs -put /etc/services /apps/hive/warehouse/test_file`
+   `docker-compose exec -u hdfs sandbox-hdp hdfs dfs -put /etc/services /retail_demo`
 
-2. Check that the `test_file` is now located in your `/apps/hive/warehouse` directory on your ADLS Gen2 container.
+2. Check that the `test_file` is now located in your `/retail_demo` directory on your ADLS Gen2 container.
 
-_You have now successfully replicated data from your HDP Sandbox to your ADLS Gen2 container. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+### Replicate data using LiveMigrator
+
+1. On the dashboard, view the `migration` rule.
+
+2. Start your migration with the following overwrite settings:
+
+   * Source Zone = **sandbox-hdp**
+   * Target Zone = **adls2**
+   * Overwrite Settings = **Skip**
+
+3. Wait until the migration is complete, and check the contents of your `/retail_demo` directory in your ADLS Gen2 container.
+
+   A new directory should exist (`customer_addresses_dim_hive`) with a ~50MB file inside (`customer_addresses_dim.tsv.gz`).
+
+_You have now successfully migrated data from your HDP Sandbox to your ADLS Gen2 container using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 
 ## Troubleshooting
 
