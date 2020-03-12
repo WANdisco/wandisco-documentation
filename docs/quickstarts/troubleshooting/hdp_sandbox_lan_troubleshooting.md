@@ -1,10 +1,8 @@
 ---
 id: hdp_sandbox_lan_troubleshooting
-title: Troubleshooting Hortonworks (HDP) Sandbox to Azure Databricks
-sidebar_label: HDP Sandbox to Azure Databricks
+title: Troubleshooting Hortonworks (HDP) Sandbox to Azure
+sidebar_label: HDP Sandbox to Azure
 ---
-
-This troubleshooting guide should be used in conjunction with the [HDP Sandbox to Azure Databricks](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md) guide.
 
 Please see the [Useful information](./useful_info.md) section for additional commands and help.
 
@@ -74,7 +72,7 @@ Use these steps if looking to start over.
 
    `docker-compose down -v`
 
-1. Delete the `databricks_demo` database from your Databricks cluster using your [notebook](https://docs.databricks.com/notebooks/notebooks-use.html#run-notebooks):
+1. If you are using Databricks, delete the `databricks_demo` database from your Databricks cluster using your [notebook](https://docs.databricks.com/notebooks/notebooks-use.html#run-notebooks):
 
    `DROP DATABASE databricks_demo CASCADE;`
 
