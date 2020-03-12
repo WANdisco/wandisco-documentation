@@ -186,19 +186,29 @@ The variables required to create a suitable VM are:
   1. _Example:_ `--authentication-type password --admin-password mypassword`
   1. _Example:_ `--authentication-type all --ssh-key-values ~/.ssh/id_rsa.pub --admin-password mypassword`
 
+  Alternatively, choose to generate SSH keys for the VM.
+
+  1. _Example:_ `--authentication-type ssh --generate-ssh-keys`
+  1. _Example:_ `--authentication-type all --generate-ssh-keys --admin-password mypassword`
+
+  See the links in the [SSH keys](#ssh-keys) section for more info.
+
 * The [subnet ID](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-list) to use for the VM.
 
   To obtain the subnet id, you will need a virtual network (vnet) and its subnet name.
 
-  To obtain a list of vnets available to your account, use:  
-  `az resource list --location <vm-location> --query "[?type=='Microsoft.Network/virtualNetworks'].{vnetName:name, resourceGroup:resourceGroup}" --output table`
+  To obtain a list of vnets available to your account, use:
 
-  The `VnetName` and `ResourceGroup` can then be used to obtain a list of subnets for your vnet:   
+  `az resource list --location <vm-location> --query "[?type=='Microsoft.Network/virtualNetworks'].{VNetName:name, ResourceGroup:resourceGroup}" --output table`
+
+  The **VNetName** and **ResourceGroup** can then be used to obtain a list of subnets for your vnet:
+
   `az network vnet subnet list --vnet-name <vnet-name> -g <vnet-resource-group> --output table`
 
-  The subnet names are listed in the `Name` column.
+  The subnet names are listed in the **Name** column.
 
-  You can now obtain the subnet ID by using the `VnetName`, `ResourceGroup` and `Name` values in the following command:  
+  You can now obtain the subnet ID by using the **VnetName**, **ResourceGroup** and subnet **Name** values in the following command:
+
   `az network vnet subnet show --vnet-name <vnet-name> -g <vnet-resource-group> -n <subnet-name>  --output tsv --query 'id'`
 
   The path-style string is then used for the subnet parameter.
@@ -208,6 +218,8 @@ The variables required to create a suitable VM are:
 ### Optional parameters
 
 * The [Azure location](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations) for the VM.
+
+  The location will default to the Azure resource group you have selected for the VM. You can change it with this parameter.
 
   _Example:_ `--location westeurope`
 
