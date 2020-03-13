@@ -19,7 +19,8 @@ What this guide will cover:
 
 To complete this demo, you will need:
 
-* HDP cluster
+* HDP cluster.
+  * The [HDFS superuser](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#The_Super-User) must be `hdfs` for the purposes of this quickstart.
 * ADLS Gen2 storage account with [hierarchical namespace](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace) enabled.
   * You will also need a container created inside this account.
 * Azure Virtual Machine (VM).
