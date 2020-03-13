@@ -16,7 +16,7 @@ What this guide will cover:
 |For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
 |---|
 
-To complete this demo, you will need:
+To complete this install, you will need:
 
 * HDP cluster.
   * The [HDFS superuser](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#The_Super-User) must be `hdfs` for the purposes of this quickstart.

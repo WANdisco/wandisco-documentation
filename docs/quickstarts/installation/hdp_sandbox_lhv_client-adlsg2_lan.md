@@ -19,7 +19,7 @@ What this guide will cover:
 |For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
 |---|
 
-To complete this demo, you will need:
+To complete this install, you will need:
 
 * ADLS Gen2 storage account with [hierarchical namespace](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace) enabled.
   * You will also need a container created inside this account.
@@ -102,7 +102,7 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
-3. Tick the **Use Secure Protocol** box.
+3. Check the **Use Secure Protocol** box.
 
 4. Click **Apply Configuration** and wait for this to complete.
 
@@ -229,7 +229,7 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
    * Name: **WD-demo**
    * Language: **SQL**
-   * Cluster: (Choose the cluster used in this demo)
+   * Cluster: (Choose your cluster)
 
    You should now see a blank notebook.
 
@@ -257,6 +257,6 @@ _You have now successfully replicated data from your HDP Sandbox to your ADLS Ge
 
 ## Troubleshooting
 
-* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help with this demo.
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help with this install.
 
 * See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.

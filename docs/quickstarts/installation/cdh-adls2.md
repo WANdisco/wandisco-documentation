@@ -4,94 +4,129 @@ title: Cloudera (CDH) to ADLS Gen2
 sidebar_label: Cloudera (CDH) to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to connect to Cloudera (CDH) and ADLS Gen2 storage.
+Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Cloudera (CDH) cluster to an ADLS Gen2 container.
 
-Please see the [Useful information](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/troubleshooting/useful_info) section for additional commands and help.
+What this guide will cover:
 
-## Limitations of this quickstart
-
-* This guide does not currently offer configuration of Fusion to a **Kerberized** CDH cluster.
-* Migration of existing data will be available after configuration, but not live replication.
-
-We are working to include these additional items as soon as possible.
+- Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating WANdisco Fusion with the CDH cluster and ADLS Gen2 storage.
 
 ## Prerequisites
 
-* Azure VM instance set up and running, with root access available (instructions were tested on RHEL 7).
-* [Docker](https://docs.docker.com/install/) (v19.03.3 or higher), [Docker Compose](https://docs.docker.com/compose/install/) (v1.24.1 or higher), and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on instance.
-* Administrator credentials for the Cloudera Manager.
-* Network connectivity to the Cloudera Manager and NameNodes.
-* Credentials for accessing the Data Lake Storage Gen2.
-* Network connectivity to the Data Lake Storage Gen2.
+|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
+|---|
 
-## Guidance
+To complete this install, you will need:
 
-Clone the Fusion docker repository to your Azure VM instance:
+* CDH cluster.
+  * The [HDFS superuser](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#The_Super-User) must be `hdfs` for the purposes of this quickstart.
+* ADLS Gen2 storage account with [hierarchical namespace](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace) enabled.
+  * You will also need a container created inside this account.
+* Azure Virtual Machine (VM).
+  * Minimum size recommendation = **Standard D4 v3 (4 vcpus, 16 GiB memory).**
+  * A minimum of 24GB available storage for the `/var/lib/docker` directory.
+    * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
 
-`git clone https://github.com/WANdisco/fusion-docker-compose.git`
+* The following services must be installed on the VM:  
+  * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
+  * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
 
-Switch to the repository directory, and run the setup script:
+### Info you will require
 
-`cd fusion-docker-compose`
+* Administrator credentials for your Cloudera manager.
 
-`./setup-env.sh`
+* ADLS Gen2 storage account details:
 
-Follow the prompts to configure your zones.
+  * [Account name](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) (Example: `adlsg2storage`)
+  * [Container name](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) (Example: `fusionreplication`)
+  * [Account key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage#view-access-keys-and-connection-string) (Example: `eTFdESnXOuG2qoUrqlDyCL+e6456789opasweghtfFMKAHjJg5JkCG8t1h2U1BzXvBwtYfoj5nZaDF87UK09po==`)
 
-### Setup prompts
+_These instructions have been tested on Ubuntu LTS._
 
-_Zone name_
+## Installation
 
-If defining a zone name, please note that each zone must have a different name (i.e. they cannot match).
+Log in to your VM prior to starting these steps.
 
-_Licenses_
+### Setup Fusion
 
-Trial licenses will last 30 days and are limited to 1TB of replicated data.
+1. Clone the Fusion docker repository to your Azure VM instance:
 
-_Example entries for CDH_
+   `git clone https://github.com/WANdisco/fusion-docker-compose.git`
 
-CDH version: `6.1.0`
+1. Change to the repository directory:
 
-Hadoop NameNode IP/hostname: `namenode.example.com` - if NameNode HA is configured, this should be the Active NameNode.
+   `cd fusion-docker-compose`
 
-NameNode port: `8020` - if NameNode HA is configured, this value will be defined in the `dfs.namenode.rpc-address.<nameservice>.<namenode_id>` property. If NameNode HA is not configured, the value will be defined in the `fs.defaultFS` property.
+1. Run the setup script:
 
-_Example entries for ADLS Gen2_
+   `./setup-env.sh`
 
-HDI version: `4.0`
+1. Enter `n` when asked whether to use the HDP sandbox.
 
-Storage account: `adlsg2storage`
+1. Enter the zone details:
 
-Storage container: `fusionreplication`
+   * First zone type = `cdh`
+   * First zone name = _press enter for the default value_
 
-Account key: `RANDOM_STRING` - the Primary Access Key is now referred to as Key1 in Microsoft’s documentation. You can get the KEY from the Microsoft Azure storage account.
+   * Second zone type = `adls2`
+   * Second zone name = _press enter for the default value_
 
-default FS: `abfss://fusionreplication@adlsg2storage.dfs.core.windows.net/`
+1. When prompted, press enter to use the default trial license or provide the absolute file system path to your own license on the VM.
 
-underlying FS: `abfs://fusionreplication@adlsg2storage.dfs.core.windows.net/`
+   _Example:_  `/home/vm_user/license.key`
 
-### Startup
+1. Enter your docker hostname, which will be the VM hostname.
 
-After all the prompts have been completed, you will be able to start the containers.
+   _Example:_  `docker_host01.realm.com`
 
-Ensure that Docker is started:
+1. Enter the CDH zone details:
 
-`systemctl status docker`
+   _Examples:_
 
-If not, start the Docker service:
+   * CDH version = `5.16.0`
+     * All minor versions are supported within each version listed (e.g. choose `5.16.0` if you are using `5.16.1`).
+   * Active NameNode hostname = `namenode.example.com`
+   * Active NameNode port = `8020`
+   * NameNode nameservice = `nameservice01`
+   * Plugins = `NONE`
 
-`systemctl start docker`
+1. Enter the ADLS Gen2 zone details:
 
-Start the Fusion containers with:
+   _Examples:_
 
-`docker-compose up -d`
+   * [HDI version](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning) = `3.6`
+     * This is required even if you are not intending to use a HDI cluster.
+   * Plugins = `NONE`
 
-Log in to the UI via a web browser with the VM's hostname and port 8081.
+1. You have now completed the setup. To create and start your containers run:
 
-`http://<docker-hostname>:8081/`
+   `docker-compose up -d`
 
-Register your email address and password, and then use these to log in to the UI.
+   Docker will now download all required images and create the containers.
 
-### Replication
+## Configuration
 
-_You now have the ability to create replication rules via the UI, feel free to create one and test replication._
+### Configure the ADLS Gen2 zone
+
+1. Log in to Fusion via a web browser.
+
+   `http://<docker_IP_address>:8081`
+
+   Enter your email address and choose a password you will remember.
+
+2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+
+3. Check the **Use Secure Protocol** box.
+
+4. Click **Apply Configuration** and wait for this to complete.
+
+## Migration
+
+You can now create a [replication rule](../operation/create-rule.md) and then [migrate your data](../operation/migration.md).
+
+## Troubleshooting
+
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help.
+
+_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
