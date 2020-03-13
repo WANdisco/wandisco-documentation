@@ -1,16 +1,15 @@
 ---
-id: hdp-adlsg2_lm
-title: Hortonworks (HDP) to ADLS Gen2 with LiveMigrator
-sidebar_label: Hortonworks (HDP) to ADLS Gen2 with LiveMigrator
+id: hdp-adlsg2
+title: Hortonworks (HDP) to ADLS Gen2
+sidebar_label: Hortonworks (HDP) to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) cluster to an ADLS Gen2 container using WANdisco LiveMigrator.
+Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) cluster to an ADLS Gen2 container.
 
 What this guide will cover:
 
 - Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with the HDP cluster and ADLS Gen2 storage.
-- Performing a sample data migration.
 
 ## Prerequisites
 
@@ -35,7 +34,7 @@ To complete this demo, you will need:
 
 ### Info you will require
 
-* Administrator credentials for the HDP Ambari manager.
+* Administrator credentials for your HDP Ambari manager.
 
 * ADLS Gen2 storage account details:
 
@@ -91,7 +90,7 @@ Log in to your VM prior to starting these steps.
    * NameNode nameservice = `nameservice01`
    * Plugins = `NONE`
 
-1. Enter the ALDS Gen2 zone details:
+1. Enter the ADLS Gen2 zone details:
 
    _Examples:_
 
@@ -99,7 +98,7 @@ Log in to your VM prior to starting these steps.
      * This is required even if you are not intending to use a HDI cluster.
    * Plugins = `NONE`
 
-1. You have now completed the setup, to create and start your containers run:
+1. You have now completed the setup. To create and start your containers run:
 
    `docker-compose up -d`
 
@@ -117,49 +116,16 @@ Log in to your VM prior to starting these steps.
 
 2. Click on the **Settings** cog for the **ADLS GEN2** zone, and fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
-3. Tick the **Use Secure Protocol** box.
+3. Check the **Use Secure Protocol** box.
 
 4. Click **Apply Configuration** and wait for this to complete.
 
 ## Migration
 
-Follow the steps below to demonstrate migration of HCFS data from the HDP cluster to the ADLS Gen2 container.
-
-### Create replication rule
-
-On the dashboard, create a **HCFS** rule with the following parameters:
-
-* Rule Name = `test_migration`
-* Path for all zones = `/wandisco/testdir`
-* Default exclusions
-* Preserve HCFS Block Size = *True*
-
-### Prepare test data
-
-On the HDP cluster, put data in to the `/wandisco/testdir` directory as your HDFS superuser:
-
-_Example_
-
-`hdfs dfs -put /etc/services /wandisco/testdir/test_file`
-
-### Migrate data using LiveMigrator
-
-1. On the dashboard, view the `test_migration` rule.
-
-2. Start your migration with the following overwrite settings:
-
-   * Source Zone = **hdp**
-   * Target Zone = **adls2**
-   * Overwrite Settings = **Skip**
-
-3. Wait until the migration is complete, and check the contents of your `/wandisco/testdir/` directory in your ADLS Gen2 container.
-
-   The `test_file` will exist inside of it.
-
-_You have now successfully migrated data from your HDP cluster to your ADLS Gen2 container using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+You can now create a [replication rule](../operation/create-rule.md) and then [migrate your data](../operation/migration.md).
 
 ## Troubleshooting
 
 * See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help.
 
-* See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.
+_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
