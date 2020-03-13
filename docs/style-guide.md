@@ -8,7 +8,7 @@ The docs are written in Markdown, if you're not familiar with this start here:
 * https://guides.github.com/features/mastering-markdown/
 * https://www.markdownguide.org/basic-syntax
 
-We use [Docusaurus](https://docusaurus.io) to create the doc website - www.wandisco.github.io/wandisco-documentation
+We use [Docusaurus](https://docusaurus.io) to create the doc website - https://wandisco.github.io/wandisco-documentation
 
 ## Branching strategy
 

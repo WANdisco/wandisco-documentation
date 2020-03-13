@@ -98,9 +98,9 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 4. Click **Apply Configuration** and wait for this to complete.
 
-## Replication
+## Migration
 
-Follow the steps below to demonstrate live replication of HCFS data and Hive metadata from the HDP sandbox to the Azure Databricks cluster.
+Follow the steps below to demonstrate migration of HCFS data from the HDP sandbox to the ADLS Gen2 container.
 
 ### Create replication rule
 
@@ -111,15 +111,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 * Default exclusions
 * Preserve HCFS Block Size = *True*
 
-### Test HCFS replication
-
-1. On the terminal for the Docker host, upload a test file to the `/retail_demo` path in HDFS on the **sandbox-hdp** container.
-
-   `docker-compose exec -u hdfs sandbox-hdp hdfs dfs -put /etc/services /retail_demo`
-
-2. Check that the `test_file` is now located in your `/retail_demo` directory on your ADLS Gen2 container.
-
-### Replicate data using LiveMigrator
+### Migrate your data
 
 1. On the dashboard, view the `migration` rule.
 
