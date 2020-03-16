@@ -4,93 +4,131 @@ title: ADLS Gen1 to ADLS Gen2
 sidebar_label: ADLS Gen1 to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to connect to ADLS Gen1 storage and ADLS Gen2 storage.
+Use this quickstart if you want to configure Fusion to replicate from ADLS Gen1 storage to an ADLS Gen2 container.
 
-Please see the [Useful information](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/troubleshooting/useful_info) section for additional commands and help.
+What this guide will cover:
+
+- Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating WANdisco Fusion with the ADLS Gen1 and ADLS Gen2 storage.
 
 ## Prerequisites
 
-* Azure VM instance set up and running, with root access available (instructions were tested on RHEL 7).
-* [Docker](https://docs.docker.com/install/) (v19.03.3 or higher), [Docker Compose](https://docs.docker.com/compose/install/) (v1.24.1 or higher), and [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on instance.
-* Credentials for accessing the Data Lake Storage Gen1 and Data Lake Storage Gen2.
-* Network connectivity between Azure VM and Data Lake Storage Gen1/Gen2.
+|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
+|---|
 
-## Guidance
+To complete this install, you will need:
 
-Clone the Fusion docker repository to your Azure VM instance:
+* ADLS Gen1 storage account.
+* ADLS Gen2 storage account with [hierarchical namespace](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace) enabled.
+  * You will also need a container created inside this account.
+* Azure Virtual Machine (VM).
+  * Minimum size recommendation = **Standard D4 v3 (4 vcpus, 16 GiB memory).**
+  * A minimum of 24GB available storage for the `/var/lib/docker` directory.
+    * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
 
-`git clone https://github.com/WANdisco/fusion-docker-compose.git`
+* The following services must be installed on the VM:  
+  * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
+  * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
 
-Switch to the repository directory, and run the setup script:
+### Info you will require
 
-`cd fusion-docker-compose`
+* ADLS Gen1 storage account details:
+  * [Hostname / Endpoint](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#create-a-data-lake-storage-gen1-account) (Example: `fusionstorage.azuredatalakestore.net`)
+  * [Home Mount Point / Directory](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#createfolder) (Example: `/` or `/path/to/mountpoint`)
+  * [Client ID / Application ID](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) (Example: `a73t6742-2e93-45ty-bd6d-4a8art6578ip`)
+  * [Refresh URL](https://docs.microsoft.com/en-us/azure/active-directory/azuread-dev/v1-oauth2-on-behalf-of-flow#service-to-service-access-token-request) (Example: `https://login.microsoftonline.com/<tenant-id>/oauth2/token`)
+    * The `<tenant-id>` is a value given to the service principal during creation, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) for how to retrieve this.
+  * [Handshake User / Service principal name](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) (Example: `fusion-app`)
+  * [ADL credential / Application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) (Example: `8A767YUIa900IuaDEF786DTY67t-u=:]`)
 
-`./setup-env.sh`
+* ADLS Gen2 storage account details:
+  * [Account name](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) (Example: `adlsg2storage`)
+  * [Container name](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) (Example: `fusionreplication`)
+  * [Account key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage#view-access-keys-and-connection-string) (Example: `eTFdESnXOuG2qoUrqlDyCL+e6456789opasweghtfFMKAHjJg5JkCG8t1h2U1BzXvBwtYfoj5nZaDF87UK09po==`)
 
-Follow the prompts to configure your zones.
+## Installation
 
-### Setup prompts
+Log in to your VM prior to starting these steps.
 
-_Zone name_
+### Setup Fusion
 
-If defining a zone name, please note that each zone must have a different name (i.e. they cannot match).
+1. Clone the Fusion docker repository:
 
-_Licenses_
+   `git clone https://github.com/WANdisco/fusion-docker-compose.git`
 
-Trial licenses will last 30 days and are limited to 1TB of replicated data.
+1. Change to the repository directory:
 
-_Examples entries for ADLS Gen1_
+   `cd fusion-docker-compose`
 
-HDI version: `4.0`
+1. Run the setup script:
 
-Hostname: `example.westeurope.azuredatalakestore.net`
+   `./setup-env.sh`
 
-Mountpoint: `/`,`/path/to/mountpoint` - Can be root or a specific directory.
+1. Enter `n` when asked whether to use the Hortonworks Sandbox.
 
-Handshake user: `wandisco` - must be an Owner of the ADLS Gen1 (under role assignments).
+1. Enter the zone details:
 
-OAUTH2 Credential: `RANDOM_STRING` - the authentication key of the Active Directory credential you wish to use with Fusion.
+   * First zone type = `adls1`
+   * First zone name = _press enter for the default value_
 
-OAUTH2 Refresh URL: `https://login.microsoftonline.com/abc123de-fgh4-567i-8jkl-90123mnop456/oauth2/token`
+   * Second zone type = `adls2`
+   * Second zone name = _press enter for the default value_
 
-OAUTH2 Client ID: `123ab456-78c9-0d12-3456-78e90123f45g`
+1. When prompted, press enter to use the default trial license or provide the absolute file system path to your own license on the VM.
 
-_Example entries for ADLS Gen2_
+   _Example:_  `/home/vm_user/license.key`
 
-HDI version: `4.0`
+1. Enter your docker hostname, which will be the VM hostname.
 
-Storage account: `adlsg2storage`
+   _Example:_  `docker_host01.realm.com`
 
-Storage container: `fusionreplication`
+1. Enter the [HDI version](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning) for the ADLS Gen1 zone. This is required even if you are not intending to use a HDI cluster.
 
-Account key: `RANDOM_STRING` - the Primary Access Key is now referred to as Key1 in Microsoft’s documentation. You can get the KEY from the Microsoft Azure storage account.
+1. When prompted to select a plugin for the ADLS Gen1 zone, press enter for `NONE`.
 
-default FS: `abfss://fusionreplication@adlsg2storage.dfs.core.windows.net/`
+1. Enter the [HDI version](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning) for the ADLS Gen2 zone. This is required even if you are not intending to use a HDI cluster.
 
-underlying FS: `abfs://fusionreplication@adlsg2storage.dfs.core.windows.net/`
+1. When prompted to select a plugin for the ADLS Gen2 zone, press enter for `NONE`.
 
-### Startup
+1. You have now completed the setup. To create and start your containers run:
 
-After all the prompts have been completed, you will be able to start the containers.
+   `docker-compose up -d`
 
-Ensure that Docker is started:
+   Docker will now download all required images and create the containers.
 
-`systemctl status docker`
+## Configuration
 
-If not, start the Docker service:
+### Configure the ADLS Gen1 zone
 
-`systemctl start docker`
+1. Log in to Fusion via a web browser.
 
-Start the Fusion containers with:
+   `http://<docker_IP_address>:8081`
 
-`docker-compose up -d`
+   Enter your email address and choose a password you will remember.
 
-Log into the ONEUI via a web browser with the VM's hostname and port 8081.
+1. Click on the **Settings** cog for the **adls1** zone, and select the **ADLS Gen1** storage type.
 
-`http://<docker-hostname>:8081/`
+1. Fill in the details for your ADLS Gen1 storage account. See the [Info you will require](#info-you-will-require) section for reference.
 
-Register your email address and password, and then use these to log into the ONEUI.
+1. Click **Apply Configuration** and wait for this to complete.
 
-### Replication
+### Configure the ADLS Gen2 zone
 
-_You now have the ability to create replication rules via the UI, feel free to create one and test replication._
+1. Click on the **Settings** cog for the **adls2** zone, and select the **ADLS Gen2** storage type.
+
+1. Fill in the details for your ADLS Gen2 storage account. See the [Info you will require](#info-you-will-require) section for reference.
+
+1. Check the **Use Secure Protocol** box.
+
+1. Click **Apply Configuration** and wait for this to complete.
+
+## Migration
+
+You can now create a [replication rule](../operation/create-rule.md) and then [migrate your data](../operation/migration.md).
+
+## Troubleshooting
+
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help.
+
+_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
