@@ -4,12 +4,12 @@ title: ADLS Gen1 to ADLS Gen2
 sidebar_label: ADLS Gen1 to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from ADLS Gen1 storage to an ADLS Gen2 container.
+Use this quickstart if you want to configure Fusion to replicate from ADLS Gen1 to ADLS Gen2 storage.
 
 What this guide will cover:
 
 - Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with the ADLS Gen1 and ADLS Gen2 storage.
+- Integrating WANdisco Fusion with ADLS Gen1 and ADLS Gen2 storage.
 
 ## Prerequisites
 
@@ -34,8 +34,11 @@ To complete this install, you will need:
 ### Info you will require
 
 * ADLS Gen1 storage account details:
-  * [Hostname / Endpoint](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#create-a-data-lake-storage-gen1-account) (Example: `fusionstorage.azuredatalakestore.net`)
+  * [Hostname / Endpoint](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#create-a-data-lake-storage-gen1-account) (Example: `<account-name>.azuredatalakestore.net`)
+    * The following [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/dls/account?view=azure-cli-latest#az-dls-account-list) command will get a list of Data Lake Store accounts and endpoints:  
+    `az dls account list --output table`
   * [Home Mount Point / Directory](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#createfolder) (Example: `/` or `/path/to/mountpoint`)
+    * Fusion will be able to read and write to everything contained within the Mount Point.
   * [Client ID / Application ID](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) (Example: `a73t6742-2e93-45ty-bd6d-4a8art6578ip`)
   * [Refresh URL](https://docs.microsoft.com/en-us/azure/active-directory/azuread-dev/v1-oauth2-on-behalf-of-flow#service-to-service-access-token-request) (Example: `https://login.microsoftonline.com/<tenant-id>/oauth2/token`)
     * The `<tenant-id>` is a value given to the service principal during creation, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) for how to retrieve this.
