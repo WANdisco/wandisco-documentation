@@ -119,7 +119,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 2. Check that the `test_file` is now located in your `/testdir` directory on your ADLS Gen2 container.
 
-_You have now successfully replicated data from your HDP Sandbox to your ADLS Gen2 container using LiveData. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+_You have now setup live replication from your HDP Sandbox to your ADLS Gen2 container. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 
 ## Troubleshooting
 
