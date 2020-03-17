@@ -24,9 +24,9 @@ There is an option to use SSH keys as part of the VM creation process. See the M
 
 ## Download the cloud-init template
 
-Download this file to the same location you will run the Azure CLI:
+Save this file to the same location you will run the Azure CLI:
 
-<a id="cloud-init.txt" href="https://github.com/WANdisco/wandisco-documentation/raw/master/docs/assets/cloud-init.txt">cloud-init.txt</a> _- Right-click and Save link as 'cloud-init.txt'._
+<a id="cloud-init.txt" href="https://github.com/WANdisco/wandisco-documentation/raw/master/docs/assets/cloud-init.txt">cloud-init.txt</a>
 
 The template contains initialization parameters for the VM, and pre-installs the required services.
 
