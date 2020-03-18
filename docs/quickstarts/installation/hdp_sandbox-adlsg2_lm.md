@@ -125,7 +125,9 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
    A new directory should exist (`customer_addresses_dim_hive`) with a ~50MB file inside (`customer_addresses_dim.tsv.gz`).
 
-_You have now successfully migrated data from your HDP Sandbox to your ADLS Gen2 container using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+_You have now successfully migrated data from your HDP Sandbox to your ADLS Gen2 container using LiveMigrator. You can now try live replication by following our [LiveData quickstart](./hdp_sandbox-adlsg2_ld.md#replication)._
+
+_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 
 ## Troubleshooting
 
