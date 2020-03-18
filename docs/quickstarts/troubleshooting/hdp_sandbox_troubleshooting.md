@@ -58,7 +58,7 @@ Use these steps if looking to start over.
 
 1. You may need to clean up additional items depending on your deployment. Check the **rebuild** section for your chosen distributions and plugins by navigating the options on the sidebar.
 
-   For example, when running through [HDP Sandbox to Azure Databricks with LiveAnalytics](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md), check the [ADLS Gen2](./adlsg2_troubleshooting.md#rebuild) and [Databricks](./databricks_troubleshooting.md) rebuild sections.
+   For example, if your use-case is [HDP Sandbox to Azure Databricks with LiveAnalytics](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md), check the [ADLS Gen2](./adlsg2_troubleshooting.md#rebuild) and [Databricks](./databricks_troubleshooting.md) rebuild sections.
 
 1. Run the setup script again (it will not prompt for any questions), followed by the docker compose `up` command to recreate the environment:
 
