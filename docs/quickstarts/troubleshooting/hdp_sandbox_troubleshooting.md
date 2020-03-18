@@ -1,12 +1,12 @@
 ---
-id: hdp_sandbox_lan_troubleshooting
-title: Troubleshooting Hortonworks (HDP) Sandbox to Azure
-sidebar_label: HDP Sandbox to Azure
+id: hdp_sandbox_troubleshooting
+title: Troubleshooting Hortonworks (HDP) Sandbox
+sidebar_label: HDP Sandbox
 ---
 
 Please see the [Useful information](./useful_info.md) section for additional commands and help.
 
-## Common issues
+## Common issues and resolutions
 
 ### No Route to Host after docker container restart
 
@@ -17,22 +17,6 @@ The internal IP address of the container can change when restarting the containe
 To resolve, you must restart all containers within the `fusion-docker-compose` directory:
 
 `docker-compose restart`
-
-### Error 'connection refused' after starting Fusion for the first time
-
-You may see this error when running `docker-compose up -d` for the first time inside the `fusion-docker-compose` directory:
-
-```json
-ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:52155->[::1]:53: read: connection refused
-```
-
-Running the `docker-compose up -d` command a second time will fix the issue.
-
-### Fusion zones not inducted together
-
-If the Fusion zones are not inducted together after starting Fusion for the first time (`docker-compose up -d`), run the same command again to start the induction container:
-
-`docker-compose up -d`
 
 ### Hiveserver2 down after HDP Sandbox is started
 
@@ -72,14 +56,9 @@ Use these steps if looking to start over.
 
    `docker-compose down -v`
 
-1. If you are using Databricks, delete the `databricks_demo` database from your Databricks cluster using your [notebook](https://docs.databricks.com/notebooks/notebooks-use.html#run-notebooks):
+1. You may need to clean up additional items depending on your deployment. Check the **rebuild** section for your chosen distributions and plugins by navigating the options on the sidebar.
 
-   `DROP DATABASE databricks_demo CASCADE;`
-
-1. Delete the related directories from your ADLS Gen2 container (e.g. via the [Azure CLI](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-directory-file-acl-cli#delete-a-directory)):
-
-   `/apps`  
-   `/wandisco`
+   For example, when running through [HDP Sandbox to Azure Databricks with LiveAnalytics](../installation/hdp_sandbox_lhv_client-adlsg2_lan.md), check the [ADLS Gen2](./adlsg2_troubleshooting.md#rebuild) and [Databricks](./databricks_troubleshooting.md) rebuild sections.
 
 1. Run the setup script again (it will not prompt for any questions), followed by the docker compose `up` command to recreate the environment:
 

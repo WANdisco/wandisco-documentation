@@ -49,9 +49,12 @@
       "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
     "Troubleshooting": [
-      "quickstarts/troubleshooting/useful_info",
-      "quickstarts/troubleshooting/hdp_sandbox_lan_troubleshooting",
-      "quickstarts/troubleshooting/logs"
+      "quickstarts/troubleshooting/general_troubleshooting",
+      "quickstarts/troubleshooting/hdp_sandbox_troubleshooting",
+      "quickstarts/troubleshooting/adlsg2_troubleshooting",
+      "quickstarts/troubleshooting/databricks_troubleshooting",
+      "quickstarts/troubleshooting/logs",
+      "quickstarts/troubleshooting/useful_info"
     ]
   },
   "Glossary": {

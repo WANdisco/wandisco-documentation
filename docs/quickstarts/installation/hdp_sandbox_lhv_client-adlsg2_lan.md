@@ -257,6 +257,6 @@ _You have now successfully replicated data from your HDP Sandbox to your ADLS Ge
 
 ## Troubleshooting
 
-* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help with this install.
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_troubleshooting.md) guide for help with this install.
 
 * See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.

@@ -132,6 +132,6 @@ You can now create a [replication rule](../operation/create-rule.md) and then [m
 
 ## Troubleshooting
 
-* See our [Troubleshooting](../troubleshooting/hdp_sandbox_lan_troubleshooting.md) guide for help.
+* See our [Troubleshooting](../troubleshooting/hdp_sandbox_troubleshooting.md) guide for help.
 
 _Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
