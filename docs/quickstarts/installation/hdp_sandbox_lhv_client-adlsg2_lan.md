@@ -241,7 +241,10 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 4. Under the Plot Options, remove all **Keys** that are present.
 
-5. Click and drag **state_code** from the **All fields** box into the **Keys** box. Click **Apply** afterwards.
+5. Configure the notebook as follows:
+
+   Keys = **state_code**
+   Values = **customer_id**
 
    You should now see a plot of USA with color shading - dependent on the population density.
 
