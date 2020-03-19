@@ -243,8 +243,8 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 5. Configure the map as follows:
 
-   Keys = **state_code**
-   Values = **customer_id**
+   * Keys: **state_code**
+   * Values: **customer_id**
 
    You should now see a plot of USA with color shading - dependent on the population density.
 
