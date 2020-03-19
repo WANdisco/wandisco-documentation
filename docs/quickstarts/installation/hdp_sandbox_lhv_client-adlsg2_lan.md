@@ -241,7 +241,7 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 4. Under the Plot Options, remove all **Keys** that are present.
 
-5. Configure the notebook as follows:
+5. Configure the map as follows:
 
    Keys = **state_code**
    Values = **customer_id**
