@@ -128,11 +128,13 @@ Log in to your VM prior to starting these steps.
 
 ## Migration
 
-You can now test migration of data between your ADLS Gen1 and Gen2 storage using Fusion's LiveMigrator.
+Follow the steps below to demonstrate the migration of data from your ADLS Gen1 to Gen2 storage.
 
-### Prepare sample data
+### Get sample data
 
-[Upload](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) sample data to your ADLS Gen1 storage account. You can get the sample data from the link below:
+Upload sample data to your ADLS Gen1 storage account, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) for guidance.
+
+You can get the sample data from the link below:
 
 [customer_addresses_dim.tsv.gz](https://github.com/pivotalsoftware/pivotal-samples/raw/master/sample-data/customer_addresses_dim.tsv.gz)
 
@@ -151,7 +153,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. On the dashboard, view the `migration` rule.
 
-2. Start your migration with the following overwrite settings:
+2. Start your migration with the following settings:
 
    * Source Zone = **adls1**
    * Target Zone = **adls2**
