@@ -14,6 +14,11 @@ What this guide will cover:
 - Integrating WANdisco Fusion with Azure Databricks.
 - Performing a sample data migration.
 
+See below for links to similar quickstarts that involve the HDP Sandbox:
+
+* [Migration to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
+* [Live replication to ADLS Gen2](./hdp_sandbox-adlsg2_ld.md)
+
 ## Prerequisites
 
 |For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [Azure VM preparation](../preparation/azure_vm_prep.md) guide for how to install the services only.|
