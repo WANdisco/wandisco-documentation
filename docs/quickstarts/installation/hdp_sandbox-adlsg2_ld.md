@@ -12,10 +12,10 @@ What this guide will cover:
 - Integrating WANdisco Fusion with ADLS Gen2 storage.
 - Live replication of sample data.
 
-See below for links to similar quickstarts that involve the HDP Sandbox:
+If you would like to try something different with the HDP Sandbox, see:
 
-* [Migration to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
-* [Live replication to Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
+* [Migration of data to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
+* [Live replication of data/metadata to Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
 
 ## Prerequisites
 

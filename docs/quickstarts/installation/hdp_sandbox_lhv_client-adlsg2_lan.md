@@ -12,12 +12,12 @@ What this guide will cover:
 
 - Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with Azure Databricks.
-- Performing a sample data migration.
+- Live replication of sample data and metadata.
 
-See below for links to similar quickstarts that involve the HDP Sandbox:
+If you would like to try something different with the HDP Sandbox, see:
 
-* [Migration to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
-* [Live replication to ADLS Gen2](./hdp_sandbox-adlsg2_ld.md)
+* [Migration of data to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
+* [Live replication of data to ADLS Gen2](./hdp_sandbox-adlsg2_ld.md)
 
 ## Prerequisites
 
