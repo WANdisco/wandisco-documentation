@@ -4,6 +4,9 @@
     "docs.wandisco.com": [
       "docs/doc1"
     ],
+    "Architecture": [
+      "docs/architecture/arch_hdp_sandbox_az_databricks_lan"
+    ],
     "Configuration properties": [
       "docs/config-properties/config-properties",
       "docs/config-properties/application.properties",
