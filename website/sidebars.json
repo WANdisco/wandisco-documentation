@@ -7,6 +7,9 @@
     "Architecture": [
       "docs/architecture/arch_hdp_sandbox_az_databricks_lan"
     ],
+    "Network": [
+      "docs/network/net_bandwidth_considerations"
+    ],
     "Configuration properties": [
       "docs/config-properties/config-properties",
       "docs/config-properties/application.properties",
