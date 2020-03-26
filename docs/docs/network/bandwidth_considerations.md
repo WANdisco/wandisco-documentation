@@ -4,7 +4,7 @@ title: Bandwidth Considerations
 sidebar_label: Bandwidth Considerations
 ---
 
-The graph below illustrates network bandwidth capacities and the impact it has on data migration.
+The graph below illustrates network bandwidth capacities and the impact they have on data migration.
 
 ![Data migration - illustration of bandwidth measurement](../../assets/network_bandwidth.jpg)
 
