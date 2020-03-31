@@ -4,8 +4,6 @@ title: HDP Sandbox
 sidebar_label: HDP Sandbox
 ---
 
-Most of our installation quickstarts give you the basic steps to test small-scale replication. Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
-
 ## Prerequisites
 
 Ensure that you have enough disk space and your server is appropriately sized to handle larger amounts of data.
@@ -14,7 +12,9 @@ If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see
 
 ## HCFS replication
 
-The HDP Sandbox will be the [source](../../glossary/s.md#source) in all instances. Run all commands on the Docker host.
+Use these examples if you would like to test HCFS replication with larger and more complicated data sets. The HDP Sandbox will be the [source](../../glossary/s.md#source) in all instances.
+
+Run all commands on the Docker host.
 
 ### TeraGen
 
