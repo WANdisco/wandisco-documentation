@@ -74,6 +74,8 @@ The variables required to create a suitable VM are:
 
   Use the `name` value from `az vm list-sizes --location <vm-location> --output table`.
 
+  If you are intending to test replication using large amounts of data (e.g. over 10GB), use a greater VM size.
+
   _Example:_ `--size Standard_D4_v3`
 
 * The storage [SKU type](https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types) to use.
@@ -89,6 +91,8 @@ The variables required to create a suitable VM are:
 * The operating system's disk size (in GB).
 
   We recommend a minimum of 32 GB as the `/var/lib/docker` directory will need to store large images.
+
+  If you are intending to test replication using large amounts of data (e.g. over 10GB), increase this value accordingly.
 
   _Example:_ `--os-disk-size-gb 32`
 

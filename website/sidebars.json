@@ -58,6 +58,9 @@
       "quickstarts/operation/migration",
       "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
+    "Testing": [
+      "quickstarts/testing/test_hdp_sandbox"
+    ],
     "Troubleshooting": [
       "quickstarts/troubleshooting/general_troubleshooting",
       "quickstarts/troubleshooting/hdp_sandbox_troubleshooting",
