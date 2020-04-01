@@ -139,7 +139,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 #### Test large data sets (optional)
 
-For examples on how to test replication with larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
+If you want to replicate larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
 
 _You have now set up live replication from your HDP Sandbox to your ADLS Gen2 container. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 

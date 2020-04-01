@@ -149,7 +149,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 #### Test large data sets (optional)
 
-For examples on how to test replication with larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
+If you want to replicate larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
 
 ### Test Hive replication
 
