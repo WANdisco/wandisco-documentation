@@ -4,7 +4,7 @@ title: HDP Sandbox
 sidebar_label: HDP Sandbox
 ---
 
-The majority of the installation quickstarts contain basic functionality / smoke testing. Use the examples in this section if you would like to test HCFS replication with larger and randomized data sets.
+Most of our installation quickstarts give you the basic steps to test small-scale replication. Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
 
 ## Prerequisites
 
