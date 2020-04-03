@@ -121,7 +121,7 @@ packages:
 
 runcmd:
   - [ cloud-init-per, once, az_cli_extension_fusion, az, extension, add, --source,
-    "https://wandiscopublicfusion.blob.core.windows.net/wandiscopublicfusion/az-cli/extensions/frp/0.2.0/fusion-0.2.0-py2.py3-none-any.whl", -y ]
+    "https://wandiscopublicfusion.azureedge.net/wandiscopublicfusion/az-cli/extensions/frp/latest/fusion-py2.py3-any.whl", -y ]
   - [ cloud-init-per, once, fetch_docker_compose, curl, -L,
     "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-Linux-x86_64",
     -o, /usr/local/bin/docker-compose ]
