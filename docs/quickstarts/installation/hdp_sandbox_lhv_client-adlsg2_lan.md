@@ -157,11 +157,11 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
    Username: `hdfs`
    Password: `hdfs`
 
-1. To create a database for the sample data, add the query below inside the **Hive** box and push the **play** button:
+1. To create a database for the sample data, add the query below inside the **Hive** box and click the **play** button:
 
    `CREATE DATABASE IF NOT EXISTS retail_demo;`
 
-1. Create a table inside the database that points to the sample data (add the query like before):
+1. Create a table inside the database that points to the sample data, and add the query as above:
 
    ```sql
    CREATE TABLE retail_demo.customer_addresses_dim_hive
@@ -217,7 +217,7 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
    _The data will take a couple of minutes to be replicated and appear in the Databricks cluster. This is because during the first transfer of Hive data, the Datatransformer jar (`etl.jar`) will also be installed in the Databricks library._
 
-   A Hive job will launch that inserts the data values provided in this example.
+1. A Hive job will launch that inserts the data values provided in this example.
    Select the **jobs** service. If successful, the STATUS will be **SUCCEEDED**.
 
 ### Setup Databricks Notebook to view data
@@ -247,7 +247,7 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 1. If desired, you can repeat this process except using the Texas state code instead of California.
 
-   Back in the **Hue** interface and run the following command:
+   Back in the **Hue** interface, run the following command:
 
    `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'TX';`
 
