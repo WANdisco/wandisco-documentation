@@ -340,6 +340,25 @@ They should be used to help explain a concept further, and not used as a substit
 
 Follow the style of existing diagrams e.g. https://docs.wandisco.com/bigdata/wdfusion/2.15/images/single-namenode-proxy-per-zone.png
 
+Save the diagrams in `/docs/assets/`.
+
+### Downloadable files
+
+Links to downloadable files that are hosted on this website can save the user from copy/pasting a large amount of text.
+
+_Example code_
+
+```text
+<a id="cloud-init.txt" href="https://github.com/WANdisco/wandisco-documentation/raw/master/docs/assets/cloud-init.txt">cloud-init.txt</a>
+```
+
+_Example output_
+
+<a id="cloud-init.txt" href="https://github.com/WANdisco/wandisco-documentation/raw/master/docs/assets/cloud-init.txt">cloud-init.txt</a>
+
+All files should be placed inside of `/docs/assets/` on the master branch (i.e. create a feature branch from master when adding a file).
+This is because the raw link to the downloadable file will not change between different branches.
+
 ## Other
 
 ### Redirects
