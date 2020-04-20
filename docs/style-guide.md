@@ -357,7 +357,7 @@ _Example output_
 <a id="cloud-init.txt" href="https://github.com/WANdisco/wandisco-documentation/raw/master/docs/assets/cloud-init.txt">cloud-init.txt</a>
 
 All files should be placed inside of `/docs/assets/` on the master branch (i.e. create a feature branch from master when adding a file).
-This is because the raw link to the downloadable file will not change between different branches.
+This is so that the raw link to the downloadable file does not have to be updated between different branches.
 
 ## Other
 
