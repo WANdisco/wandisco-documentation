@@ -106,9 +106,9 @@ Follow the steps below to demonstrate migration of HCFS data between the AWS S3 
 
 1. Create the following directories to host the sample data:
 
-   * AWS S3 bucket = `/s3_to_adls2`
+   * AWS S3 bucket directory = `s3_to_adls2`
      * See the S3 docs ([Amazon console](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-folder.html) / [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/workdocs/create-folder.html)) for guidance.
-   * ADLS Gen2 container = `/adls2_to_s3`
+   * ADLS Gen2 container directory = `adls2_to_s3`
      * See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-explorer#create-a-directory) for guidance.
 
 1. Get the sample data from the link below:  
@@ -145,7 +145,7 @@ Follow the steps below to demonstrate migration of HCFS data between the AWS S3 
    * Target Zone = **adls2**
    * Overwrite Settings = **Skip**
 
-1. Wait until the migration is complete, and check the contents of your `/s3_to_adls2` directory in your ADLS Gen2 container.
+1. Wait until the migration is complete, and check the contents of your `s3_to_adls2` directory in your ADLS Gen2 container.
 
    A new ~50MB file will exist inside (`customer_addresses_dim.tsv.gz`).
 
@@ -159,7 +159,7 @@ Follow the steps below to demonstrate migration of HCFS data between the AWS S3 
    * Target Zone = **s3**
    * Overwrite Settings = **Skip**
 
-1. Wait until the migration is complete, and check the contents of your `/adls2_to_s3` directory in your AWS S3 bucket.
+1. Wait until the migration is complete, and check the contents of your `adls2_to_s3` directory in your AWS S3 bucket.
 
    A new ~50MB file will exist inside (`customer_addresses_dim.tsv.gz`).
 
