@@ -14,7 +14,7 @@ See the [Useful information](./useful_info.md) section for additional commands a
 
 ### Permissed denied when installing packages or services
 
-The commands given in the [VM Preparation](../preparation/vm.prep.md#install-services) guide assume that you are running as root user. If you are not, then an error similar to below will be seen:
+The commands given in the [VM Preparation](../preparation/vm_prep.md#install-services) guide assume that you are running as root user. If you are not, then an error similar to below will be seen:
 
 ```
 $ apt-get update && apt install -y git
