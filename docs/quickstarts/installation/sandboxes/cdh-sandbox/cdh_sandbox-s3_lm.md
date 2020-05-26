@@ -1,24 +1,24 @@
 ---
-id: hdp_sandbox-s3_lm
-title: Hortonworks (HDP) Sandbox to AWS S3 with LiveMigrator
-sidebar_label: HDP Sandbox to AWS S3 with LiveMigrator
+id: cdh_sandbox-s3_lm
+title: Cloudera (CDH) Sandbox to AWS S3 with LiveMigrator
+sidebar_label: CDH Sandbox to AWS S3 with LiveMigrator
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an AWS S3 bucket using WANdisco LiveMigrator.
+Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an AWS S3 bucket using WANdisco LiveMigrator.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Installing WANdisco Fusion and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with AWS S3.
 - Live replication of sample data.
 
-If you would like to try something different with the HDP Sandbox, see:
+If you would like to try something different with the CDH Sandbox, see:
 
-* [Live replication of data to AWS S3](./hdp_sandbox-s3_ld.md)
+* [Live replication of data to AWS S3](./cdh_sandbox-s3_ld.md)
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [AWS VM creation](../preparation/aws_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+|For info on how to create a suitable VM with all services installed, see our [AWS VM creation](../../../preparation/aws_vm_creation.md) guide. See our [VM Preparation](../../../preparation/vm_prep.md) guide for how to install the services only.|
 |---|
 
 To complete this install, you will need:
@@ -27,10 +27,10 @@ To complete this install, you will need:
   * Only [regions that support Signature Version 2](https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html) are currently supported.
 
 * Linux Virtual Machine (e.g. AWS EC2 instance).
-  * Minimum size recommendation = **4 vcpus, 16 GiB memory** (e.g. [t3a.xlarge](https://aws.amazon.com/ec2/instance-types/)).
+  * Minimum size recommendation = **4 vcpus, 32 GiB memory** (e.g. [r5.xlarge](https://aws.amazon.com/ec2/instance-types/)).
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
 
-* The following services must be installed on the VM:  
+* The following packages must be installed on the VM:
   * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
   * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
@@ -64,23 +64,23 @@ Log in to your VM prior to starting these steps.
 
    `./setup-env.sh`
 
-1. Choose the `HDP Sandbox to S3` option when prompted.
+1. Choose the `CDH Sandbox to S3` option when prompted.
 
 1. You have now completed the setup, to create and start your containers run:
 
-   `docker-compose up -d`
+   `docker-compose pull && docker-compose up -d`
 
    Docker will now download all required images and create the containers.
 
 ## Configuration
 
-### Check HDP services are started
+### Check CDH services are started
 
-The HDP Sandbox services can take up to 5-10 minutes to start. To check that the HDFS service is started:
+The CDH Sandbox services can take up to 5-10 minutes to start. To check that the HDFS service is started:
 
-1. Log in to Ambari via a web browser.
+1. Log in to Cloudera via a web browser.
 
-   `http://<docker_IP_address>:8080`
+   `http://<docker_IP_address>:7180`
 
    Username: `admin`
    Password: `admin`
@@ -103,7 +103,7 @@ The HDP Sandbox services can take up to 5-10 minutes to start. To check that the
 
 ## Migration
 
-Follow the steps below to demonstrate migration of HCFS data from the HDP Sandbox to the AWS S3 bucket.
+Follow the steps below to demonstrate migration of HCFS data from the CDH Sandbox to the AWS S3 bucket.
 
 ### Create replication rule
 
@@ -120,7 +120,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. Start your migration with the following overwrite settings:
 
-   * Source Zone = **sandbox-hdp**
+   * Source Zone = **sandbox-cdh**
    * Target Zone = **s3**
    * Overwrite Settings = **Skip**
 
@@ -128,10 +128,10 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
    A new directory should exist (`customer_addresses_dim_hive`) with a ~50MB file inside (`customer_addresses_dim.tsv.gz`).
 
-_You have now successfully migrated data from your HDP Sandbox to your AWS S3 bucket using LiveMigrator. You can now try live replication by following our [LiveData quickstart](./hdp_sandbox-s3_ld.md#replication)._
+_You have now successfully migrated data from your CDH Sandbox to your AWS S3 bucket using LiveMigrator. You can now try live replication by following our [LiveData quickstart](./cdh_sandbox-s3_ld.md#replication)._
 
 ## Troubleshooting
 
-* See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
+* See our [Troubleshooting](../../../troubleshooting/general_troubleshooting.md) guide for help.
 
-* See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.
+* See the [shutdown and start up](../../../operation/cdh_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.

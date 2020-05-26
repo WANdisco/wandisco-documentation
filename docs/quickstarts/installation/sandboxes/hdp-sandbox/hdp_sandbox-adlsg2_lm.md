@@ -19,7 +19,7 @@ If you would like to try something different with the HDP Sandbox, see:
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../../../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../../../preparation/vm_prep.md) guide for how to install the services only.|
 |---|
 
 To complete this install, you will need:
@@ -27,11 +27,11 @@ To complete this install, you will need:
 * ADLS Gen2 storage account with [hierarchical namespace](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace) enabled.
   * You will also need a container created inside this account.
 * Azure Virtual Machine (VM).
-  * Minimum size recommendation = **Standard D4 v3 (4 vcpus, 16 GiB memory).**
+  * Minimum size recommendation = **Standard D8s_v3 (8 vcpus, 32 GiB memory).**
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
-    * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
+    * If creating your VM through the Azure portal (and not via our [guide](../../../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
 
-* The following services must be installed on the VM:
+* The following packages must be installed on the VM:
   * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
   * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
@@ -71,6 +71,12 @@ Log in to your VM prior to starting these steps.
    * Second zone type = `adls2`
    * Second zone name = _press enter for the default value_
 
+1. Enter the HDP Sandbox zone details:
+
+   _Examples:_
+
+   * Plugins = `NONE`
+
 1. Enter the ADLS Gen2 zone details:
 
    _Examples:_
@@ -81,7 +87,7 @@ Log in to your VM prior to starting these steps.
 
 1. You have now completed the setup, to create and start your containers run:
 
-   `docker-compose up -d`
+   `docker-compose pull && docker-compose up -d`
 
    Docker will now download all required images and create the containers.
 
@@ -149,8 +155,8 @@ _Contact [WANdisco](https://wandisco.com/contact) for further information about 
 
 ## Troubleshooting
 
-* If you are unable to access the Ambari or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
+* If you are unable to access the Ambari or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../../../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
 
-* See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
+* See our [Troubleshooting](../../../troubleshooting/general_troubleshooting.md) guide for help.
 
-* See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.
+* See the [shutdown and start up](../../../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.
