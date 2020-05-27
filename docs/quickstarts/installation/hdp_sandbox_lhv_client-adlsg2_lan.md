@@ -151,6 +151,10 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 If you want to replicate larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
 
+#### Test large data sets (optional)
+
+If you want to replicate larger amounts of data, see our [HDP Sandbox testing](../testing/test_hdp_sandbox.md) guide.
+
 ### Test Hive replication
 
 Your Databricks cluster must be **running** before testing Hive replication. Sample data is provided in this HDP Sandbox.

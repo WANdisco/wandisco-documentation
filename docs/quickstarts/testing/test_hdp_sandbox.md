@@ -6,13 +6,17 @@ sidebar_label: HDP Sandbox
 
 Most of our installation quickstarts give you the basic steps to test small-scale replication. Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
 
+<<<<<<< HEAD
 Following these examples to the end will result in ~20GB of data being replicated.
 
 
+=======
+>>>>>>> 0ceb8d8958a186071f533b1cdb126104e8185ec6
 ## Prerequisites
 
 Ensure that you have enough disk space and your server is appropriately sized to handle larger amounts of data.
 
+<<<<<<< HEAD
 * If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--os-disk-size-gb 64`  
   * `--size Standard_D8_v3`
@@ -20,6 +24,9 @@ Ensure that you have enough disk space and your server is appropriately sized to
 * If using our [AWS VM Creation](../preparation/aws_vm_creation.md) guide, see the `--block-device-mappings` and `--instance-type` variables in the [required parameters](../preparation/aws_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":64,\"DeleteOnTermination\":true}}]"`  
   * `--instance-type t3.2xlarge`
+=======
+If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section (the examples provided of `--os-disk-size-gb 32` and `--size Standard_D4_v3` are suitable for these tests).
+>>>>>>> 0ceb8d8958a186071f533b1cdb126104e8185ec6
 
 ## HCFS replication
 
@@ -35,6 +42,7 @@ _Example_
 
 To generate 10GB of data inside a replicated path, run:
 
+<<<<<<< HEAD
 `docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 100000000 /path/to/replication_rule/teragen_output`
 
 The `teragen_output` directory should not be created prior to running this command otherwise it will fail.
@@ -68,6 +76,39 @@ _Example_
 `docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate /path/to/replication_rule/terasort_output /path/to/replication_rule/teravalidate-output`
 
 If everything is correctly sorted, the `teravalidate-output` directory should contain a `_SUCCESS` file and another file containing a checksum value. Compare this value on both the source and target storages if you wish to fully validate the operation.
+=======
+`docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 100000000 /path/to/replication_rule`
+
+Check the storage on your target zone for the generated files in the replicated directory. You will see a `_SUCCESS` file alongside the generated files once it is complete.
+
+[//]: <Blocked by DAP-343>
+
+[//]: <### TeraSort>
+
+[//]: <Use the `terasort` option to sort (i.e. organise) the generated data in to a replicated path:>
+
+[//]: <`docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar terasort input-path replicated-path`>
+
+[//]: <_Example_>
+
+[//]: <To sort the data from the staging directory in to a replicated path, run:>
+
+[//]: <`docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar terasort /staging_dir /path/to/replication_rule`>
+
+[//]: <Check the storage on your target zone for the generated files in the replicated directory.>
+
+[//]: <### TeraValidate (optional)>
+
+[//]: <Use the `teravalidate` option to test that the data in the replicated path is now globally sorted:>
+
+[//]: <`docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate replicated-path teravalidate-output-path`>
+
+[//]: <If everything is correctly sorted, the `teravalidate-output-path` should be empty (it will only contain files when keys are out of order).>
+
+[//]: <_Example_>
+
+[//]: <`docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate /path/to/replication_rule /teravalidate_output`>
+>>>>>>> 0ceb8d8958a186071f533b1cdb126104e8185ec6
 
 ## References
 
