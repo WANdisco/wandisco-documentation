@@ -8,6 +8,7 @@ Most of our installation quickstarts give you the basic steps to test small-scal
 
 Following these examples to the end will result in ~20GB of data being replicated.
 
+
 ## Prerequisites
 
 Ensure that you have enough disk space and your server is appropriately sized to handle larger amounts of data.
@@ -40,8 +41,6 @@ The `teragen_output` directory should not be created prior to running this comma
 
 Once complete, check the storage on your target zone for the generated files in the `teragen_output` directory. You will see a `_SUCCESS` file alongside the generated files once it is complete.
 
-[//]: <Blocked by DAP-343>
-
 ### TeraSort
 
 Use the `terasort` option to sort (i.e. organize) the generated data in to a replicated path:
@@ -68,7 +67,7 @@ _Example_
 
 `docker-compose exec -u hdfs sandbox-hdp hadoop jar /usr/hdp/2.6.5.0-292/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate /path/to/replication_rule/terasort_output /path/to/replication_rule/teravalidate-output`
 
-If everything is correctly sorted, the `teravalidate-output` directory should contain a `_SUCCESS` file and another file containing a checksum value. Compare this value on both the source and target storages if you wish to fully validate the operation. 
+If everything is correctly sorted, the `teravalidate-output` directory should contain a `_SUCCESS` file and another file containing a checksum value. Compare this value on both the source and target storages if you wish to fully validate the operation.
 
 ## References
 
