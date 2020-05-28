@@ -54,7 +54,7 @@ To sort the data from the staging directory into a replicated path, run:
 
 The `terasort_output` directory should not be created prior to running this command otherwise it will fail.
 
-Check the storage on your target zone for the generated files in the `terasort_output` directory. You will see a `_SUCCESS` file alongside the generated files once it is complete.
+Once complete, check the storage on your target zone for the generated files in the `terasort_output` directory. You will see a `_SUCCESS` file alongside the generated files.
 
 ### TeraValidate (optional)
 
