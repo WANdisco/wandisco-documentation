@@ -11,7 +11,9 @@ _Examples_
 * ADLS Gen1 --> ADLS Gen2
 * Hortonworks --> ADLS Gen2
 * Hortonworks --> S3
-* S3 --> ADLS Gen2
+* Cloudera --> ADLS Gen2
+* Cloudera --> S3
+* S3 <--> ADLS Gen2
 
 Further quickstarts are being written and will be made available as we continue to develop the site. For further information on what WANdisco Fusion can offer, please see our reference documentation - [Deployment Models](https://docs.wandisco.com/bigdata/wdfusion/#_deployment_models).
 

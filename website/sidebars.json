@@ -45,6 +45,11 @@
     "Installation": [
       "quickstarts/installation/quickstart-config",
       "quickstarts/installation/adlsg1-adlsg2",
+      "quickstarts/installation/cdh_sandbox_adlsg2_lm",
+      "quickstarts/installation/cdh_sandbox_adlsg2_ld",
+      "quickstarts/installation/cdh_sandbox_lhv_client-adlsg2_lan",
+      "quickstarts/installation/cdh_sandbox-s3_lm",
+      "quickstarts/installation/cdh_sandbox-s3_ld",
       "quickstarts/installation/hdp_sandbox_adlsg2_lm",
       "quickstarts/installation/hdp_sandbox_adlsg2_ld",
       "quickstarts/installation/hdp_sandbox_lhv_client-adlsg2_lan",
@@ -56,6 +61,7 @@
       "quickstarts/operation/create-rule",
       "quickstarts/operation/consistency-check",
       "quickstarts/operation/migration",
+      "quickstarts/operation/cdh_sandbox_fusion_stop_start",
       "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
     "Testing": [
@@ -63,6 +69,7 @@
     ],
     "Troubleshooting": [
       "quickstarts/troubleshooting/general_troubleshooting",
+      "quickstarts/troubleshooting/cdh_sandbox_troubleshooting",
       "quickstarts/troubleshooting/hdp_sandbox_troubleshooting",
       "quickstarts/troubleshooting/adlsg2_troubleshooting",
       "quickstarts/troubleshooting/databricks_troubleshooting",

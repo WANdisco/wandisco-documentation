@@ -37,7 +37,7 @@ The variables required to create a suitable VM are:
 
 * The [AMI ID](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html), which defines the operating system and configuration of the VM.
 
-  _Use an Ubuntu LTS image to ensure compatiblity with the cloud-init template._
+  _Use an Ubuntu LTS image to ensure compatibility with the cloud-init template._
 
   See the [Ubuntu AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/) for a list of IDs. We recommend using the current Amazon quickstart AMI ID for Ubuntu 18.04 LTS (`ami-07ebfd5b3428b6f4d`).
 
@@ -51,11 +51,15 @@ The variables required to create a suitable VM are:
 
   Use the `InstanceType` value from `aws ec2 describe-instance-types --output table`. Use `aws ec2 describe-instance-type-offerings` to list available instance types in your configured region.
 
-  _Example:_ `--instance-type t3.xlarge`
+  If you are intending to replicate large amounts of data (e.g. over 10GB), use a greater instance type.
+
+  _Example:_ `--instance-type r5.xlarge`
 
 * The [Block Device settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#block-device-mapping).
 
   We recommend a minimum of 32 GB for the root device volume as the `/var/lib/docker` directory will need to store large images.
+
+  If you are intending to replicate large amounts of data (e.g. over 10GB), increase this value accordingly.
 
   _Example:_ `--block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":32,\"DeleteOnTermination\":true}}]"`
 
@@ -136,7 +140,7 @@ aws ec2 run-instances \
 --user-data file://cloud-init-ec2.txt \
 --image-id ami-07ebfd5b3428b6f4d \
 --count 1 \
---instance-type t3.xlarge \
+--instance-type r5.xlarge \
 --block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":32,\"DeleteOnTermination\":false}}]" \
 --key-name MyKeyPair \
 --subnet-id subnet-6d8i789e \
@@ -156,7 +160,7 @@ _Example output_
             "AmiLaunchIndex": 0,
             "ImageId": "ami-07ebfd5b3428b6f4d",
             "InstanceId": "i-0ffe1fc1oi7552c56",
-            "InstanceType": "t3.xlarge",
+            "InstanceType": "r5.xlarge",
             "KeyName": "MyKeyPair",
             "LaunchTime": "2020-04-17T08:36:00+00:00",
             "Monitoring": {
