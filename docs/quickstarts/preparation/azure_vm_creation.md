@@ -24,7 +24,7 @@ If you want to use the Azure portal instead of following this guide, then you wi
 The VM will also need to meet certain specifications:
 
 * Recommended Operating System = **Ubuntu 18.04 LTS**.
-* Minimum size recommendation = **Standard D8s v3** (8 vcpus, 32 GiB memory).
+* Minimum size recommendation = **8 vcpus, 32 GiB memory** (e.g. [Standard D8s v3](https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series)).
 * Minimum disk space for Operating System (OS) = **32 GB**.
   * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
   * The use of ephemeral OS disks are not recommended as data may not be persisted after shutting down the VM.
