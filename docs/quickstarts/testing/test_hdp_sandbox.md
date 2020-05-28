@@ -14,11 +14,11 @@ Ensure that you have enough disk space and your server is appropriately sized to
 
 * If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--os-disk-size-gb 64`  
-  * `--size Standard_D8_v3`
+  * `--size Standard_D8s_v3`
 
 * If using our [AWS VM Creation](../preparation/aws_vm_creation.md) guide, see the `--block-device-mappings` and `--instance-type` variables in the [required parameters](../preparation/aws_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":64,\"DeleteOnTermination\":true}}]"`  
-  * `--instance-type t3.2xlarge`
+  * `--instance-type r5.xlarge`
 
 ## HCFS replication
 
