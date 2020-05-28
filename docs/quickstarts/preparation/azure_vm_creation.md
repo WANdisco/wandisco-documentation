@@ -24,7 +24,7 @@ If you want to use the Azure portal instead of following this guide, then you wi
 The VM will also need to meet certain specifications:
 
 * Recommended Operating System = **Ubuntu 18.04 LTS**.
-* Minimum size recommendation = **Standard D4 v3** (4 vcpus, 16 GiB memory).
+* Minimum size recommendation = **Standard D8s v3** (8 vcpus, 32 GiB memory).
 * Minimum disk space for Operating System (OS) = **32 GB**.
   * If creating your VM through the Azure portal (and not via our [guide](../preparation/azure_vm_creation.md)), you may have insufficient disk space by default. See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk) for further info.
   * The use of ephemeral OS disks are not recommended as data may not be persisted after shutting down the VM.
@@ -76,7 +76,7 @@ The variables required to create a suitable VM are:
 
   If you are intending to replicate large amounts of data (e.g. over 10GB), use a greater VM size.
 
-  _Example:_ `--size Standard_D4_v3`
+  _Example:_ `--size Standard_D8s_v3`
 
 * The storage [SKU type](https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types) to use.
 
@@ -159,7 +159,7 @@ az vm create \
 --name docker_host01 \
 --resource-group GRP-my.name1 \
 --admin-username vm_user \
---size Standard_D4_v3 \
+--size Standard_D8s_v3 \
 --storage-sku Standard_LRS \
 --image UbuntuLTS \
 --os-disk-size-gb 32 \
