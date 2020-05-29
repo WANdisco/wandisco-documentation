@@ -147,6 +147,10 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 1. Check that the `test_file` is now located in your `/user/hive/warehouse` directory on your ADLS Gen2 container.
 
+#### Test large data sets (optional)
+
+If you want to replicate larger amounts of data, see our [CDH Sandbox testing](../testing/test_cdh_sandbox.md) guide.
+
 ### Test Hive replication
 
 Your Databricks cluster must be **running** before testing Hive replication. Sample data is provided in this CDH Sandbox.

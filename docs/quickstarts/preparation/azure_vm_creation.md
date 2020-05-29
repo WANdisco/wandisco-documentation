@@ -84,7 +84,7 @@ The variables required to create a suitable VM are:
 
 * The [image (operating system)](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list).
 
-  Use the `UbuntuLTS` image to ensure compatiblity with the cloud-init template.
+  Use the `UbuntuLTS` image to ensure compatibility with the cloud-init template.
 
   _Example:_ `--image UbuntuLTS`
 

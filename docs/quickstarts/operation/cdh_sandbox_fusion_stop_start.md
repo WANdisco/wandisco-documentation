@@ -17,7 +17,7 @@ Log in to the Cloudera UI, and stop all services.
 Username: `admin`
 Password: `admin`
 
-**Cloudera UI -> Cluster options (drop-down list) -> Stop -> Confirm Stop**
+**Cloudera UI -> cdh-516 options (drop-down list) -> Stop -> Confirm Stop**
 
 Wait until all services have stopped before continuing.
 
