@@ -56,6 +56,7 @@
       "quickstarts/operation/create-rule",
       "quickstarts/operation/consistency-check",
       "quickstarts/operation/migration",
+      "quickstarts/operation/license_upgrade",
       "quickstarts/operation/cdh_sandbox_fusion_stop_start",
       "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
