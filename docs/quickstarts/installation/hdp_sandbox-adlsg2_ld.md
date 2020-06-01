@@ -15,7 +15,7 @@ What this guide will cover:
 If you would like to try something different with the HDP Sandbox, see:
 
 * [Migration of data to ADLS Gen2](./hdp_sandbox-adlsg2_lm.md)
-* [Live replication of data/metadata to Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
+* [Live replication of data/Hive metadata to Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
 
 ## Prerequisites
 
@@ -71,7 +71,7 @@ Log in to your VM prior to starting these steps.
    * Second zone type = `adls2`
    * Second zone name = _press enter for the default value_
 
-1. Enter the CDH Sandbox zone details:
+1. Enter the HDP Sandbox zone details:
 
    _Examples:_
 

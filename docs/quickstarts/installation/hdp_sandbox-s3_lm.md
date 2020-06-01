@@ -103,7 +103,7 @@ The HDP Sandbox services can take up to 5-10 minutes to start. To check that the
 
 ## Migration
 
-Follow the steps below to demonstrate migration of HCFS data from the HDP Sandbox to the AWS S3 bucket.
+Follow the steps below to demonstrate migration of HCFS data from the HDP Sandbox to your AWS S3 bucket.
 
 ### Create replication rule
 

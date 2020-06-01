@@ -103,7 +103,7 @@ The CDH Sandbox services can take up to 5-10 minutes to start. To check that the
 
 ## Replication
 
-Follow the steps below to demonstrate live replication of HCFS data from the CDH Sandbox to the AWS S3 bucket.
+Follow the steps below to demonstrate live replication of HCFS data from the CDH Sandbox to your AWS S3 bucket.
 
 ### Create replication rule
 

@@ -12,7 +12,7 @@ What this guide will cover:
 
 - Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with Azure Databricks.
-- Live replication of sample data and metadata.
+- Live replication of sample data and Hive metadata.
 
 If you would like to try something different with the HDP Sandbox, see:
 

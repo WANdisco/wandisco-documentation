@@ -15,7 +15,7 @@ What this guide will cover:
 If you would like to try something different with the CDH Sandbox, see:
 
 * [Migration of data to ADLS Gen2](./cdh_sandbox-adlsg2_lm.md)
-* [Live replication of data/metadata to Databricks](./cdh_sandbox_lhv_client-adlsg2_lan.md)
+* [Live replication of data/Hive metadata to Databricks](./cdh_sandbox_lhv_client-adlsg2_lan.md)
 
 ## Prerequisites
 
