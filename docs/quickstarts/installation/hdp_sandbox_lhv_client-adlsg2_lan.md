@@ -141,9 +141,16 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 ### Test HCFS replication
 
-1. On the terminal for the **Docker host**, upload a test file to the `/apps/hive/warehouse` path in HDFS on the **sandbox-hdp** container.
+1. Log in to **Hue** via a web browser.
 
-   `docker-compose exec -u hdfs sandbox-hdp hdfs dfs -put /etc/services /apps/hive/warehouse/test_file`
+   `http://<docker_IP_address>:8000`
+
+   Username: `hdfs`
+   Password: `hdfs`
+
+1. Go to **Menu** -> **Files**.
+
+1. Move to `/apps/hive/warehouse` path and **Upload** any file from your host machine.
 
 1. Check that the `test_file` is now located in your `/apps/hive/warehouse` directory on your ADLS Gen2 container.
 

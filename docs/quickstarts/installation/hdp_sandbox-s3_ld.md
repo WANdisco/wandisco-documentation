@@ -30,7 +30,7 @@ To complete this install, you will need:
   * Minimum size recommendation = **4 vcpus, 32 GiB memory** (e.g. [r5.xlarge](https://aws.amazon.com/ec2/instance-types/)).
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
 
-* The following services must be installed on the VM:  
+* The following services must be installed on the VM:
   * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
   * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
@@ -116,9 +116,16 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 ### Test HCFS replication
 
-1. On the terminal for the **Docker host**, upload a test file to the `/testdir` path in HDFS on the **sandbox-hdp** container.
+1. Log in to **Hue** via a web browser.
 
-   `docker-compose exec -u hdfs sandbox-hdp hdfs dfs -put /etc/services /testdir/test_file`
+   `http://<docker_IP_address>:8000`
+
+   Username: `hdfs`
+   Password: `hdfs`
+
+1. Go to **Menu** -> **Files**.
+
+1. Move to `/testdir` path and **Upload** any file from your host machine.
 
 1. Check that the `test_file` is now located in your `/testdir` directory in your AWS S3 bucket.
 
