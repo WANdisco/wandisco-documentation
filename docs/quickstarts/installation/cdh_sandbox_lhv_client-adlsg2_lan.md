@@ -141,11 +141,18 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 ### Test HCFS replication
 
-1. On the terminal for the **Docker host**, upload a test file to the `/user/hive/warehouse` path in HDFS on the **sandbox-cdh** container.
+1. Log in to **Hue** via a web browser.
 
-   `docker-compose exec -u hdfs sandbox-cdh hdfs dfs -put /etc/services /user/hive/warehouse/test_file`
+   `http://<docker_IP_address>:8889`
 
-1. Check that the `test_file` is now located in your `/user/hive/warehouse` directory on your ADLS Gen2 container.
+   Username: `hdfs`
+   Password: `hdfs`
+
+1. Go to **Menu** -> **Files**.
+
+1. Move to `/user/hive/warehouse` path and **Upload** any file from your host machine.
+
+1. Check that the file you uploaded is now located in your `/user/hive/warehouse` directory on your ADLS Gen2 container.
 
 #### Test large data sets (optional)
 
@@ -157,10 +164,10 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 1. Log in to **Hue** via a web browser.
 
-   `http://<docker_IP_address>:8888`
+   `http://<docker_IP_address>:8889`
 
-   Username: `admin`
-   Password: `admin`
+   Username: `hdfs`
+   Password: `hdfs`
 
 1. To create a database for the sample data, add the query below inside the **Hive** box and click the **play** button:
 

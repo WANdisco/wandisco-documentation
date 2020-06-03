@@ -116,11 +116,18 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 ### Test HCFS replication
 
-1. On the terminal for the **Docker host**, upload a test file to the `/testdir` path in HDFS on the **sandbox-cdh** container.
+1. Log in to **Hue** via a web browser.
 
-   `docker-compose exec -u hdfs sandbox-cdh hdfs dfs -put /etc/services /testdir/test_file`
+   `http://<docker_IP_address>:8889`
 
-1. Check that the `test_file` is now located in your `/testdir` directory in your AWS S3 bucket.
+   Username: `hdfs`
+   Password: `hdfs`
+
+1. Go to **Menu** -> **Files**.
+
+1. Move to `/testdir` path and **Upload** any file from your host machine.
+
+1. Check that the file you uploaded is now located in your `/testdir` directory in your AWS S3 bucket.
 
 #### Test large data sets (optional)
 
