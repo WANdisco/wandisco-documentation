@@ -152,7 +152,7 @@ Follow the steps below to demonstrate live replication of HCFS data and Hive met
 
 1. Move to `/apps/hive/warehouse` path and **Upload** any file from your host machine.
 
-1. Check that the `test_file` is now located in your `/apps/hive/warehouse` directory on your ADLS Gen2 container.
+1. Check that the file you uploaded is now located in your `/apps/hive/warehouse` directory on your ADLS Gen2 container.
 
 #### Test large data sets (optional)
 
