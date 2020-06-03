@@ -127,7 +127,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. Move to `/testdir` path and **Upload** any file from your host machine.
 
-1. Check that the `test_file` is now located in your `/testdir` directory in your AWS S3 bucket.
+1. Check that the file you uploaded is now located in your `/testdir` directory in your AWS S3 bucket.
 
 #### Test large data sets (optional)
 
