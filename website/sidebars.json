@@ -26,7 +26,8 @@
       "why-fusion/core_platform_and_dcone",
       "why-fusion/concepts_replication_rules",
       "why-fusion/concepts_consistency_checks",
-      "why-fusion/migration_replication"
+      "why-fusion/migration_replication",
+      "why-fusion/hive_replication"
     ]
   },
   "api": {
