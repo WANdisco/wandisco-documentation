@@ -4,7 +4,7 @@ title: Migration vs. Replication
 sidebar_label: Migration vs. Replication
 ---
 
-WANdisco Fusion provides [LiveMigrator](https://wandisco.com/products/live-migrator) as part of its standard deployment. This allows you to conduct bulk migrations as well as continual live replication on selected paths.
+WANdisco Fusion provides [LiveMigrator](https://wandisco.com/products/live-migrator) as part of its standard Dockerized deployment. This allows you to conduct bulk migrations as well as continual live replication on selected paths.
 
 ## What is a Migration?
 
