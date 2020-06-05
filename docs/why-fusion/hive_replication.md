@@ -1,8 +1,16 @@
 ---
 id: hive_replication
-title: Hive Replication & Databricks integration
-sidebar_label: Hive Replication & Databricks integration
+title: Hive Replication & Databricks Integration
+sidebar_label: Hive Replication & Databricks Integration
 ---
+
+## Overview
+
+WANdisco offers two plugins that can be used together to implement a LiveAnalytics solution.
+
+The Fusion Plugin for Live Hive provides a method of replicating Hive metadata and the Fusion Plugin for Databricks Delta Lake is used with WANdisco Fusion to transform this data so that it is compatible with the Spark-based cloud analytics platform that Databricks provides.
+
+The Fusion Plugin for Live Hive can also be used as a standalone plugin in multiple Fusion environments, allowing Hive metadata replication to occur between Hadoop zones.
 
 ## Fusion Plugin for Live Hive
 
@@ -30,7 +38,7 @@ Data ingestion to Hive tables is also replicated to the Databricks cluster, whic
 
 ## LiveAnalytics deployment overview
 
-A deployment will consist of two Zones:
+A deployment consists of two zones:
 
 **Zone 1**  
 This represents the source environment, where your [Apache Hive](https://hive.apache.org/) content and metadata reside. Your table content will reside in the cluster storage (typically HDFS), and your Hive metadata are managed by and maintained in a Hive Metastore. An operational deployment of a LiveAnalytics solution will include:  
