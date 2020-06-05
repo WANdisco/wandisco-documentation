@@ -1,10 +1,10 @@
 ---
 id: hive_replication
-title: Hive Replication
-sidebar_label: Hive Replication
+title: Hive Replication & Databricks integration
+sidebar_label: Hive Replication & Databricks integration
 ---
 
-## Fusion Plugin for Live Hive Overview
+## Fusion Plugin for Live Hive
 
 WANdisco Fusion provides a method of replicating Hive metadata with the Fusion Plugin for Live Hive. The deployment of this plugin includes the installation of the Live Hive plugin and the Live Hive proxy.
 
@@ -19,3 +19,25 @@ Live Hive will automatically start to replicate Hive databases and tables when t
 1. Write access needs to be coordinated by Fusion before executing the command on the Hive Metastore.
 1. Read commands are 'passed-through' straight to the Hive Metastore as they do not need to be coordinated via Fusion.
 1. Fusion makes a connection to the Hive Metastore on the cluster and coordinates any write requests with the rest of the replicated ecosystem.
+
+## Fusion Plugin for Databricks Delta Lake
+
+The Fusion Plugin for Databricks Delta Lake works in conjunction with WANdisco Fusion and the Fusion Plugin for Live Hive to deliver WANdisco’s LiveAnalytics solution.
+
+When Hive tables are created in the source Hadoop zone, the Fusion Plugin for Databricks Delta Lake will create replicas of those tables in [Databricks](https://docs.databricks.com/getting-started/overview.html). Modify Hive schemas and see the same structure reflected in changes to matching Delta Lake tables.
+
+Data ingestion to Hive tables is also replicated to the Databricks cluster, which allows you to access the same information as Delta Lake content in a Databricks environment.
+
+## LiveAnalytics deployment overview
+
+A deployment will consist of two Zones:
+
+**Zone 1**  
+This represents the source environment, where your [Apache Hive](https://hive.apache.org/) content and metadata reside. Your table content will reside in the cluster storage (typically HDFS), and your Hive metadata are managed by and maintained in a Hive Metastore. An operational deployment of a LiveAnalytics solution will include:  
+* WANdisco Fusion
+* Fusion Plugin for Live Hive
+
+**Zone 2**  
+This is the target environment, where your [Databricks](https://docs.databricks.com/getting-started/overview.html) instance is available. Hive content from Zone 1 will be replicated to cloud storage and transformed to the format used by Delta Lake. Metadata changes made to Hive tables in Zone 1 will be replicated to equivalent changes to Databricks Delta Lake tables. An operational deployment of the solution will include:  
+* WANdisco Fusion
+* Fusion Plugin for Databricks Delta Lake
