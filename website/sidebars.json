@@ -76,6 +76,7 @@
     ],
     "Troubleshooting": [
       "quickstarts/troubleshooting/general_troubleshooting",
+      "quickstarts/troubleshooting/cdh_sandbox_troubleshooting",
       "quickstarts/troubleshooting/hdp_sandbox_troubleshooting",
       "quickstarts/troubleshooting/adlsg2_troubleshooting",
       "quickstarts/troubleshooting/databricks_troubleshooting",
