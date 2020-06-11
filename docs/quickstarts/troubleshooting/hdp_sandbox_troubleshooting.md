@@ -48,13 +48,13 @@ To bring the History Server online:
 
    **Ambari UI -> Spark2 -> Actions -> Start -> CONFIRM START**
 
-### Hue reports "database is locked"
+### Hue reports **database is locked**
 
 When logging in to the Hue UI for the first time, the "database is locked" message may appear. This also results in the Hive databases not being loaded, and you will be unable to run queries.
 
 To resolve this, click the refresh icon on the Hive database list on the left-hand panel. You should then see the `default` database appear and you will now be able to run queries.
 
-The "database is locked" message may still appear, click to close it afterwards.
+The **database is locked** message may still appear, click to close it afterwards.
 
 ## Rebuild
 
