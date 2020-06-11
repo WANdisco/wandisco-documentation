@@ -50,7 +50,7 @@ To bring the History Server online:
 
 ### Hue reports **database is locked**
 
-When logging in to the Hue UI for the first time, the "database is locked" message may appear. This also results in the Hive databases not being loaded, and you will be unable to run queries.
+When logging in to the Hue UI for the first time, the **database is locked** message may appear. This also results in the Hive databases not being loaded, and you will be unable to run queries.
 
 To resolve this, click the refresh icon on the Hive database list on the left-hand panel. You should then see the `default` database appear and you will now be able to run queries.
 
