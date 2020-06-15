@@ -120,9 +120,11 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. Start your migration with the following overwrite settings:
 
-   * Source Zone = **sandbox-hdp**
-   * Target Zone = **s3**
+   * Source Zone = **hdp-xyza**
+   * Target Zone = **s3-xyza**
    * Overwrite Settings = **Skip**
+
+   The `xyza` represents a random number that will be automatically suffixed onto the distribution name.
 
 1. Wait until the migration is complete, and check the contents of your `/retail_demo` directory in your AWS S3 bucket.
 

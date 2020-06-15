@@ -22,9 +22,11 @@ To resolve, you must restart all containers within the `fusion-docker-compose` d
 
 The Hiveserver2 component in the HDP sandbox may be down after starting the cluster. To start it up:
 
-1. On the docker host, change to the `fusion-docker-compose` directory and restart the Fusion Server container for the HDP zone.
+1. On the docker host, change to the `fusion-docker-compose` directory and restart the Fusion Server service for the HDP zone.
 
-   `docker-compose restart fusion-server-sandbox-hdp`
+   `docker-compose restart fusion-server-<zone-name>`
+
+   To find the `<zone-name>`, check the UI under **Storage** for your HDP Sandbox name (e.g. `hdp-3640`).
 
    Wait until the container has finished restarting before continuing.
 

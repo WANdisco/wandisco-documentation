@@ -30,19 +30,18 @@ In the `fusion-docker-compose` directory on the Docker host, stop all containers
 _Example output_
 
 ```text
-Stopping fusion-oneui-server               ... done
-Stopping fusion-server-adls2               ... done
-Stopping induction                         ... done
-Stopping fusion-ihc-server-adls2           ... done
-Stopping fusion-server-sandbox-cdh         ... done
-Stopping sshd-sandbox-cdh                  ... done
-Stopping fusion-ihc-server-sandbox-cdh     ... done
-Stopping fusion-nn-proxy-sandbox-cdh       ... done
-Stopping fusion-livehive-proxy-sandbox-cdh ... done
-Stopping fusion-ui-server-adls2            ... done
-Stopping fusion-ui-server-sandbox-cdh      ... done
-Stopping sandbox-cdh                       ... done
-Stopping debug                             ... done
+Stopping fusion_fusion-nn-proxy-cdh-3640_1       ... done
+Stopping fusion_fusion-livehive-proxy-cdh-3640_1 ... done
+Stopping fusion_sshd-cdh-3640_1                  ... done
+Stopping fusion_fusion-ihc-server-cdh-3640_1     ... done
+Stopping fusion_fusion-ui-server-cdh-3640_1      ... done
+Stopping fusion_fusion-server-cdh-3640_1         ... done
+Stopping fusion_fusion-ui-server-adls2-5837_1    ... done
+Stopping fusion_fusion-ihc-server-adls2-5837_1   ... done
+Stopping fusion_fusion-oneui-server_1            ... done
+Stopping fusion_fusion-server-adls2-5837_1       ... done
+Stopping fusion_debug_1                          ... done
+Stopping fusion_sandbox-cdh_1                    ... done
 ```
 
 ### Shutdown the Docker host
@@ -68,19 +67,18 @@ Ensure the Docker host is started and that the docker containers have been creat
    _Example output_
 
    ```text
-   Starting fusion-oneui-server               ... done
-   Starting fusion-server-adls2               ... done
-   Starting induction                         ... done
-   Starting fusion-ihc-server-adls2           ... done
-   Starting fusion-server-sandbox-cdh         ... done
-   Starting sshd-sandbox-cdh                  ... done
-   Starting fusion-ihc-server-sandbox-cdh     ... done
-   Starting fusion-nn-proxy-sandbox-cdh       ... done
-   Starting fusion-livehive-proxy-sandbox-cdh ... done
-   Starting fusion-ui-server-adls2            ... done
-   Starting fusion-ui-server-sandbox-cdh      ... done
-   Starting sandbox-cdh                       ... done
-   Starting debug                             ... done
+   Starting fusion_fusion-nn-proxy-cdh-3640_1       ... done
+   Starting fusion_fusion-livehive-proxy-cdh-3640_1 ... done
+   Starting fusion_sshd-cdh-3640_1                  ... done
+   Starting fusion_fusion-ihc-server-cdh-3640_1     ... done
+   Starting fusion_fusion-ui-server-cdh-3640_1      ... done
+   Starting fusion_fusion-server-cdh-3640_1         ... done
+   Starting fusion_fusion-ui-server-adls2-5837_1    ... done
+   Starting fusion_fusion-ihc-server-adls2-5837_1   ... done
+   Starting fusion_fusion-oneui-server_1            ... done
+   Starting fusion_fusion-server-adls2-5837_1       ... done
+   Starting fusion_debug_1                          ... done
+   Starting fusion_sandbox-cdh_1                    ... done
    ```
 
 The CDH sandbox services will automatically start once the container is running. This can take 5-10 minutes.

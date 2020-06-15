@@ -141,9 +141,11 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. Start your migration with the following overwrite settings:
 
-   * Source Storage = **sandbox-hdp**
-   * Target Storage = **adls2**
+   * Source Storage = **hdp-xyza**
+   * Target Storage = **adls2-xyza**
    * Overwrite Settings = **Skip**
+
+   The `xyza` represents a random number that will be automatically suffixed onto the distribution name.
 
 1. Wait until the migration is complete, and check the contents of your `/retail_demo` directory in your ADLS Gen2 container.
 

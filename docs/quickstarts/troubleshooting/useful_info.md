@@ -84,9 +84,11 @@ _Example to restart Fusion Server_
 
 ##### Sandboxes
 
-`sandbox-hdp`
+`hdp-xyza`
 
-`sandbox-cdh`
+`cdh-xyza`
+
+The `xyza` represents a random number that will be automatically suffixed onto the distribution name.
 
 ### Login
 

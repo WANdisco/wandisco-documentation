@@ -20,22 +20,22 @@ For Hadoop zones (i.e. CDH or HDP), additional components could be:
 
 All of these components are contained within their specific containers, as shown below from an example output of `docker-compose ps`:
 
-```json
-Name                                         Command                          State   Ports
+```text
+Name                                      Command                          State    Ports
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-fusion_debug_1                               tail -f /dev/null                Up
-fusion_fusion-ihc-server-adls2_1             /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:7500->7500/tcp, 0.0.0.0:7501->7501/tcp, 0.0.0.0:9502->9502/tcp
-fusion_fusion-ihc-server-sandbox-hdp_1       /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:7000->7000/tcp, 0.0.0.0:9002->9002/tcp
-fusion_fusion-livehive-proxy-sandbox-hdp_1   /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:9083->9083/tcp
-fusion_fusion-nn-proxy-sandbox-hdp_1         /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8890->8890/tcp
-fusion_fusion-oneui-server_1                 /bin/sh -c /etc/alternativ ...   Up      0.0.0.0:8081->8081/tcp
-fusion_fusion-server-adls2_1                 /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:6944->6944/tcp, 0.0.0.0:8523->8523/tcp, 0.0.0.0:8524->8524/tcp, 0.0.0.0:8582->8582/tcp, 0.0.0.0:8584->8584/tcp
-fusion_fusion-server-sandbox-hdp_1           /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:6444->6444/tcp, 0.0.0.0:8023->8023/tcp, 0.0.0.0:8024->8024/tcp, 0.0.0.0:8082->8082/tcp, 0.0.0.0:8084->8084/tcp
-fusion_fusion-ui-server-adls2_1              /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8583->8583/tcp, 0.0.0.0:8943->8943/tcp
-fusion_fusion-ui-server-sandbox-hdp_1        /usr/bin/entrypointd.sh /b ...   Up      0.0.0.0:8083->8083/tcp, 0.0.0.0:8443->8443/tcp
-fusion_induction_1                           /usr/bin/entrypointd.sh /s ...   Up
-fusion_sandbox-hdp_1                         /sbin/init                       Up      0.0.0.0:50010->50010/tcp, 0.0.0.0:50070->50070/tcp, 8020/tcp, 8042/tcp, 0.0.0.0:8080->8080/tcp, 8088/tcp, 9083/tcp
-fusion_sshd-sandbox-hdp_1                    /usr/local/bin/entrypointd ...   Up      0.0.0.0:2022->22/tcp, 0.0.0.0:8670->8670/tcp
+fusion_debug_1                            tail -f /dev/null                Up
+fusion_fusion-ihc-server-adls2-5837_1     /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:7500->7500/tcp, 0.0.0.0:7501->7501/tcp, 0.0.0.0:9502->9502/tcp
+fusion_fusion-ihc-server-cdh-3640_1       /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:7000->7000/tcp, 0.0.0.0:9002->9002/tcp
+fusion_fusion-livehive-proxy-cdh-3640_1   /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:9083->9083/tcp
+fusion_fusion-nn-proxy-cdh-3640_1         /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:8890->8890/tcp
+fusion_fusion-oneui-server_1              /bin/sh -c /etc/alternativ ...   Up       0.0.0.0:8081->8081/tcp
+fusion_fusion-server-adls2-5837_1         /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:6944->6944/tcp, 0.0.0.0:8523->8523/tcp, 0.0.0.0:8524->8524/tcp, 0.0.0.0:8582->8582/tcp, 0.0.0.0:8584->8584/tcp
+fusion_fusion-server-cdh-3640_1           /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:6444->6444/tcp, 0.0.0.0:8023->8023/tcp, 0.0.0.0:8024->8024/tcp, 0.0.0.0:8082->8082/tcp, 0.0.0.0:8084->8084/tcp
+fusion_fusion-ui-server-adls2-5837_1      /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:8583->8583/tcp, 0.0.0.0:8943->8943/tcp
+fusion_fusion-ui-server-cdh-3640_1        /usr/bin/entrypointd.sh /b ...   Up       0.0.0.0:8083->8083/tcp, 0.0.0.0:8443->8443/tcp
+fusion_induction_1                        /usr/bin/entrypointd.sh /s ...   Exit 0
+fusion_sandbox-cdh_1                      /sbin/init                       Up       0.0.0.0:50010->50010/tcp, 0.0.0.0:50070->50070/tcp, 0.0.0.0:7180->7180/tcp, 8020/tcp, 8042/tcp, 8088/tcp, 0.0.0.0:8889->8889/tcp
+fusion_sshd-cdh-3640_1                    /usr/local/bin/entrypointd ...   Up       0.0.0.0:2022->22/tcp, 0.0.0.0:8670->8670/tcp
 ```
 
 ## Viewing log files
@@ -44,7 +44,9 @@ fusion_sshd-sandbox-hdp_1                    /usr/local/bin/entrypointd ...   Up
 
 You can log in to a container and view the logs for a specific component in a zone. For example, if you are wanting to view the Fusion Server's logs for the HDP Sandbox zone, run:
 
-`docker-compose exec fusion-server-sandbox-hdp bash`
+`docker-compose exec fusion-server-<zone-name> bash`
+
+To find the `<zone-name>`, check the UI under **Storage** for your HDP Sandbox name (e.g. `hdp-3640`).
 
 Once inside, you can access the log directory for the Fusion Server.
 
@@ -89,8 +91,8 @@ You will be logged inside of the `/debug` directory, which contains directories 
 _Example_
 ```bash
 drwxr-xr-x 3 root root 4096 Mar 31 11:51 oneui-server
-drwxr-xr-x 7 1000 1000 4096 Mar 31 11:51 adls2
-drwxr-xr-x 7 1000 1000 4096 Mar 31 11:51 sandbox-hdp
+drwxr-xr-x 7 1000 1000 4096 Mar 31 11:51 adls2-5837
+drwxr-xr-x 7 1000 1000 4096 Mar 31 11:51 hdp-3640
 ```
 
 The log locations for each component are slightly different to that of the individual containers.
