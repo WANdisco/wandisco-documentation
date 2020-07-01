@@ -67,7 +67,8 @@ module.exports = {
         "quickstarts/operation/migration",
         "quickstarts/operation/license_upgrade",
         "quickstarts/operation/cdh_sandbox_fusion_stop_start",
-        "quickstarts/operation/hdp_sandbox_fusion_stop_start"
+        "quickstarts/operation/hdp_sandbox_fusion_stop_start",
+        "quickstarts/operation/advanced-settings"
     ],
     "Testing": [
         "quickstarts/testing/test_cdh_sandbox",
