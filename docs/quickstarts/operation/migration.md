@@ -4,6 +4,11 @@ title: Start a Migration
 sidebar_label: Start a Migration
 ---
 
+:::note
+This operation is only possible if you have the LiveData Migrator installed as part of your deployment.
+By default, all pre-configured environments (through Docker) have the LiveData Migrator available for use.
+:::
+
 Once you have created a [HCFS replication rule](./create-rule.md#hcfs) you can start a migration using the LiveMigrator. This allows you to migrate data in a single pass while keeping up with all changes to your source storage. The outcome is guaranteed data consistency between source and target. As data is being migrated it is immediately ready to be used, without interruption.
 
 On the dashboard, view the HCFS rule that you want to start migrating.

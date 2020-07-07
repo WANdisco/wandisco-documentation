@@ -20,7 +20,7 @@ From the rules section of the dashboard, you can create a rule. By default, this
    - **Preserve HCFS Block Size** - Must be enabled when your path contains columnar file formats, such as ORC, Parquet, Avro. These are commonly used in Hadoop for Hive tables.
 
 After a few moments the rule will appear on your dashboard.
-You can now perform a [consistency check](./consistency-check.md) or [start migrating](./migration.md) your data.
+You can now perform a [consistency check](./consistency-check.md) or start [migrating](./migration.md)/replicating your data.
 
 ## Hive
 
