@@ -23,3 +23,6 @@ yarn-error.log*
 
 website/yarn.lock
 website/i18n/*
+
+# VS Code
+.vscode/
