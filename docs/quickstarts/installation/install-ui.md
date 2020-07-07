@@ -14,7 +14,7 @@ _RedHat_
 _Debian_  
 `sudo apt install -y ./one-ui-server_<ui-version>_all.deb`
 
-The above command(s) assume that the package is inside your working directory.
+The above commands assume that the package is inside your working directory.
 
 ### Directory structure (informational)
 
@@ -37,7 +37,7 @@ Log in to the UI via a web browser (default port for the UI is 8081).
 
 `http://<hostname/IP_address>:8081`
 
-Enter your email address and choose a password you will remember.
+Enter your email address and create a password.
 
 ## Next steps
 
