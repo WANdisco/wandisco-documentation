@@ -7,7 +7,7 @@ sidebar_label: Connect to Storages
 Once you have [logged in to the UI](./install-ui.md#login), configure your environment by connecting to your storages.
 
 :::note
-You must have existing deployments before you can connect to your storages (as mentioned in the [prerequisites](../preparation/prerequisites-ui.md#existing-deployments)).
+You must have existing Fusion deployments before you can connect to your storages (as mentioned in the [prerequisites](../preparation/prerequisites-ui.md#existing-deployments)).
 :::
 
 1. On the dashboard, select to add **Storage -> Fusion Storage**.

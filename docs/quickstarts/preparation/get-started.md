@@ -1,7 +1,7 @@
 ---
-id: get-started
-title: Get Started
-sidebar_label: Get Started
+id: get-started-with-fusion
+title: Get Started with Fusion
+sidebar_label: Get Started with Fusion
 ---
 
 WANdisco Fusion allows you to connect to different storages and transfer data between them.
@@ -10,9 +10,7 @@ Choose how to set up WANdisco Fusion depending on your goals.
 
 ## Pre-configured environments
 
-Learn how to use WANdisco Fusion via pre-configured environments through the use of [Docker](https://docs.docker.com/).
-
-We offer step-by-step instructions to help you migrate/replicate data between different storages.
+Learn how to migrate and replicate data with WANdisco Fusion and [Docker](https://docs.docker.com/) in pre-configured environments.
 
 ## Manage existing deployments
 
