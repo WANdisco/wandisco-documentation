@@ -14,7 +14,7 @@ You must have existing Fusion deployments before you can connect to your storage
 
 1. Enter details to connect to your Fusion Server:
 
-   * Hostname
+   * Hostname/IP
    * Port (default is 8082)
    
    Click **Connect** once complete.

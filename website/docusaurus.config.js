@@ -20,12 +20,12 @@ module.exports = {
       },
       links: [
         {
-          to: "docs/why-fusion/benefits",
-          label: "Why Fusion?",
+          to: "docs/product-concepts/benefits",
+          label: "Product Concepts",
           position: "right",
         },
         {
-          to: "docs/quickstarts/installation/quickstart-config",
+          to: "docs/quickstarts/preparation/get-started-with-fusion",
           label: "Quickstarts",
           position: "right",
         },
@@ -47,7 +47,7 @@ module.exports = {
           items: [
             {
               label: "Getting Started",
-              to: "docs/quickstarts/installation/quickstart-config",
+              to: "docs/quickstarts/preparation/get-started-with-fusion",
             },
             {
               label: "Product User Guides",

@@ -146,3 +146,11 @@ _You have now successfully migrated data from your ADLS Gen1 to your ADLS Gen2 s
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
 
 _Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+
+## Reference architecture
+
+![Architecture: ADLS Gen1 to ADLS Gen2](/wandisco-documentation/img/arch_adlsg1_adlsg2.jpg)
+
+1. When initiating a migration, Fusion LiveMigrator will scan the ADLS Gen1 storage.
+1. Any new files or differences are read by the Fusion IHC in the ADLS Gen1 zone, and replicated to the Fusion Server in the ADLS Gen2 zone.
+1. The Fusion Server in the ADLS Gen2 zone will transform the ADLS Gen1 data to equivalent ADLS Gen2 changes. LiveMigrator will overwrite or skip existing files on the ADLS Gen2 storage depending on the settings used.

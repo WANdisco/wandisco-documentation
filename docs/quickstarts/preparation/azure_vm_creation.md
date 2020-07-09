@@ -23,6 +23,10 @@ If you want to use the Azure portal instead of following this guide, then you wi
 
 The VM will also need to meet certain specifications:
 
+:::note
+The minimum specification will depend on the installation guide you have chosen, as mentioned in the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section. The recommendations below will be suitable for the majority of these guides, but please check the prerequisites of your chosen guide beforehand.
+:::
+
 * Recommended Operating System = **Ubuntu 18.04 LTS**.
 * Minimum size recommendation = **8 vcpus, 32 GiB memory** (e.g. [Standard D8s v3](https://docs.microsoft.com/en-us/azure/virtual-machines/dv3-dsv3-series#dsv3-series)).
 * Minimum disk space for Operating System (OS) = **32 GB**.

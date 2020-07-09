@@ -123,4 +123,4 @@ If you want to create a new environment:
 
 `./setup-env.sh`
 
-The setup script will now prompt you for questions, follow one of the [quickstarts](../installation/quickstart-config.md) to configure your new environment.
+The setup script will now prompt you for questions, follow one of the [quickstarts](../installation/installation-quickstarts.md) to configure your new environment.

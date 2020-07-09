@@ -11,6 +11,10 @@ This quickstart helps you create an Amazon Web Services Linux VM (EC2 instance) 
 * Creating the [Linux VM with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#launching-instances).
   * Logging in to the VM for the first time.
 
+:::note
+The minimum specification of your VM will depend on the installation guide you have chosen, as mentioned in the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section. The recommendations below will be suitable for the majority of these guides, but please check the prerequisites of your chosen guide beforehand.
+:::
+
 ## Prerequisites
 
 * AWS CLI [installed](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).

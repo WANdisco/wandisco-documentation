@@ -14,7 +14,7 @@ This guide should be followed when you want to enable your Fusion installation t
 
 ## Prerequisites
 
-* Fusion has been installed and configured with a HDP zone. See [Quickstart guidance](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/quickstart-config) for relevant documentation on how to achieve this.
+* Fusion has been installed and configured with a HDP zone. See [Quickstart guidance](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/installation-quickstarts) for relevant documentation on how to achieve this.
 * An `/etc/hosts` entry for the Docker hostname plus `fusion-server-hdp` on all nodes in the HDP cluster.
 
   _Example -_ `172.0.0.4  docker_host01 fusion-server-hdp`

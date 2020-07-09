@@ -6,7 +6,7 @@ sidebar_label: Test your environment
 
 Once you have [added your storages](../installation/connect-to-storages.md), you can test your environment.
 
-note:::
+:::note
 You will need at least two storages before you can start testing.
 :::
 
