@@ -22,7 +22,7 @@ All Fusion operations can then be carried out from this interface.
 
 Choose one of these options and follow the tailored guides to prepare, install, and test your environment.
 
-### Skills required
+## Skills required
 
 These guides assume you have:
 
