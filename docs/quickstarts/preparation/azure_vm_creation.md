@@ -4,7 +4,7 @@ title: Creating an Azure Linux Virtual Machine for a Fusion installation
 sidebar_label: Azure VM Creation
 ---
 
-This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable for a Fusion installation. It walks you through:
+This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable for a Dockerized Fusion installation. It walks you through:
 
 * Downloading a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialise the VM and install required services.
 * Obtaining [Azure parameters](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create) to create the VM.

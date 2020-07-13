@@ -1,26 +1,26 @@
 ---
-id: hdp_sandbox_adlsg2_lm
-title: Hortonworks (HDP) Sandbox to ADLS Gen2 with LiveMigrator
-sidebar_label: HDP Sandbox to ADLS Gen2 with LiveMigrator
+id: hdp_sandbox_adlsg2
+title: Hortonworks (HDP) Sandbox to ADLS Gen2
+sidebar_label: HDP Sandbox to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an ADLS Gen2 container using WANdisco LiveMigrator.
+Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an ADLS Gen2 container.
 
 What this guide will cover:
 
 - Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with ADLS Gen2 storage.
-- Performing a sample data migration.
 
 If you would like to try something different with the HDP Sandbox, see:
 
-* [Live replication of data to ADLS Gen2](./hdp_sandbox-adlsg2_ld.md)
-* [Live replication of data/Hive metadata to Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
+* [HDP Sandbox to Azure Databricks](./hdp_sandbox_lhv_client-adlsg2_lan.md)
+* [HDP Sandbox to S3](./hdp_sandbox-s3.md)
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
-|---|
+:::info
+For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+:::
 
 To complete this install, you will need:
 
@@ -99,7 +99,7 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Log in to Ambari via a web browser.
 
-   `http://<docker_IP_address>:8080`
+   `http://<dockerhost_IP_address>:8080`
 
    Username: `admin`
    Password: `admin`
@@ -110,9 +110,9 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 ### Configure the ADLS Gen2 storage
 
-1. Log in to Fusion via a web browser.
+1. Log in to the user interface via a web browser.
 
-   `http://<docker_IP_address>:8081`
+   `http://<dockerhost_IP_address>:8081`
 
    Enter your email address and choose a password you will remember.
 
@@ -122,36 +122,15 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Click **Apply Configuration** and wait for this to complete.
 
-## Migration
+## Next steps
 
-Follow the steps below to demonstrate migration of HCFS data from the HDP sandbox to the ADLS Gen2 container.
+### Migration
 
-### Create replication rule
+Follow our [HDP Sandbox LiveMigrator testing guide](../testing/test-hdp-sandbox-livemigrator.md) to perform a sample data migration.
 
-On the dashboard, create a **HCFS** rule with the following parameters:
+### Replication
 
-* Rule Name = `migration`
-* Path for all storages = `/retail_demo`
-* Default exclusions
-* Preserve HCFS Block Size = *True*
-
-### Migrate your data
-
-1. On the dashboard, view the `migration` rule.
-
-1. Start your migration with the following overwrite settings:
-
-   * Source Storage = **sandbox-hdp**
-   * Target Storage = **adls2**
-   * Overwrite Settings = **Skip**
-
-1. Wait until the migration is complete, and check the contents of your `/retail_demo` directory in your ADLS Gen2 container.
-
-   A new directory should exist (`customer_addresses_dim_hive`) with a ~50MB file inside (`customer_addresses_dim.tsv.gz`).
-
-_You have now successfully migrated data from your HDP Sandbox to your ADLS Gen2 container using LiveMigrator. You can now try live replication by following our [LiveData quickstart](./hdp_sandbox-adlsg2_ld.md#replication)._
-
-_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+Follow our [HDP Sandbox LiveData testing guide](../testing/test-hdp-sandbox-livedata.md) to perform live replication of data.
 
 ## Troubleshooting
 
@@ -160,3 +139,11 @@ _Contact [WANdisco](https://wandisco.com/contact) for further information about 
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
 
 * See the [shutdown and start up](../operation/hdp_sandbox_fusion_stop_start.md) guide for when you wish to safely shutdown or start back up the environment.
+
+## Reference architecture
+
+![Architecture: HDP Sandbox to ADLS Gen2](/wandisco-documentation/img/arch_hdp_sandbox_adlsg2.jpg)
+
+1. If a HDFS write request is on a path that matches a HCFS rule, the Fusion Server in the HDP zone will coordinate with the Fusion Server in the ADLS Gen2 zone (read requests are passed through to HDFS).
+1. HDFS writes/changes are then read by the Fusion IHC in the HDP zone, and replicated to the Fusion Server in the ADLS Gen2 zone.
+1. The Fusion Server in the ADLS Gen2 zone will transform the HDFS data to equivalent ADLS Gen2 storage changes.

@@ -12,17 +12,17 @@ What this guide will cover:
 
 - Installing WANdisco Fusion and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with Azure Databricks.
-- Live replication of sample data and Hive metadata.
 
 If you would like to try something different with the CDH Sandbox, see:
 
-* [Migration of data to ADLS Gen2](./cdh_sandbox-adlsg2_lm.md)
-* [Live replication of data to ADLS Gen2](./cdh_sandbox-adlsg2_ld.md)
+* [CDH Sandbox to ADLS Gen2 (HCFS data only)](./cdh_sandbox-adlsg2.md)
+* [CDH Sandbox to S3](./cdh_sandbox-s3.md)
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
-|---|
+:::info
+For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+:::
 
 To complete this install, you will need:
 
@@ -89,7 +89,7 @@ The CDH sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Log in to Cloudera via a web browser.
 
-   `http://<docker_IP_address>:7180`
+   `http://<dockerhost_IP_address>:7180`
 
    Username: `admin`
    Password: `admin`
@@ -100,9 +100,9 @@ The CDH sandbox services can take up to 5-10 minutes to start. To check that the
 
 ### Configure the ADLS Gen2 storage
 
-1. Log in to Fusion via a web browser.
+1. Log in to the user interface via a web browser.
 
-   `http://<docker_IP_address>:8081`
+   `http://<dockerhost_IP_address>:8081`
 
    Enter your email address and choose a password you will remember.
 
@@ -118,154 +118,9 @@ The CDH sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Click **Activate** and wait for the status to show as **Active** before continuing.
 
-## Replication
+## Next steps
 
-Follow the steps below to demonstrate live replication of HCFS data and Hive metadata from the CDH sandbox to the Azure Databricks cluster.
-
-### Create replication rules
-
-1. On the dashboard, create a **HCFS** rule with the following parameters:
-
-   * Rule Name = `warehouse`
-   * Path for all storages = `/user/hive/warehouse`
-   * Default exclusions
-   * Preserve HCFS Block Size = *True*
-
-1. Now create a **Hive** rule with the following parameters:
-
-   * Rule Name = `Demo`
-   * Pattern to match database names = `databricks_demo`
-   * Pattern to match table names = `*`
-
-   Both rules will now be displayed.
-
-### Test HCFS replication
-
-1. Log in to **Hue** via a web browser.
-
-   `http://<docker_IP_address>:8889`
-
-   Username: `hdfs`
-   Password: `hdfs`
-
-1. Go to **Menu** -> **Files**.
-
-1. Move to `/user/hive/warehouse` path and **Upload** any file from your host machine.
-
-1. Check that the file you uploaded is now located in your `/user/hive/warehouse` directory on your ADLS Gen2 container.
-
-#### Test large data sets (optional)
-
-If you want to replicate larger amounts of data, see our [CDH Sandbox testing](../testing/test_cdh_sandbox.md) guide.
-
-### Test Hive replication
-
-Your Databricks cluster must be **running** before testing Hive replication. Sample data is provided in this CDH Sandbox.
-
-1. Log in to **Hue** via a web browser.
-
-   `http://<docker_IP_address>:8889`
-
-   Username: `hdfs`
-   Password: `hdfs`
-
-1. To create a database for the sample data, add the query below inside the **Hive** box and click the **play** button:
-
-   `CREATE DATABASE IF NOT EXISTS retail_demo;`
-
-1. Create a table inside the database that points to the sample data, add the query below inside the **Hive** box and click the **play** button:
-
-   ```sql
-   CREATE TABLE retail_demo.customer_addresses_dim_hive
-   (
-   Customer_Address_ID  bigint,
-   Customer_ID          bigint,
-   Valid_From_Timestamp timestamp,
-   Valid_To_Timestamp   timestamp,
-   House_Number         string,
-   Street_Name          string,
-   Appt_Suite_No        string,
-   City                 string,
-   State_Code           string,
-   Zip_Code             string,
-   Zip_Plus_Four        string,
-   Country              string,
-   Phone_Number         string
-   )
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-   STORED AS TEXTFILE
-   LOCATION '/retail_demo/customer_addresses_dim_hive/';
-   ```
-
-1. Create a second database matching the Database name in the Hive replication rule created earlier:
-
-   `CREATE DATABASE IF NOT EXISTS databricks_demo;`
-
-1. Create a table inside this second database:
-
-   ```sql
-   CREATE TABLE databricks_demo.customer_addresses_dim_hive
-   (
-   Customer_Address_ID  bigint,
-   Customer_ID          bigint,
-   Valid_From_Timestamp timestamp,
-   Valid_To_Timestamp   timestamp,
-   House_Number         string,
-   Street_Name          string,
-   Appt_Suite_No        string,
-   City                 string,
-   State_Code           string,
-   Zip_Code             string,
-   Zip_Plus_Four        string,
-   Country              string,
-   Phone_Number         string
-   )
-   stored as ORC;
-   ```
-
-1. Now insert data into the table:
-
-   `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'CA';`
-
-   _The data will take a couple of minutes to be replicated and appear in the Databricks cluster. This is because during the first transfer of Hive data, the Datatransformer jar (`etl.jar`) will also be installed in the Databricks library._
-
-1. A Hive job will launch that inserts the data values provided in this example.
-   Select the **jobs** service. If successful, the STATUS will be **SUCCEEDED**.
-
-### Setup Databricks Notebook to view data
-
-1. Create a [Cluster Notebook](https://docs.databricks.com/notebooks/notebooks-manage.html#create-a-notebook) with the details:
-
-   * Name: **WD-demo**
-   * Language: **SQL**
-   * Cluster: (Choose your cluster)
-
-   You should now see a blank notebook.
-
-1. Inside the **Cmd 1** box, add the query and **Run Cell**:
-
-   `SELECT * FROM databricks_demo.customer_addresses_dim_hive;`
-
-1. Wait for the query to return, then select the drop-down graph type and choose **Map**.
-
-1. Under the Plot Options, remove all **Keys** that are present.
-
-1. Configure the map as follows:
-
-   * Keys: **state_code**
-   * Values: **customer_id**
-
-   You should now see a plot of USA with color shading - dependent on the population density.
-
-1. If desired, you can repeat this process except using the Texas state code instead of California.
-
-   Back in the **Hue** interface, run the following command:
-
-   `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'TX';`
-
-   Repeat from step 3 to observe the results for Texas.
-
-_You have now successfully replicated data from your CDH Sandbox to your ADLS Gen2 container and Databricks cluster. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+Follow our [CDH Sandbox LiveAnalytics testing guide](../testing/test-cdh-sandbox-liveanalytics.md) to replicate to your Databricks cluster.
 
 ## Troubleshooting
 

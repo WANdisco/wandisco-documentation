@@ -55,17 +55,13 @@ module.exports = {
             "Dockerized Fusion": [
                 "quickstarts/installation/installation-quickstarts",
                 "quickstarts/installation/adlsg1-adlsg2",
-                "quickstarts/installation/s3-adlsg2_bi_lm",
-                "quickstarts/installation/cdh_sandbox-adlsg2_lm",
-                "quickstarts/installation/cdh_sandbox-adlsg2_ld",
+                "quickstarts/installation/s3-adlsg2_bi",
+                "quickstarts/installation/cdh_sandbox-adlsg2",
                 "quickstarts/installation/cdh_sandbox_lhv_client-adlsg2_lan",
-                "quickstarts/installation/cdh_sandbox-s3_lm",
-                "quickstarts/installation/cdh_sandbox-s3_ld",
-                "quickstarts/installation/hdp_sandbox_adlsg2_lm",
-                "quickstarts/installation/hdp_sandbox_adlsg2_ld",
+                "quickstarts/installation/cdh_sandbox-s3",
+                "quickstarts/installation/hdp_sandbox_adlsg2",
                 "quickstarts/installation/hdp_sandbox_lhv_client-adlsg2_lan",
-                "quickstarts/installation/hdp_sandbox-s3_lm",
-                "quickstarts/installation/hdp_sandbox-s3_ld"
+                "quickstarts/installation/hdp_sandbox-s3"
             ],
             "Manage Existing Deployments": [
                 "quickstarts/installation/install-ui",
@@ -76,8 +72,23 @@ module.exports = {
     "Testing": [
         {
             "Dockerized Fusion": [
-                "quickstarts/testing/test_cdh_sandbox",
-                "quickstarts/testing/test_hdp_sandbox"
+                "quickstarts/testing/test_adlsg1",
+                "quickstarts/testing/test_adlsg2",
+                "quickstarts/testing/test_s3",
+                {
+                "Test CDH Sandbox": [
+                    "quickstarts/testing/test-cdh-sandbox-livemigrator",
+                    "quickstarts/testing/test-cdh-sandbox-livedata",
+                    "quickstarts/testing/test-cdh-sandbox-liveanalytics"
+                ],
+            },
+            {
+                "Test HDP Sandbox": [
+                    "quickstarts/testing/test-hdp-sandbox-livemigrator",
+                    "quickstarts/testing/test-hdp-sandbox-livedata",
+                    "quickstarts/testing/test-hdp-sandbox-liveanalytics"
+                ]
+            },
             ],
             "Manage Existing Deployments": [
                 "quickstarts/testing/test-ui"

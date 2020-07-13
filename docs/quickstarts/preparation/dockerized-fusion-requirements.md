@@ -6,7 +6,7 @@ sidebar_label: Requirements
 
 ## Before you begin
 
-Choose one of the [quickstart guides](../installation/installation-quickstarts.md) before running through these instructions.
+Choose one of the [installation guides](../installation/installation-quickstarts.md) before running through these instructions.
 
 All Dockerized Fusion environments require a host machine that meet minimum specification, and each guide may vary in the minimum specification needed.
 
@@ -42,4 +42,4 @@ For help installing the required packages on Ubuntu 18.04, use our [VM Preparati
 
 ## Next steps
 
-Once you have a suitable host with all packages installed, follow your chosen [quickstart guide](../installation/installation-quickstarts.md) to deploy the pre-configured environment.
+Once you have a suitable host with all packages installed, follow your chosen [installation guide](../installation/installation-quickstarts.md) to deploy the pre-configured environment.

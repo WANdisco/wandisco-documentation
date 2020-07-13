@@ -4,7 +4,7 @@ title: Creating an Amazon Web Services Linux VM for a Fusion installation
 sidebar_label: AWS VM Creation
 ---
 
-This quickstart helps you create an Amazon Web Services Linux VM (EC2 instance) suitable for a Fusion installation. It walks you through:
+This quickstart helps you create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized Fusion installation. It walks you through:
 
 * Downloading a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
 * Obtaining [AWS parameters](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) to create the VM.

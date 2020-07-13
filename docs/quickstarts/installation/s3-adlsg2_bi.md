@@ -1,22 +1,22 @@
 ---
-id: s3-adlsg2_bi_lm
-title: AWS S3 and Azure Data Lake Storage Gen2 with LiveMigrator
-sidebar_label: AWS S3 & ADLS Gen2 with LiveMigrator
+id: s3-adlsg2_bi
+title: AWS S3 and Azure Data Lake Storage Gen2
+sidebar_label: AWS S3 & ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or vice versa, using WANdisco LiveMigrator. 
+Use this quickstart if you want to configure Fusion to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or vice versa. 
 The set up is the same for either scenario, just choose the direction when starting your migration.
 
 What this guide will cover:
 
 - Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
 - Integrating WANdisco Fusion with AWS S3 and ADLS Gen2 storage.
-- Performing sample data migrations in both directions.
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) or [AWS VM creation](../preparation/aws_vm_creation.md) guides. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
-|---|
+:::info
+For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) or [AWS VM creation](../preparation/aws_vm_creation.md) guides. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+:::
 
 To complete this install, you will need:
 
@@ -81,9 +81,9 @@ Log in to your VM prior to starting these steps.
 
 ### Configure the S3 storage
 
-1. Log in to Fusion via a web browser.
+1. Log in to the user interface via a web browser.
 
-   `http://<docker_IP_address>:8081`
+   `http://<dockerhost_IP_address>:8081`
 
    Enter your email address and choose a password you will remember.
 
@@ -99,72 +99,11 @@ Log in to your VM prior to starting these steps.
 
 1. Click **Apply Configuration** and wait for this to complete.
 
-## Migration
+## Next steps
 
-Follow the steps below to demonstrate migration of HCFS data between the AWS S3 bucket and the ADLS Gen2 container.
+* Follow our [S3 testing guide](../testing/test-s3.md) to perform a sample data migration using the S3 storage as the [source](../../glossary/s.md#source).
 
-### Get sample data
-
-1. Create the following directories to host the sample data:
-
-   * AWS S3 bucket directory = `s3_to_adls2`
-     * See the S3 docs ([Amazon console](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-folder.html) / [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/workdocs/create-folder.html)) for guidance.
-   * ADLS Gen2 container directory = `adls2_to_s3`
-     * See the [Microsoft docs](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-explorer#create-a-directory) for guidance.
-
-1. Get the sample data from the link below:  
-   [customer_addresses_dim.tsv.gz](https://github.com/pivotalsoftware/pivotal-samples/raw/master/sample-data/customer_addresses_dim.tsv.gz)
-
-1. Upload the data to the directories created earlier on your AWS S3 bucket and ADLS Gen2 container, see the relevant docs for more info:
-
-   * [Amazon S3 console](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) / [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html#examples)
-   * [ADLS Gen2](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata)
-
-### Create replication rules
-
-1. On the dashboard, create a **HCFS** rule with the following parameters:
-
-   * Rule Name = `migration_to_adls2`
-   * Path for all storages = `/s3_to_adls2`
-   * Default exclusions
-   * Preserve HCFS Block Size = *False*
-
-1. Create a second **HCFS** rule with the following parameters:
-
-   * Rule Name = `migration_to_s3`
-   * Path for all storages = `/adls2_to_s3`
-   * Default exclusions
-   * Preserve HCFS Block Size = *False*
-
-### Migrate your data to ADLS Gen2
-
-1. On the dashboard, view the `migration_to_adls2` rule.
-
-1. Start your migration with the following overwrite settings:
-
-   * Source Zone = **s3**
-   * Target Zone = **adls2**
-   * Overwrite Settings = **Skip**
-
-1. Wait until the migration is complete, and check the contents of your `s3_to_adls2` directory in your ADLS Gen2 container.
-
-   A new ~50MB file will exist inside (`customer_addresses_dim.tsv.gz`).
-
-### Migrate your data to AWS S3
-
-1. On the dashboard, view the `migration_to_s3` rule.
-
-1. Start your migration with the following overwrite settings:
-
-   * Source Zone = **adls2**
-   * Target Zone = **s3**
-   * Overwrite Settings = **Skip**
-
-1. Wait until the migration is complete, and check the contents of your `adls2_to_s3` directory in your AWS S3 bucket.
-
-   A new ~50MB file will exist inside (`customer_addresses_dim.tsv.gz`).
-
-_You have now successfully migrated data between your AWS S3 bucket and ADLS Gen2 container using LiveMigrator._
+* Follow our [ADLS Gen2 testing guide](../testing/test-adlsg2.md) to perform a sample data migration using the ADLS Gen2 storage as the [source](../../glossary/s.md#source).
 
 ## Troubleshooting
 

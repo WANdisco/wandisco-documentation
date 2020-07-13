@@ -1,16 +1,50 @@
 ---
-id: test_cdh_sandbox
-title: Test CDH Sandbox
-sidebar_label: Test CDH Sandbox
+id: test-cdh-sandbox-livedata
+title: Test CDH Sandbox with LiveData
+sidebar_label: LiveData
 ---
 
-Most of our installation quickstarts give you the basic steps to test small-scale replication. Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
+Follow the steps below to demonstrate live replication of HCFS data from the CDH sandbox to a target storage.
+
+The CDH Sandbox will be the [source](../../glossary/s.md#source) storage in all instances.
+
+## Create replication rule
+
+On the dashboard, create a **HCFS** rule with the following parameters:
+
+* Rule Name = `replicate`
+* Path for all storages = `/testdir`
+* Default exclusions
+* Preserve HCFS Block Size = *False*
+
+## Replicate data
+
+1. Log in to **Hue** via a web browser.
+
+   `http://<dockerhost_IP_address>:8889`
+
+   Username: `hdfs`
+   Password: `hdfs`
+
+1. Go to **Menu** -> **Files**.
+
+1. Move to `/testdir` path and **Upload** any file from your host machine.
+
+1. Check that the file you uploaded is now located in your `/testdir` directory on your target storage.
+
+## Test large data sets (optional)
+
+Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
 
 Following these examples to the end will result in ~20GB of data being replicated.
 
-## Prerequisites
+### Prerequisites
 
-Ensure that you have enough disk space and your server is appropriately sized to handle larger amounts of data.
+Ensure that you have enough disk space and your server is appropriately sized to handle larger amounts of data. At a minimum, these specifications should be:
+
+4 CPUs  
+32 GiB memory  
+64 GB storage for Operating System
 
 * If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--os-disk-size-gb 64`  
@@ -19,10 +53,6 @@ Ensure that you have enough disk space and your server is appropriately sized to
 * If using our [AWS VM Creation](../preparation/aws_vm_creation.md) guide, see the `--block-device-mappings` and `--instance-type` variables in the [required parameters](../preparation/aws_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":64,\"DeleteOnTermination\":true}}]"`  
   * `--instance-type r5.xlarge`
-
-## HCFS replication
-
-The CDH Sandbox will be the [source](../../glossary/s.md#source) in all instances. Run all commands on the Docker host.
 
 ### TeraGen
 
@@ -34,7 +64,7 @@ _Example_
 
 To generate 10GB of data inside a replicated path, run:
 
-`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 100000000 /path/to/replication_rule/teragen_output`
+`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teragen 100000000 /testdir/teragen_output`
 
 The `teragen_output` directory should not be created prior to running this command otherwise it will fail.
 
@@ -50,7 +80,7 @@ _Example_
 
 To sort the data from the staging directory into a replicated path, run:
 
-`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar terasort /path/to/replication_rule/teragen_output /path/to/replication_rule/terasort_output`
+`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar terasort /testdir/teragen_output /testdir/terasort_output`
 
 The `terasort_output` directory should not be created prior to running this command otherwise it will fail.
 
@@ -64,9 +94,13 @@ Use the `teravalidate` option to test that the data in the replicated path is no
 
 _Example_
 
-`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate /path/to/replication_rule/terasort_output /path/to/replication_rule/teravalidate-output`
+`docker-compose exec -u hdfs sandbox-cdh hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar teravalidate /testdir/terasort_output /testdir/teravalidate-output`
 
 If everything is correctly sorted, the `teravalidate-output` directory should contain a `_SUCCESS` file and another file containing a checksum value. To fully validate the operation, you can compare this value on both the source and target storages.
+
+## Next steps
+
+You have now set up live replication from your CDH Sandbox to your target storage. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you.
 
 ## References
 

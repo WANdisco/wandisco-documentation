@@ -12,7 +12,7 @@ The steps should be carried out prior to shutting down the Docker host itself.
 
 Log in to the Ambari UI, and stop all services.
 
-`http://<docker_IP_address>:8080`
+`http://<dockerhost_IP_address>:8080`
 
 Username: `admin`
 Password: `admin`

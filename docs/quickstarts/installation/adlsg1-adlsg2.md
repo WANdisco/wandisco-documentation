@@ -13,8 +13,9 @@ What this guide will cover:
 
 ## Prerequisites
 
-|For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
-|---|
+:::info
+For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.
+:::
 
 To complete this install, you will need:
 
@@ -80,9 +81,9 @@ Log in to your VM prior to starting these steps.
 
 ### Configure the ADLS Gen1 storage
 
-1. Log in to Fusion via a web browser.
+1. Log in to the user interface via a web browser.
 
-   `http://<docker_IP_address>:8081`
+   `http://<dockerhost_IP_address>:8081`
 
    Enter your email address and choose a password you will remember.
 
@@ -102,50 +103,13 @@ Log in to your VM prior to starting these steps.
 
 1. Click **Apply Configuration** and wait for this to complete.
 
-## Migration
+## Next steps
 
-Follow the steps below to demonstrate the migration of data from your ADLS Gen1 to Gen2 storage.
-
-### Get sample data
-
-Upload sample data to your ADLS Gen1 storage account, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) for guidance.
-
-You can get the sample data from the link below:
-
-[customer_addresses_dim.tsv.gz](https://github.com/pivotalsoftware/pivotal-samples/raw/master/sample-data/customer_addresses_dim.tsv.gz)
-
-Place it within your **Home Mount Point** (see [info you will require](#info-you-will-require) for reference).
-
-### Create replication rule
-
-On the dashboard, create a **HCFS** rule with the following parameters:
-
-* Rule Name = `migration`
-* Path for all storages = `/`
-* Default exclusions
-* Preserve HCFS Block Size = *False*
-
-### Migrate your data
-
-1. On the dashboard, view the `migration` rule.
-
-1. Start your migration with the following settings:
-
-   * Source Storage = **adls1**
-   * Target Storage = **adls2**
-   * Overwrite Settings = **Skip**
-
-1. Wait until the migration is complete, and check the contents of your ADLS Gen2 container.
-
-   A new ~50MB file will exist inside (`customer_addresses_dim.tsv.gz`).
-
-_You have now successfully migrated data from your ADLS Gen1 to your ADLS Gen2 storage using LiveMigrator._
+Follow our [ADLS Gen1 testing guide](../testing/test-adlsg1.md) to perform a sample data migration.
 
 ## Troubleshooting
 
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
-
-_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
 
 ## Reference architecture
 
