@@ -8,7 +8,7 @@ sidebar_label: Requirements
 
 Choose one of the [installation guides](../installation/installation-quickstarts.md) before running through these instructions.
 
-All Dockerized Fusion environments require a host machine that meet minimum specification, and each guide may vary in the minimum specification needed.
+All Dockerized Fusion environments require a host machine that meet minimum specifications, and each guide may vary in the minimum specification needed.
 
 ## Create a host machine
 
@@ -23,7 +23,7 @@ Alternatively, create or use one of your own hosts and install the required pack
 
 Ensure that the host meets the minimum size recommendation specified in the installation guides for Dockerized Fusion.
 
-For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hdp_sandbox-adlsg2_lm.md#prerequisites) guide requires the following minimum specification:
+For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hdp_sandbox-adlsg2_lm.md#prerequisites) guide requires the following:
 
 * 8 cpus.
 * 32 GiB memory.
