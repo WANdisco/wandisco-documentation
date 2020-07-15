@@ -26,7 +26,7 @@ module.exports = {
         },
         {
           to: "docs/quickstarts/preparation/get-started",
-          label: "Quickstarts",
+          label: "Guides",
           position: "right",
         },
       //  { to: "docs/docs/doc1", label: "Docs", position: "right" },
