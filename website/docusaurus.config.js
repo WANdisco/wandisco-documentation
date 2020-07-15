@@ -25,11 +25,11 @@ module.exports = {
           position: "right",
         },
         {
-          to: "docs/quickstarts/preparation/get-started-with-fusion",
+          to: "docs/quickstarts/preparation/get-started",
           label: "Quickstarts",
           position: "right",
         },
-        { to: "docs/docs/doc1", label: "Docs", position: "right" },
+      //  { to: "docs/docs/doc1", label: "Docs", position: "right" },
         { to: "docs/glossary/a", label: "Glossary", position: "right" },
         //  {doc: 'api/api', label: 'API', position: 'right'},
       //  { to: "docs/help/need_help", label: "Help", position: "right" },
@@ -47,7 +47,7 @@ module.exports = {
           items: [
             {
               label: "Getting Started",
-              to: "docs/quickstarts/preparation/get-started-with-fusion",
+              to: "docs/quickstarts/preparation/get-started",
             },
             {
               label: "Product User Guides",

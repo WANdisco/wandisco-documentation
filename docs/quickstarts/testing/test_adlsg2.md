@@ -12,7 +12,7 @@ The ADLS Gen2 storage will be the [source](../../glossary/s.md#source) storage i
 
 ### Get sample data
 
-Upload sample data to your ADLS Gen2 container, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob) for guidance.
+To upload sample data to your ADLS Gen2 container, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob).
 
 You can get the sample data from the link below:
 

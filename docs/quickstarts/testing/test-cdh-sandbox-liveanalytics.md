@@ -17,13 +17,13 @@ The CDH Sandbox will be the [source](../../glossary/s.md#source) storage in all 
    * Default exclusions
    * Preserve HCFS Block Size = *True*
 
-1. Now create a **Hive** rule with the following parameters:
+1. Create a **Hive** rule with the following parameters:
 
    * Rule Name = `Demo`
    * Pattern to match database names = `databricks_demo`
    * Pattern to match table names = `*`
 
-   Both rules will now be displayed.
+   Both rules are then displayed.
 
 ### Test HCFS replication
 
@@ -38,11 +38,11 @@ The CDH Sandbox will be the [source](../../glossary/s.md#source) storage in all 
 
 1. Move to `/user/hive/warehouse` path and **Upload** any file from your host machine.
 
-1. Check that the file you uploaded is now located in your `/user/hive/warehouse` directory on your ADLS Gen2 container.
+1. Check the uploaded file is in the `/user/hive/warehouse` directory on your ADLS Gen2 container.
 
 #### Test large data sets (optional)
 
-If you want to replicate larger amounts of data, see our [LiveData testing](./test-cdh-sandbox-livedata.md#test-large-data-sets-optional) guide.
+To replicate larger amounts of data, see our [LiveData testing](./test-cdh-sandbox-livedata.md#test-large-data-sets-optional) guide.
 
 ### Test Hive replication
 
@@ -87,7 +87,7 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
    `CREATE DATABASE IF NOT EXISTS databricks_demo;`
 
-1. Create a table inside this second database:
+1. Create a table inside the second database:
 
    ```sql
    CREATE TABLE databricks_demo.customer_addresses_dim_hive
@@ -109,20 +109,20 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
    stored as ORC;
    ```
 
-1. Now insert data into the table:
+1. Insert data into the table:
 
    `INSERT INTO databricks_demo.customer_addresses_dim_hive SELECT * FROM retail_demo.customer_addresses_dim_hive WHERE state_code = 'CA';`
 
    :::info
-   The data will take a couple of minutes to be replicated and appear in the Databricks cluster. This is because during the first transfer of Hive data, the Datatransformer jar (`etl.jar`) will also be installed in the Databricks library.
+   The data takes a couple of minutes to be replicated and appear in the Databricks cluster. This is because the Datatransformer jar (`etl.jar`) is installed in the Databricks library during the first transfer of Hive data.
    :::
 
-1. A Hive job will launch that inserts the data values provided in this example.
-   Select the **jobs** service. If successful, the STATUS will be **SUCCEEDED**.
+1. A Hive job inserts the data values provided in this example.
+   Select the **jobs** service. If successful, the STATUS displays **SUCCEEDED**.
 
 ### Setup Databricks Notebook to view data
 
-1. Create a [Cluster Notebook](https://docs.databricks.com/notebooks/notebooks-manage.html#create-a-notebook) with the details:
+1. Create a [Cluster Notebook](https://docs.databricks.com/notebooks/notebooks-manage.html#create-a-notebook) with these details:
 
    * Name: **WD-demo**
    * Language: **SQL**
@@ -138,14 +138,16 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 1. Under the Plot Options, remove all **Keys** that are present.
 
-1. Configure the map as follows:
+1. Configure the map with the following:
 
    * Keys: **state_code**
    * Values: **customer_id**
 
    You should now see a plot of USA with color shading - dependent on the population density.
 
-1. If desired, you can repeat this process except using the Texas state code instead of California.
+1. Repeat these steps to view data from a different state.
+   
+   _Example for Texas_
 
    Back in the **Hue** interface, run the following command:
 

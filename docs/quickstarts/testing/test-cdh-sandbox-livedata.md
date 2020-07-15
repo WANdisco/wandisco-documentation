@@ -30,11 +30,11 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 1. Move to `/testdir` path and **Upload** any file from your host machine.
 
-1. Check that the file you uploaded is now located in your `/testdir` directory on your target storage.
+1. Check the uploaded file is in the `/testdir` directory on your target storage.
 
 ## Test large data sets (optional)
 
-Use the examples in this section if you would like to test HCFS replication with larger and more randomized data sets.
+Use the examples in this section to test HCFS replication with larger and more randomized data sets.
 
 Following these examples to the end will result in ~20GB of data being replicated.
 
@@ -46,11 +46,11 @@ Ensure that you have enough disk space and your server is appropriately sized to
 32 GiB memory  
 64 GB storage for Operating System
 
-* If using our [Azure VM Creation](../preparation/azure_vm_creation.md) guide, see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
+* If you have [created an Azure VM](../preparation/azure_vm_creation.md), see the `--os-disk-size-gb` and `--size` variables in the [required parameters](../preparation/azure_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--os-disk-size-gb 64`  
   * `--size Standard_D8s_v3`
 
-* If using our [AWS VM Creation](../preparation/aws_vm_creation.md) guide, see the `--block-device-mappings` and `--instance-type` variables in the [required parameters](../preparation/aws_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
+* If you have [created an AWS VM](../preparation/aws_vm_creation.md), see the `--block-device-mappings` and `--instance-type` variables in the [required parameters](../preparation/aws_vm_creation.md#required-parameters) section. At a minimum, these values should be:  
   * `--block-device-mappings "[{\"DeviceName\":\"/dev/sda1\",\"Ebs\":{\"VolumeSize\":64,\"DeleteOnTermination\":true}}]"`  
   * `--instance-type r5.xlarge`
 

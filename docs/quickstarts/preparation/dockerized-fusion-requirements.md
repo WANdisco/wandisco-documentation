@@ -6,18 +6,18 @@ sidebar_label: Requirements
 
 ## Before you begin
 
-Choose one of the [installation guides](../installation/installation-quickstarts.md) before running through these instructions.
+Select your [pre-configured environment](../installation/installation-quickstarts.md) before running through these instructions.
 
-All Dockerized Fusion environments require a host machine that meet minimum specifications, and each guide may vary in the minimum specification needed.
+All Dockerized Fusion environments require a host machine that meets minimum specifications, and each pre-configured environment may vary in the minimum specification needed.
 
 ## Create a host machine
 
-Follow one of our creation guides to create a suitable host with all packages installed:
+Create a suitable host with all packages installed:
 
-* [AWS VM Creation](./aws_vm_creation.md)
-* [Azure VM Creation](./azure_vm_creation.md)
+* [Create an AWS Virtual Machine](./aws_vm_creation.md)
+* [Create an Azure Virtual Machine](./azure_vm_creation.md)
 
-Alternatively, create or use one of your own hosts and install the required packages.
+Alternatively, create and use one of your own hosts and install the required packages.
 
 ### Host specifications
 
@@ -38,8 +38,8 @@ The required packages are as follows:
 * [Docker](https://docs.docker.com/install/) (v19.03.5 or higher)
 * [Docker Compose for Linux](https://docs.docker.com/compose/install/#install-compose) (v1.25.0 or higher)
 
-For help installing the required packages on Ubuntu 18.04, use our [VM Preparation](./vm_prep.md) guide.
+For help installing the required packages on Ubuntu 18.04, see the [VM Preparation](./vm_prep.md) guide.
 
 ## Next steps
 
-Once you have a suitable host with all packages installed, follow your chosen [installation guide](../installation/installation-quickstarts.md) to deploy the pre-configured environment.
+Once you have a suitable host with all packages installed, [deploy the pre-configured environment](../installation/installation-quickstarts.md).

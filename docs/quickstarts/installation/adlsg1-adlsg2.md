@@ -4,7 +4,7 @@ title: ADLS Gen1 to ADLS Gen2
 sidebar_label: ADLS Gen1 to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from ADLS Gen1 to ADLS Gen2 storage.
+Use this quickstart to configure Fusion to replicate from ADLS Gen1 to ADLS Gen2 storage.
 
 What this guide will cover:
 
@@ -14,7 +14,7 @@ What this guide will cover:
 ## Prerequisites
 
 :::info
-For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.
+For more information about to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.
 :::
 
 To complete this install, you will need:
@@ -81,7 +81,7 @@ Log in to your VM prior to starting these steps.
 
 ### Configure the ADLS Gen1 storage
 
-1. Log in to the user interface via a web browser.
+1. Log in to the UI via a web browser.
 
    `http://<dockerhost_IP_address>:8081`
 

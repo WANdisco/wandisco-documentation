@@ -4,7 +4,7 @@ title: Cloudera (CDH) Sandbox to ADLS Gen2
 sidebar_label: CDH Sandbox to ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an ADLS Gen2 container.
+Use this quickstart to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an ADLS Gen2 container.
 
 What this guide will cover:
 
@@ -19,7 +19,7 @@ If you would like to try something different with the CDH Sandbox, see:
 ## Prerequisites
 
 :::info
-For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+For more information about to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
 :::
 
 To complete this install, you will need:
@@ -110,7 +110,7 @@ The CDH Sandbox services can take up to 5-10 minutes to start. To check that the
 
 ### Configure the ADLS Gen2 storage
 
-1. Log in to the user interface via a web browser.
+1. Log in to the UI via a web browser.
 
    `http://<dockerhost_IP_address>:8081`
 

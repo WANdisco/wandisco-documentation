@@ -59,7 +59,7 @@ function Home() {
           <div className={styles.buttons}>
             <Link
               className={clsx("button button--outline button--secondary button--lg")}
-              to={useBaseUrl("docs/quickstarts/preparation/get-started-with-fusion")}
+              to={useBaseUrl("docs/quickstarts/preparation/get-started")}
             >
               Get Started
             </Link>

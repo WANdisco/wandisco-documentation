@@ -12,7 +12,7 @@ The ADLS Gen1 storage will be the [source](../../glossary/s.md#source) storage i
 
 ### Get sample data
 
-Upload sample data to your ADLS Gen1 storage account, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata) for guidance.
+To upload sample data to your ADLS Gen1 storage account, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#uploaddata).
 
 You can get the sample data from the link below:
 

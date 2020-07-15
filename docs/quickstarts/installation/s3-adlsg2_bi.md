@@ -4,7 +4,7 @@ title: AWS S3 and Azure Data Lake Storage Gen2
 sidebar_label: AWS S3 & ADLS Gen2
 ---
 
-Use this quickstart if you want to configure Fusion to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or vice versa. 
+Use this quickstart to configure Fusion to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or from an ADLS Gen2 container to an AWS S3 bucket. 
 The set up is the same for either scenario, just choose the direction when starting your migration.
 
 What this guide will cover:
@@ -15,7 +15,7 @@ What this guide will cover:
 ## Prerequisites
 
 :::info
-For info on how to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) or [AWS VM creation](../preparation/aws_vm_creation.md) guides. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+For more information about to create a suitable VM with all services installed, see our [Azure VM creation](../preparation/azure_vm_creation.md) or [AWS VM creation](../preparation/aws_vm_creation.md) guides. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
 :::
 
 To complete this install, you will need:
@@ -81,7 +81,7 @@ Log in to your VM prior to starting these steps.
 
 ### Configure the S3 storage
 
-1. Log in to the user interface via a web browser.
+1. Log in to the UI via a web browser.
 
    `http://<dockerhost_IP_address>:8081`
 

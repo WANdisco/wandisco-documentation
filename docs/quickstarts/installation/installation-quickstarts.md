@@ -4,7 +4,11 @@ title: Choose a Quickstart
 sidebar_label: Choose a Quickstart
 ---
 
-Select an appropriate option on the sidebar for guidance on configuring your Fusion instances.
+Select an appropriate pre-configured environment on the sidebar for guidance on configuring your Fusion deployment.
+
+:::note
+These pre-configured environments relate to Dockerized Fusion, see the [Install Management UI](./install-ui.md) guide when managing existing Fusion deployments.
+:::
 
 _Examples_
 
@@ -15,4 +19,4 @@ _Examples_
 * Cloudera --> ADLS Gen2
 * Cloudera --> S3
 
-Further quickstarts are being written and will be made available as we continue to develop the site. For further information on what WANdisco Fusion can offer, please see our reference documentation - [Deployment Models](https://docs.wandisco.com/bigdata/wdfusion/#_deployment_models).
+For more information about how to deploy WANdisco Fusion, see our [Deployment Models](../../product-concepts/deployment_models.md).

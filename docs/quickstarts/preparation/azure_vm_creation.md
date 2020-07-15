@@ -4,12 +4,12 @@ title: Creating an Azure Linux Virtual Machine for a Fusion installation
 sidebar_label: Azure VM Creation
 ---
 
-This quickstart helps you create an Azure Linux Virtual Machine (VM) suitable for a Dockerized Fusion installation. It walks you through:
+Create an Azure Linux Virtual Machine (VM) suitable for a Dockerized Fusion installation:
 
-* Downloading a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialise the VM and install required services.
-* Obtaining [Azure parameters](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create) to create the VM.
-* Creating the [Linux VM with the Azure CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-cli-complete).
-  * Logging in to the VM for the first time.
+* Download a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
+* Obtain [Azure parameters](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create) to create the VM.
+* Create the [Linux VM with the Azure CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-cli-complete).
+  * Log in to the VM for the first time.
 
 This is an alternative to using the Azure portal to create a VM. If you prefer to use the portal, see the [Using the Azure portal](#using-the-azure-portal) section below for an outline of what you will need.
 
@@ -24,7 +24,7 @@ If you want to use the Azure portal instead of following this guide, then you wi
 The VM will also need to meet certain specifications:
 
 :::note
-The minimum specification will depend on the installation guide you have chosen, as mentioned in the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section. The recommendations below will be suitable for the majority of these guides, but please check the prerequisites of your chosen guide beforehand.
+Check the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
 :::
 
 * Recommended Operating System = **Ubuntu 18.04 LTS**.
@@ -56,7 +56,7 @@ The template contains initialization parameters for the VM, and pre-installs the
 
 _This file has been configured to work with an UbuntuLTS image._
 
-## Required parameters
+## Required Azure parameters
 
 The variables required to create a suitable VM are:
 

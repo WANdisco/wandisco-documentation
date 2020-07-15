@@ -12,7 +12,7 @@ The AWS S3 storage will be the [source](../../glossary/s.md#source) storage in a
 
 ### Get sample data
 
-Upload sample data to your AWS S3 container, see the [Amazon S3 console](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) or [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html#examples) docs for guidance.
+To upload sample data to your AWS S3 container, see the [Amazon S3 console](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html#upload-objects-by-drag-and-drop) or [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html#examples) docs.
 
 You can get the sample data from the link below:
 

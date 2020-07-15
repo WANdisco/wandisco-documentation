@@ -4,15 +4,15 @@ title: Creating an Amazon Web Services Linux VM for a Fusion installation
 sidebar_label: AWS VM Creation
 ---
 
-This quickstart helps you create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized Fusion installation. It walks you through:
+Create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized Fusion installation:
 
-* Downloading a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
-* Obtaining [AWS parameters](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) to create the VM.
-* Creating the [Linux VM with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#launching-instances).
-  * Logging in to the VM for the first time.
+* Download a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
+* Obtain [AWS parameters](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) to create the VM.
+* Create the [Linux VM using the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#launching-instances).
+  * Log in to the VM for the first time.
 
 :::note
-The minimum specification of your VM will depend on the installation guide you have chosen, as mentioned in the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section. The recommendations below will be suitable for the majority of these guides, but please check the prerequisites of your chosen guide beforehand.
+Check the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
 :::
 
 ## Prerequisites
@@ -35,7 +35,7 @@ The template contains initialization parameters for the VM, and pre-installs the
 
 _This file has been configured to work with an Ubuntu LTS image._
 
-## Required parameters
+## Required AWS parameters
 
 The variables required to create a suitable VM are:
 

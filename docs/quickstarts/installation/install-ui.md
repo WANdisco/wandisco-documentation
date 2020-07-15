@@ -8,7 +8,7 @@ sidebar_label: Install Management UI
 
 Once you have completed all of the [prerequisites](../preparation/prerequisites-ui.md), install the UI package on your host machine:
 
-_RedHat_  
+_Red Hat_  
 `sudo yum install -y one-ui-server-<ui-version>.noarch.rpm`
 
 _Debian_  

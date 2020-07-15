@@ -4,7 +4,7 @@ title: Hortonworks (HDP) Sandbox to AWS S3
 sidebar_label: HDP Sandbox to AWS S3
 ---
 
-Use this quickstart if you want to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an AWS S3 bucket.
+Use this quickstart to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an AWS S3 bucket.
 
 What this guide will cover:
 
@@ -18,7 +18,7 @@ If you would like to try something different with the HDP Sandbox, see:
 ## Prerequisites
 
 :::info
-For info on how to create a suitable VM with all services installed, see our [AWS VM creation](../preparation/aws_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
+For more information about to create a suitable VM with all services installed, see our [AWS VM creation](../preparation/aws_vm_creation.md) guide. See our [VM Preparation](../preparation/vm_prep.md) guide for how to install the services only.|
 :::
 
 To complete this install, you will need:
@@ -91,7 +91,7 @@ The HDP Sandbox services can take up to 5-10 minutes to start. To check that the
 
 ### Configure the S3 storage
 
-1. Log in to the user interface via a web browser.
+1. Log in to the UI via a web browser.
 
    `http://<dockerhost_IP_address>:8081`
 

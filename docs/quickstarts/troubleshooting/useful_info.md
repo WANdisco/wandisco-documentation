@@ -115,7 +115,7 @@ Run the setup script again (it will not prompt for any questions), followed by t
 
 ### Create a new environment
 
-If you want to create a new environment:
+To create a new environment:
 
 `docker-compose down -v`
 
@@ -123,4 +123,4 @@ If you want to create a new environment:
 
 `./setup-env.sh`
 
-The setup script will now prompt you for questions, follow one of the [quickstarts](../installation/installation-quickstarts.md) to configure your new environment.
+The setup script prompts you for questions. [Configure your new environment](../installation/installation-quickstarts.md).

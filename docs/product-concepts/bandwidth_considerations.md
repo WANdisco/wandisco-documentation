@@ -1,5 +1,5 @@
 ---
-id: net_bandwidth_considerations
+id: bandwidth_considerations
 title: Bandwidth Considerations
 sidebar_label: Bandwidth Considerations
 ---

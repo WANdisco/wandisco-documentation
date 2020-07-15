@@ -1,17 +1,14 @@
 module.exports = {
-"docs": {
-    "Reference": [
-        "docs/doc1"
-    ],
-    "Network": [
-        "docs/network/net_bandwidth_considerations"
-    ],
-    "Configuration properties": [
-        "docs/config-properties/config-properties",
-        "docs/config-properties/application.properties",
-        "docs/config-properties/ihc.server"
-    ]
-},
+//"docs": {
+//    "Reference": [
+//        "docs/doc1"
+//    ],
+//    "Configuration properties": [
+//        "docs/config-properties/config-properties",
+//        "docs/config-properties/application.properties",
+//        "docs/config-properties/ihc.server"
+//    ]
+//},
 "Product Concepts": {
     "Product Concepts": [
         "product-concepts/benefits",
@@ -21,6 +18,7 @@ module.exports = {
         "product-concepts/concepts_replication_rules",
         "product-concepts/concepts_consistency_checks",
         "product-concepts/migration_replication",
+        "product-concepts/bandwidth_considerations",
         "product-concepts/hive_replication"
     ]
 },
@@ -37,7 +35,7 @@ module.exports = {
 },
 "quickstarts": {
     "Preparation": [
-        "quickstarts/preparation/get-started-with-fusion",
+        "quickstarts/preparation/get-started",
         {
             "Dockerized Fusion": [
                 "quickstarts/preparation/dockerized-fusion-requirements",
