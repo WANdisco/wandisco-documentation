@@ -69,7 +69,7 @@ Log in to your VM prior to starting these steps.
 
    `./setup-env.sh`
 
-1. Choose the `S3 and ADLS Gen2 (bi-directional)` option when prompted.
+1. Choose the `S3 and ADLS Gen2` option when prompted.
 
 1. You have now completed the setup, to create and start your containers run:
 
