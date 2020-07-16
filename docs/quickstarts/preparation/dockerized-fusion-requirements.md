@@ -30,6 +30,20 @@ For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hd
 * 24 GB storage for the `/var/lib/docker` directory.
 * Recommended Operating System = **Ubuntu 18.04 LTS**.
 
+### Network requirements
+
+The following port needs to be accessible on your host machine (through a web browser) for all pre-configured environments:
+
+`8081` (UI)
+
+If you have chosen to use the HDP or CDH Sandbox, then the following ports must also be accessible:
+
+**HDP Sandbox**  
+`8080` (Ambari), `8000` (Hue)
+
+**CDH Sandbox**  
+`7180` (Cloudera), `8889` (Hue)
+
 ### Host packages
 
 The required packages are as follows:

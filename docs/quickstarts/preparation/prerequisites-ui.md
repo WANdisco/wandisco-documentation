@@ -11,7 +11,10 @@ The following prerequisites are required on the machine that will host the manag
 * Linux operating system (CentOS/RHEL-based, Debian-based or SUSE Linux).
 * Root or sudo access on your host machine.
 * Java 1.8 64-bit.
+* Port `8081` accessible on your host machine (to access the UI through a web browser).
 * Network connectivity to existing Fusion servers.
+  * Your host machine must have access to the API port on each Fusion server host.
+  * The default API port is `8082` for HTTP (non-SSL) connections, and `8084` for HTTPS (SSL enabled) connections.
 
 ### Existing deployments
 
