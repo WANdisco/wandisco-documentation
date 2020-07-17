@@ -20,10 +20,10 @@ The above commands assume that the package is inside your working directory.
 
 The following directories are created during the installation of the UI:
 
-_Operation:_ `/opt/wandisco/one-ui-server/`  
-_Configuration files:_ `/etc/wandisco/one-ui-server/`  
-_Logs:_ `/var/log/fusion/one-ui-server/`  
-_Runtime:_ `/var/run/fusion/one-ui-server/`
+_Operation:_ `/opt/wandisco/ui/`  
+_Configuration files:_ `/etc/wandisco/ui/`  
+_Logs:_ `/var/log/wandisco/ui/`  
+_Runtime:_ `/var/run/wandisco/ui/`
 
 ### Start the service
 

@@ -8,7 +8,7 @@ sidebar_label: UI Troubleshooting
 
 The logs for the UI are located in the following directory on your host machine:
 
-`/var/log/fusion/one-ui-server/`
+`/var/log/wandisco/ui/`
 
 The directory contents will look similar to that of below:
 

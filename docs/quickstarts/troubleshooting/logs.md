@@ -70,7 +70,7 @@ _Fusion Live Hive Proxy:_
 `/var/log/fusion/plugins/live-hive-proxy/`
 
 _Fusion OneUI:_
-`/var/log/fusion/oneui/`
+`/var/log/wandisco/ui/`
 
 ### Debug container
 
@@ -111,7 +111,7 @@ Live Hive Proxy:
 `/debug/<zone-name>/plugins/live-hive-proxy/`
 
 OneUI:
-`/debug/oneui-server/oneui/`
+`/debug/oneui-server/ui/`
 
 ## Obtaining log files
 
