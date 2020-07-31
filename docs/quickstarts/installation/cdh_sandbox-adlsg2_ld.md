@@ -52,40 +52,15 @@ Log in to your VM prior to starting these steps.
 
 ### Setup Fusion
 
-1. Clone the Fusion docker repository to your Azure VM instance:
+1. Clone the Fusion docker repository:
 
-   `git clone https://github.com/WANdisco/fusion-docker-compose.git`
+   `git clone https://github.com/WANdisco/cdh-adls2.git`
 
 1. Change to the repository directory:
 
-   `cd fusion-docker-compose`
+   `cd cdh-adls2`
 
-1. Run the setup script:
-
-   `./setup-env.sh`
-
-1. Choose the `CDH Sandbox to custom distribution` option when prompted.
-
-1. Enter the second zone details:
-
-   * Second zone type = `adls2`
-   * Second zone name = _press enter for the default value_
-
-1. Enter the CDH Sandbox zone details:
-
-   _Examples:_
-
-   * Plugins = `NONE`
-
-1. Enter the ADLS Gen2 zone details:
-
-   _Examples:_
-
-   * [HDI version](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning) = `3.6`
-     * This is required even if you are not intending to use a HDI cluster.
-   * Plugins = `NONE`
-
-1. You have now completed the setup, to create and start your containers run:
+1. Create and start your containers:
 
    `docker-compose up -d`
 
