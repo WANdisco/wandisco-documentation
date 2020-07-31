@@ -61,21 +61,15 @@ Log in to your VM prior to starting these steps.
 
 ### Setup Fusion
 
-1. Clone the Fusion docker repository to your Azure VM instance:
+1. Clone the Fusion docker repository:
 
-   `git clone https://github.com/WANdisco/fusion-docker-compose.git`
+   `git clone https://github.com/WANdisco/hdp-adls2.git`
 
 1. Change to the repository directory:
 
-   `cd fusion-docker-compose`
+   `cd hdp-adls2`
 
-1. Run the setup script:
-
-   `./setup-env.sh`
-
-1. Choose the `HDP Sandbox to ADLS Gen2, Live Hive and Databricks integration` option when prompted.
-
-1. You have now completed the setup, to create and start your containers run:
+1. Create and start your containers:
 
    `docker-compose up -d`
 

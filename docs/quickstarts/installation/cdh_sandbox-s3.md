@@ -54,19 +54,13 @@ Log in to your VM prior to starting these steps.
 
 1. Clone the Fusion docker repository:
 
-   `git clone https://github.com/WANdisco/fusion-docker-compose.git`
+   `git clone https://github.com/WANdisco/cdh-s3.git`
 
 1. Change to the repository directory:
 
-   `cd fusion-docker-compose`
+   `cd cdh-s3`
 
-1. Run the setup script:
-
-   `./setup-env.sh`
-
-1. Choose the `CDH Sandbox to S3` option when prompted.
-
-1. You have now completed the setup, to create and start your containers run:
+1. Create and start your containers:
 
    `docker-compose up -d`
 
