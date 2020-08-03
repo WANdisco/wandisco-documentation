@@ -4,7 +4,7 @@ title: General troubleshooting
 sidebar_label: General
 ---
 
-The issues listed here are not specific to any distribution or plugin, and may be seen on any Fusion deployment.
+The issues listed here are not specific to any distribution or plugin, and may be seen on any LiveData Plane deployment.
 
 If looking for an issue that is specific to a distribution or plugin, select the appropriate option on the sidebar.
 
@@ -30,7 +30,7 @@ To resolve this, either switch to root user (e.g. `sudo -i`) or run the commands
 
 `$ sudo apt-get update && sudo apt install -y git`
 
-### Error 'connection refused' after starting Fusion for the first time
+### Error 'connection refused' after starting LiveData Plane for the first time
 
 You may see this error when running `docker-compose up -d` for the first time inside the `fusion-docker-compose` directory:
 
@@ -40,19 +40,19 @@ ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.
 
 Running the `docker-compose up -d` command a second time will fix the issue.
 
-### Fusion zones not inducted together
+### LiveData Plane zones not inducted together
 
-If the Fusion zones are not inducted together after starting Fusion for the first time (`docker-compose up -d`), run the same command again to start the induction container:
+If the LiveData Plane zones are not inducted together after starting LiveData Plane for the first time (`docker-compose up -d`), run the same command again to start the induction container:
 
 `docker-compose up -d`
 
 ## Azure specific
 
-### Unable to access Ambari, Cloudera or Fusion UI on VM
+### Unable to access Ambari, Cloudera or LiveData Plane UI on VM
 
 Depending on how your Network IP or DNS hostname resolution is set up for your Azure environment, you may experience issues when trying to access hosted services on the VM.
 
-These services require you to access them on a standard port such as 8080 (Ambari), 7180 (Cloudera) or 8081 (Fusion UI), for example:
+These services require you to access them on a standard port such as 8080 (Ambari), 7180 (Cloudera) or 8081 (LiveData Plane UI), for example:
 
 `http://<vm_ip_address>:8081`
 

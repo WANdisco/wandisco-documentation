@@ -4,12 +4,12 @@ title: Cloudera (CDH) Sandbox to ADLS Gen2
 sidebar_label: CDH Sandbox to ADLS Gen2
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an ADLS Gen2 container.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Cloudera (CDH) Sandbox to an ADLS Gen2 container.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with ADLS Gen2 storage.
+- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with ADLS Gen2 storage.
 
 If you would like to try something different with the CDH Sandbox, see:
 
@@ -50,9 +50,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/cdh-adls2.git`
 
@@ -109,7 +109,7 @@ Follow our [CDH Sandbox LiveData testing guide](../testing/test-cdh-sandbox-live
 
 ## Troubleshooting
 
-* If you are unable to access the Cloudera or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
+* If you are unable to access the Cloudera or LiveData Plane UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
 
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
 

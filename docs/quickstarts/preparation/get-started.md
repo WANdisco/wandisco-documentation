@@ -1,24 +1,24 @@
 ---
 id: get-started
-title: Get Started with Fusion
-sidebar_label: Get Started with Fusion
+title: Get Started with LiveData Plane
+sidebar_label: Get Started with LiveData Plane
 ---
 
-WANdisco Fusion allows you to connect to different storages and transfer data between them.
+WANdisco LiveData Plane allows you to connect to different storages and transfer data between them.
 
-Choose how to set up WANdisco Fusion depending on your goals.
+Choose how to set up LiveData Plane depending on your goals.
 
-## Dockerized Fusion
+## Dockerized LiveData Plane
 
-Learn how to migrate and replicate data with WANdisco Fusion and [Docker](https://docs.docker.com/) in pre-configured environments.
+Learn how to migrate and replicate data with LiveData Plane and [Docker](https://docs.docker.com/) in pre-configured environments.
 
-All Dockerized Fusion environments come with the [LiveMigrator plugin](https://docs.wandisco.com/bigdata/wdfusion/plugins/live-migrator/6.0) for testing migrations.
+All Dockerized LiveData Plane environments come with the [LiveMigrator plugin](https://docs.wandisco.com/bigdata/wdfusion/plugins/live-migrator/6.0) for testing migrations.
 
 ## Manage existing deployments
 
-Manage existing WANdisco Fusion deployments by connecting them to a centralized user interface (UI).
+Manage existing LiveData Plane deployments by connecting them to a centralized user interface (UI).
 
-All Fusion operations can then be carried out from this interface.
+All LiveData Plane operations can then be carried out from this interface.
 
 ## Next steps
 

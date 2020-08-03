@@ -4,14 +4,14 @@ title: Hortonworks (HDP) Sandbox to Azure Databricks with LiveAnalytics
 sidebar_label: HDP Sandbox to Azure Databricks with LiveAnalytics
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an Azure Databricks cluster.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an Azure Databricks cluster.
 
-This uses the [WANdisco LiveAnalytics](https://wandisco.com/products/live-analytics) solution, comprising both the Fusion Plugin for Databricks Delta Lake and Live Hive.
+This uses the [WANdisco LiveAnalytics](https://wandisco.com/products/live-analytics) solution, comprising both LiveData for Databricks and the Hive Plugin.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with Azure Databricks.
+- Installing LiveData Plane and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with Azure Databricks.
 
 If you would like to try something different with the HDP Sandbox, see:
 
@@ -59,9 +59,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/hdp-adls2.git`
 
@@ -106,7 +106,7 @@ The HDP sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Click **Apply Configuration** and wait for this to complete.
 
-### Configure Fusion Plugin for Databricks Delta Lake
+### Configure LiveData for Databricks
 
 1. Click on the **Settings** cog in the **ADLS GEN2** storage, and fill in the details for your Databricks cluster. See the [Info you will require](#info-you-will-require) section for reference.
 
@@ -118,7 +118,7 @@ Follow our [HDP Sandbox LiveAnalytics testing guide](../testing/test-hdp-sandbox
 
 ## Troubleshooting
 
-* If you are unable to access the Ambari or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
+* If you are unable to access the Ambari or LiveData Plane UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
 
 * See our [Troubleshooting](../troubleshooting/hdp_sandbox_troubleshooting.md) guide for help with this install.
 
@@ -128,9 +128,9 @@ Follow our [HDP Sandbox LiveAnalytics testing guide](../testing/test-hdp-sandbox
 
 ![Architecture: HDP Sandbox to Azure Databricks with LiveAnalytics](/wandisco-documentation/img/arch_hdp_sandbox_az_databricks_lan.jpg)
 
-1. Live Hive Proxy will intercept and co-ordinate the Hive request with the Fusion Server on the HDP zone.
-1. If the request is on a database/table that matches a Hive rule, the Fusion Server in the HDP zone will coordinate with the Fusion Server in the ADLS Gen2 zone (read requests are passed through to Hive). Metadata is replicated from the HDP zone to the ADLS Gen2 zone.
-1. Any related HDFS data writes/changes are read by the Fusion IHC in the HDP zone, and replicated to the Fusion Server in the ADLS Gen2 zone.
-1. The Fusion Server in the ADLS zone will transform the Hive metadata to equivalent changes on the Azure Databricks Delta Lake tables.
-1. The Fusion Server in the ADLS zone will transform the HDFS data to equivalent ADLS Gen2 storage changes.
-1. The ADLS Gen2 storage changes are then pushed to the Databricks cluster automatically through Fusion's ETL library (installed on the Databricks cluster).
+1. Live Hive Proxy will intercept and co-ordinate the Hive request with the LiveData Plane Server on the HDP zone.
+1. If the request is on a database/table that matches a Hive rule, the LiveData Plane Server in the HDP zone will coordinate with the LiveData Plane Server in the ADLS Gen2 zone (read requests are passed through to Hive). Metadata is replicated from the HDP zone to the ADLS Gen2 zone.
+1. Any related HDFS data writes/changes are read by the IHC Server in the HDP zone, and replicated to the LiveData Plane Server in the ADLS Gen2 zone.
+1. The LiveData Plane Server in the ADLS zone will transform the Hive metadata to equivalent changes on the Azure Databricks Delta Lake tables.
+1. The LiveData Plane Server in the ADLS zone will transform the HDFS data to equivalent ADLS Gen2 storage changes.
+1. The ADLS Gen2 storage changes are then pushed to the Databricks cluster automatically through LiveData Plane's ETL library (installed on the Databricks cluster).

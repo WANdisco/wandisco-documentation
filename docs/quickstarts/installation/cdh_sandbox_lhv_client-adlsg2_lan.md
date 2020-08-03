@@ -4,14 +4,14 @@ title: Cloudera (CDH) Sandbox to Azure Databricks with LiveAnalytics
 sidebar_label: CDH Sandbox to Azure Databricks with LiveAnalytics
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an Azure Databricks cluster.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Cloudera (CDH) Sandbox to an Azure Databricks cluster.
 
-This uses the [WANdisco LiveAnalytics](https://wandisco.com/products/live-analytics) solution, comprising both the Fusion Plugin for Databricks Delta Lake and Live Hive.
+This uses the [WANdisco LiveAnalytics](https://wandisco.com/products/live-analytics) solution, comprising both LiveData for Databricks and the Hive Plugin.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with Azure Databricks.
+- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with Azure Databricks.
 
 If you would like to try something different with the CDH Sandbox, see:
 
@@ -59,9 +59,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/cdh-adls2.git`
 
@@ -106,7 +106,7 @@ The CDH sandbox services can take up to 5-10 minutes to start. To check that the
 
 1. Click **Apply Configuration** and wait for this to complete.
 
-### Configure Fusion Plugin for Databricks Delta Lake
+### Configure LiveData for Databricks
 
 1. Click on the **Settings** cog in the **ADLS GEN2** storage, and fill in the details for your Databricks cluster. See the [Info you will require](#info-you-will-require) section for reference.
 
@@ -114,11 +114,11 @@ The CDH sandbox services can take up to 5-10 minutes to start. To check that the
 
 ## Next steps
 
-Follow our [CDH Sandbox LiveAnalytics testing guide](../testing/test-cdh-sandbox-liveanalytics.md) to replicate to your Databricks cluster.
+Follow our [CDH Sandbox LiveData for Databricks testing guide](../testing/test-cdh-sandbox-liveanalytics.md) to replicate to your Databricks cluster.
 
 ## Troubleshooting
 
-* If you are unable to access the Cloudera or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
+* If you are unable to access the Cloudera or LiveData Plane UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
 
 * See our [Troubleshooting](../troubleshooting/cdh_sandbox_troubleshooting.md) guide for help with this install.
 

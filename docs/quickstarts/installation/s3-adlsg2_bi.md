@@ -4,13 +4,13 @@ title: AWS S3 and Azure Data Lake Storage Gen2
 sidebar_label: AWS S3 & ADLS Gen2
 ---
 
-Use this quickstart to configure Fusion to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or from an ADLS Gen2 container to an AWS S3 bucket. 
+Use this quickstart to configure LiveData Plane to migrate data from an AWS S3 bucket to an ADLS Gen2 container, or from an ADLS Gen2 container to an AWS S3 bucket. 
 The set up is the same for either scenario, just choose the direction when starting your migration.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with AWS S3 and ADLS Gen2 storage.
+- Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with AWS S3 and ADLS Gen2 storage.
 
 ## Prerequisites
 
@@ -55,9 +55,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository to your Azure VM instance:
+1. Clone the LiveData Plane docker repository to your Azure VM instance:
 
    `git clone https://github.com/WANdisco/fusion-docker-compose.git`
 
@@ -109,12 +109,12 @@ Log in to your VM prior to starting these steps.
 
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
 
-_Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you._
+_Contact [WANdisco](https://wandisco.com/contact) for further information about LiveData Plane and what it can offer you._
 
 ## Reference architecture
 
 ![Architecture: S3 and ADLS Gen2](/wandisco-documentation/img/arch_s3_adlsg2_bi.jpg)
 
-1. When initiating a migration, Fusion LiveMigrator will scan the S3 or ADLS Gen2 storage depending on which is selected as [source](../../glossary/s.md#source)).
-1. Any new files or differences are read by the Fusion IHC in the source zone, and replicated to the Fusion Server in the [target](../../glossary/t.md#target) zone.
-1. The Fusion Server in the target zone will transform the data to equivalent target storage changes. LiveMigrator will overwrite or skip existing files on the target storage depending on the settings used.
+1. When initiating a migration, LiveMigrator will scan the S3 or ADLS Gen2 storage depending on which is selected as [source](../../glossary/s.md#source)).
+1. Any new files or differences are read by the IHC Server in the source zone, and replicated to the LiveData Plane Server in the [target](../../glossary/t.md#target) zone.
+1. The LiveData Plane Server in the target zone will transform the data to equivalent target storage changes. LiveMigrator will overwrite or skip existing files on the target storage depending on the settings used.

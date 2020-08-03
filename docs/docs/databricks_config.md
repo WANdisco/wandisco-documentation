@@ -4,7 +4,7 @@ title: Databricks Configuration
 sidebar_label: Databricks Config
 ---
 
-Your Databricks cluster details are required when configuring Fusion.
+Your Databricks cluster details are required when configuring LiveData Plane.
 
 ## Databricks Service Address (Instance name)
 

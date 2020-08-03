@@ -9,9 +9,9 @@ Hadoop MapReduce is a software framework for writing applications to process lar
 
 ## Membership
 
-*This term is redundant as of Fusion 2.11.*
+*This term is redundant as of LiveData Plane 2.11.*
 
-A Membership is a defined group of WANdisco Fusion servers that replicate data between their Zones. You can have as many WANdisco Fusion servers in a Membership as you like, and each WANdisco Fusion server can participate in multiple Memberships. WANdisco Fusion allows you to define multiple Memberships, and WANdisco Fusion servers can fulfil different roles in each Membership they participate in. This allows you to control exactly how your WANdisco Fusion environment operates normally, and how it behaves when faced with network failures, host failures and other types of issues.
+A Membership is a defined group of LiveData Plane servers that replicate data between their Zones. You can have as many LiveData Plane servers in a Membership as you like, and each LiveData Plane server can participate in multiple Memberships. LiveData Plane allows you to define multiple Memberships, and LiveData Plane servers can fulfil different roles in each Membership they participate in. This allows you to control exactly how your LiveData Plane environment operates normally, and how it behaves when faced with network failures, host failures and other types of issues.
 
 ## Microsoft Azure
 See [Azure](a.md#azure).  

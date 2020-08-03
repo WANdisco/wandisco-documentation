@@ -1,7 +1,7 @@
 ---
 id: kerberos_hdp
-title: Kerberos (HDP) integration with Fusion
-sidebar_label: Kerberos (HDP) integration with Fusion
+title: Kerberos (HDP) integration with LiveData Plane
+sidebar_label: Kerberos (HDP) integration with LiveData Plane
 ---
 
 [//]: <To-do = NameNode Proxy integration.>
@@ -10,32 +10,32 @@ _THIS GUIDE IS WORK IN PROGRESS, PLEASE DO NOT FOLLOW ANYTHING HERE UNTIL THIS W
 
 ## Introduction
 
-This guide should be followed when you want to enable your Fusion installation to work with a Kerberized Hortonworks (HDP) cluster.
+This guide should be followed when you want to enable your LiveData Plane installation to work with a Kerberized Hortonworks (HDP) cluster.
 
 ## Prerequisites
 
-* See [Quickstart guidance](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/installation-quickstarts) for instructions on how to install and configure Fusion with a HDP zone.
+* See [Quickstart guidance](https://wandisco.github.io/wandisco-documentation/docs/quickstarts/installation/installation-quickstarts) for instructions on how to install and configure LiveData Plane with a HDP zone.
 * An `/etc/hosts` entry for the Docker hostname plus `fusion-server-hdp` on all nodes in the HDP cluster.
 
   _Example -_ `172.0.0.4  docker_host01 fusion-server-hdp`
 * KDC administrator credentials for the HDP cluster.
-* A Kerberos keytab and principal to be used with Fusion. The principal must map to a user that has superuser permissions. This is commonly done by using the HDFS keytab with Fusion.
+* A Kerberos keytab and principal to be used with LiveData Plane. The principal must map to a user that has superuser permissions. This is commonly done by using the HDFS keytab with LiveData Plane.
   - - -
-  This could also be done by creating a keytab and principal for Fusion with either:
-  * An [auth_to_local](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.4/security-reference/content/kerberos_nonambari_creating_mappings_between_principals_and_unix_usernames.html) rule that maps the Fusion principal to a superuser.
+  This could also be done by creating a keytab and principal for LiveData Plane with either:
+  * An [auth_to_local](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.4/security-reference/content/kerberos_nonambari_creating_mappings_between_principals_and_unix_usernames.html) rule that maps the LiveData Plane principal to a superuser.
 
     _Example rule_ - `RULE:[1:$1@$0](fusionuser@WANDISCO.HADOOP)s/.*/hdfs/`
-  * An [auth_to_local](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.4/security-reference/content/kerberos_nonambari_creating_mappings_between_principals_and_unix_usernames.html) rule that maps the Fusion principal to a user that is added to the HDFS supergroup on the NameNodes.
+  * An [auth_to_local](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.4/security-reference/content/kerberos_nonambari_creating_mappings_between_principals_and_unix_usernames.html) rule that maps the LiveData Plane principal to a user that is added to the HDFS supergroup on the NameNodes.
 
     _Example rule_ - `RULE:[1:$1@$0](fusionuser@WANDISCO.HADOOP)s/.*/fusionuser/`
 
     _Example command on NameNodes_ - `usermod fusionuser -G hdfs`
   - - -
-* The keytab to be used with Fusion should be stored in the `/etc/security/keytabs` directory on the Ambari Server.
+* The keytab to be used with LiveData Plane should be stored in the `/etc/security/keytabs` directory on the Ambari Server.
 
-## Integrating Kerberos with Fusion
+## Integrating Kerberos with LiveData Plane
 
-This method will allow the Hadoop configuration and Kerberos keytabs to be shared with the Fusion installation, by inducting a specific container into the HDP cluster.
+This method will allow the Hadoop configuration and Kerberos keytabs to be shared with the LiveData Plane installation, by inducting a specific container into the HDP cluster.
 
 ### Add the SSHD container to the HDP cluster
 
@@ -43,7 +43,7 @@ This method will allow the Hadoop configuration and Kerberos keytabs to be share
 
    `cd /path/to/fusion-docker-compose`
 
-2. Ensure the Fusion containers are running.
+2. Ensure the LiveData Plane containers are running.
 
    `docker-compose ps`
 
@@ -187,23 +187,23 @@ This method will allow the Hadoop configuration and Kerberos keytabs to be share
 
    `[root@<AMBARI_SERVER> ~]# scp -i hdp-key.pem -P 2022 /etc/krb5.conf <SSHD_CONTAINER>:/etc/shared/krb5.conf`
 
-2. If required, transfer the keytab to be used with Fusion to the SSHD container.
+2. If required, transfer the keytab to be used with LiveData Plane to the SSHD container.
 
    `[root@<AMBARI_SERVER> ~]# scp -i hdp-key.pem -P 2022 /etc/security/keytabs/${FUSION_KEYTAB}.keytab <SSHD_CONTAINER>:/etc/security/keytabs/`
 
    This should not be required if using an auto-generated keytab (such as the `hdfs` keytab) within the `/etc/security/keytabs` directory, as it will have been mapped to the SSHD container automatically.
 
-3. Create two directories within HDFS on the cluster that will be used specifically by Fusion (ensure to `kinit` beforehand).
+3. Create two directories within HDFS on the cluster that will be used specifically by LiveData Plane (ensure to `kinit` beforehand).
 
    `[root@<AMBARI_SERVER> ~]# hdfs dfs -mkdir -p /wandisco/exchange_dir`
 
    `[root@<AMBARI_SERVER> ~]# hdfs dfs -mkdir -p /wandisco/handshake_tokens`
 
-   Ensure they are owned by the Fusion user, in the example below, the Fusion user will be `hdfs`.
+   Ensure they are owned by the LiveData Plane user, in the example below, the LiveData Plane user will be `hdfs`.
 
    `[root@<AMBARI_SERVER> ~]# hdfs dfs -chown hdfs:hdfs -R /wandisco`
 
-4. Add Fusion properties to the HDFS config on the cluster.
+4. Add LiveData Plane properties to the HDFS config on the cluster.
 
    **Ambari UI -> HDFS -> Configs -> Advanced -> Custom core-site**
 
@@ -248,9 +248,9 @@ This method will allow the Hadoop configuration and Kerberos keytabs to be share
 
 5. **Restart the cluster services.**
 
-### Configure Fusion
+### Configure LiveData Plane
 
-1. Log in to the Docker host via terminal, edit the `ui.properties` file on the Fusion UI container in the HDP zone.
+1. Log in to the Docker host via terminal, edit the `ui.properties` file on the LiveData Plane UI container in the HDP zone.
 
    `root@<DOCKER_HOST>:~# docker exec -it fusion_fusion-ui-server-hdp_1 bash`
 
@@ -273,11 +273,11 @@ This method will allow the Hadoop configuration and Kerberos keytabs to be share
 
 [//]: <DAP-173>
 
-2. Adjust the ownership of required files inside of one of the Fusion containers in the HDP zone.
+2. Adjust the ownership of required files inside of one of the LiveData Plane containers in the HDP zone.
 
    `root@<DOCKER_HOST>:~# docker exec -u root -it fusion_fusion-server-hdp_1 bash -c 'chown hdfs:hdfs /etc/security/keytabs/hdfs.headless.keytab /etc/hadoop/conf/core-site.xml /etc/hadoop/conf/hdfs-site.xml'`
 
-3. Restart the Fusion containers in the HDP zone (except SSHD) so that the configuration is picked up by Fusion. You must be inside the `fusion-docker-compose` directory to run this command.
+3. Restart the LiveData Plane containers in the HDP zone (except SSHD) so that the configuration is picked up by LiveData Plane. You must be inside the `fusion-docker-compose` directory to run this command.
 
    `root@<DOCKER_HOST>:~/fusion-docker-compose# docker-compose restart fusion-ihc-server-hdp fusion-server-hdp fusion-ui-server-hdp fusion-nn-proxy-hdp`
 

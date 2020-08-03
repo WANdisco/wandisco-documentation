@@ -4,7 +4,7 @@ title: application.properties
 sidebar_label: application.properties
 ---
 
-The Fusion Server configuration properties are found in `/etc/wandisco/fusion/server/application.properties`.
+The LiveData Plane Server configuration properties are found in `/etc/wandisco/fusion/server/application.properties`.
 
 ## Default installation properties
 
@@ -28,7 +28,7 @@ Specifies the minimum time interval that triggers the generation of a status mes
 
 ### `application.hostname`
 
-This is the hostname used in reporting the Fusion server’s address.
+This is the hostname used in reporting the LiveData Plane server’s address.
 
 - An FQDN, for example docs01-vm01.example.com
 - Checked at startup
@@ -163,7 +163,7 @@ The fast requests are all requests that do not involve a pull of data from anoth
 
 ### `fusion.client.ssl.enabled`
 
-Enables SSL between the Fusion Server - Fusion Client.
+Enables SSL between the LiveData Plane Server - LiveData Plane Client.
 
 - True/**false**
 
@@ -232,14 +232,14 @@ Enables authorization on the REST API. Authentication must also be enabled.
 
 ### `fusion.http.policy`
 
-Determines the transfer protocol(s) to be supported by Fusion Server.
+Determines the transfer protocol(s) to be supported by LiveData Plane Server.
 
 - **HTTP_ONLY**, HTTPS_ONLY, BOTH_HTTP_HTTPS
 - Checked at startup
 
 ### `fusion.replicated.dir.exchange`
 
-Location of a directory in the replicated filesystem to which Fusion server will write information about replicated directories for clients to read. It’s necessary to configure the same in the core-site.xml, so that it generates the necessary data.
+Location of a directory in the replicated filesystem to which LiveData Plane server will write information about replicated directories for clients to read. It’s necessary to configure the same in the core-site.xml, so that it generates the necessary data.
 
 - Default is `/wandisco/exchange_dir`, can be any underlying filesystem path not under replication
 - Checked at startup
@@ -253,14 +253,14 @@ Whether SSL is enabled for IHC network communications.
 
 ### `jetty.http.port`
 
-The port the Fusion HTTP API will use.
+The port the LiveData Plane HTTP API will use.
 
 - Default - 8082, range 1 – 65535
 - Checked at startup
 
 ### `jetty.https.port`
 
-The port the Fusion HTTPS API will use (if SSL is enabled).
+The port the LiveData Plane HTTPS API will use (if SSL is enabled).
 
 - Default - 8084, range 1 – 65535
 - Checked at startup
@@ -274,7 +274,7 @@ The maximum agreements that a node in a Zone can be behind before it is disabled
 
 ### `log.location`
 
-The directory in which the Fusion Server stores log files.
+The directory in which the LiveData Plane Server stores log files.
 
 - Default - `/var/log/fusion/server`, a local filesystem directory.
 - Checked at startup
@@ -288,14 +288,14 @@ The number of agreements DConE will hold in the agreement store - this store hol
 
 ### `node.id`
 
-The unique identifier given to the Fusion node automatically at installation.
+The unique identifier given to the LiveData Plane node automatically at installation.
 
 - A Hexadecimal number (must not be altered)
 - Checked at startup
 
 ### `node.name`
 
-The name set for the Fusion node. Adjustable in the Fusion UI.
+The name set for the LiveData Plane node. Adjustable in the LiveData Plane UI.
 
 - Any String
 - Checked at startup
@@ -323,14 +323,14 @@ Number of executor threads dedicated for repair tasks only.
 
 ### `request.port`
 
-The port Fusion clients will use to connect the Fusion server.
+The port LiveData Plane clients will use to connect the LiveData Plane server.
 
 - Default - 8023, range 1 – 65535
 - Checked at startup
 
 ### `ssl.enabled`
 
-Whether SSL is enabled for Fusion Server communications.
+Whether SSL is enabled for LiveData Plane Server communications.
 
 - True/**false**
 - Checked at startup
@@ -363,7 +363,7 @@ Encrypted password of key store. Can be encrypted using encrypt-password.sh.
 
 ### `ssl.truststore`
 
-Local filesystem path of trust store used to validate certificates sent by other Fusion Servers or IHC servers.
+Local filesystem path of trust store used to validate certificates sent by other LiveData Plane Servers or IHC servers.
 
 - Absolute path to trust store.
 - Checked at startup
@@ -390,7 +390,7 @@ The size of the ChunkedStream.
 
 ### `zone`
 
-The zone name for where the Fusion server is located. This is set during installation.
+The zone name for where the LiveData Plane server is located. This is set during installation.
 
 - Any String (must not be altered)
 - Checked at startup
@@ -399,7 +399,7 @@ The zone name for where the Fusion server is located. This is set during install
 ## Properties which can be added
 
 ### `agreed.proposal.store.rollback`
-Determines whether the Fusion server will attempt to rollback any uncommitted transactions on start up.
+Determines whether the LiveData Plane server will attempt to rollback any uncommitted transactions on start up.
 
 - True/**false**
 - Checked at startup
@@ -428,7 +428,7 @@ If it takes longer than this time to garbage collect the coordinated requests (G
 
 ### `ihc.connect.timeout`
 
-Timeout on how long Fusion should wait for IHC connection being established (networking timeout).
+Timeout on how long LiveData Plane should wait for IHC connection being established (networking timeout).
 
 - Default - 60000L (in ms). Any positive integer permitted.
 - Checked at startup

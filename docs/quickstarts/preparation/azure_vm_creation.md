@@ -1,10 +1,10 @@
 ---
 id: azure_vm_creation
-title: Creating an Azure Linux Virtual Machine for a Fusion installation
+title: Creating an Azure Linux Virtual Machine for a LiveData Plane installation
 sidebar_label: Azure VM Creation
 ---
 
-Create an Azure Linux Virtual Machine (VM) suitable for a Dockerized Fusion installation:
+Create an Azure Linux Virtual Machine (VM) suitable for a Dockerized LiveData Plane installation:
 
 * Download a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
 * Obtain [Azure parameters](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-create) to create the VM.

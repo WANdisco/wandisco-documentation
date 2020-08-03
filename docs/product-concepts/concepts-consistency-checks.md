@@ -12,7 +12,7 @@ You can perform consistency checks to check how much data is synchronized or che
 
 ## Implementation
 
-When you initiate a consistency check on a replicated path, a Fusion server in each zone retrieves and stores the current state of the path within the underlying zone's filesystem (e.g. `/repl1/.fusion/CC_METADATA_DIR`). This metadata is then shared between the Fusion zones and compared for differences between them.
+When you initiate a consistency check on a replicated path, a LiveData Plane server in each zone retrieves and stores the current state of the path within the underlying zone's filesystem (e.g. `/repl1/.fusion/CC_METADATA_DIR`). This metadata is then shared between the LiveData Plane zones and compared for differences between them.
 
 This relates to each file and directory within the path, and the differences include:
 

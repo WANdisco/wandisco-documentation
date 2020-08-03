@@ -1,10 +1,10 @@
 ---
 id: vm_prep
-title: Preparing a Virtual Machine for a Fusion installation
+title: Preparing a Virtual Machine for a LiveData Plane installation
 sidebar_label: VM Preparation
 ---
 
-This quickstart helps you prepare an Linux Virtual Machine (VM) suitable for a Fusion installation using docker. It walks you through:
+This quickstart helps you prepare an Linux Virtual Machine (VM) suitable for a LiveData Plane installation using docker. It walks you through:
 
 * Installation of services.
 * Verification of available storage for docker images.

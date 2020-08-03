@@ -1,6 +1,6 @@
 ---
 id: benefits
-title: The Benefits of WANdisco Fusion
+title: The Benefits of WANdisco LiveData Plane
 sidebar_label: Benefits
 ---
 

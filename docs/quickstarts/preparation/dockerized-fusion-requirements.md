@@ -1,6 +1,6 @@
 ---
 id: dockerized-fusion-requirements
-title: Dockerized Fusion Requirements
+title: Dockerized LiveData Plane Requirements
 sidebar_label: Requirements
 ---
 
@@ -8,7 +8,7 @@ sidebar_label: Requirements
 
 Select your [pre-configured environment](../installation/installation-quickstarts.md) before running through these instructions.
 
-All Dockerized Fusion environments require a host machine that meets minimum specifications, and each pre-configured environment may vary in the minimum specification needed.
+All Dockerized LiveData Plane environments require a host machine that meets minimum specifications, and each pre-configured environment may vary in the minimum specification needed.
 
 ## Create a host machine
 
@@ -21,7 +21,7 @@ Alternatively, create and use one of your own hosts and install the required pac
 
 ### Host specifications
 
-Ensure that the host meets the minimum size recommendation specified in the installation guides for Dockerized Fusion.
+Ensure that the host meets the minimum size recommendation specified in the installation guides for Dockerized LiveData Plane.
 
 For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hdp_sandbox-adlsg2_lm.md#prerequisites) guide requires the following:
 

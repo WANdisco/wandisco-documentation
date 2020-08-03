@@ -6,17 +6,17 @@ sidebar_label: Core Platform & DConE
 
 ## Core Platform
 
-Keeping data consistent in a distributed environment is a massive challenge. WANdisco Fusion, an enterprise-class software platform, solves the exponentially growing challenge of keeping unstructured data available across diverse IT environments regardless of geographic location, architecture, or cloud storage provider.
+Keeping data consistent in a distributed environment is a massive challenge. WANdisco LiveData Plane, an enterprise-class software platform, solves the exponentially growing challenge of keeping unstructured data available across diverse IT environments regardless of geographic location, architecture, or cloud storage provider.
 
-WANdisco Fusion is a foundation for a modern cloud data strategy — a LiveData strategy — because it prevents data disasters, de-risks data migration to the cloud, and simplifies hybrid cloud data management.
+LiveData Plane is a foundation for a modern cloud data strategy — a LiveData strategy — because it prevents data disasters, de-risks data migration to the cloud, and simplifies hybrid cloud data management.
 
 ## Distributed Coordination Engine (DConE)
 
 **What is DConE and how is it different?**
 
-WANdisco Fusion is powered by DConE, which is a high-performance, coordination engine able to work across wide-area networks. The technology uses distributed consensus to guarantee data consistency.
+LiveData Plane is powered by DConE, which is a high-performance, coordination engine able to work across wide-area networks. The technology uses distributed consensus to guarantee data consistency.
 
-Traditional approaches to data replication are batch-based, do not guarantee data consistency, and cannot operate over wide-area networks or the public internet. Unlike other technologies which move data from one location to another, WANdisco Fusion uses DConE to coordinate distributed changes to data, enabling shared access to common data sets.
+Traditional approaches to data replication are batch-based, do not guarantee data consistency, and cannot operate over wide-area networks or the public internet. Unlike other technologies which move data from one location to another, LiveData Plane uses DConE to coordinate distributed changes to data, enabling shared access to common data sets.
 
 The technology works by applying a mathematically-proven approach to consensus, which works regardless of the distance between data sources or types of data storage.
 
@@ -51,6 +51,6 @@ At a glance, this could seem like an out-of-order filesystem operation, but it i
 
 **How does it recover from outages?**
 
-During replication, in the event that the Wide Area Network (WAN) link is temporarily dropped, recovery will occur automatically once the link is re-established. All Fusion nodes in the replicated ecosystem will communicate the proposal number they are currently on, and continue from the highest numbered proposal. This prevents any repeat of transactions that have already occurred prior to the link outage.
+During replication, in the event that the Wide Area Network (WAN) link is temporarily dropped, recovery will occur automatically once the link is re-established. All LiveData Plane nodes in the replicated ecosystem will communicate the proposal number they are currently on, and continue from the highest numbered proposal. This prevents any repeat of transactions that have already occurred prior to the link outage.
 
-If a Fusion node experiences an outage, once it comes online again, it will automatically be informed of any transactions already processed by the rest of the nodes in the replicated ecosystem.
+If a LiveData Plane node experiences an outage, once it comes online again, it will automatically be informed of any transactions already processed by the rest of the nodes in the replicated ecosystem.

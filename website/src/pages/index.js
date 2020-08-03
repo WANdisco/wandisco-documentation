@@ -20,7 +20,7 @@ const features = [
   {
     title: "Docker",
     imageUrl: "img/docker.png",
-    description: "Get up and running in minutes with Fusion & Docker.",
+    description: "Get up and running in minutes with LiveData Plane & Docker.",
   },
   {
     title: "OneUI",

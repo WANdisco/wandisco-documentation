@@ -100,7 +100,7 @@ If everything is correctly sorted, the `teravalidate-output` directory should co
 
 ## Next steps
 
-You have now set up live replication from your CDH Sandbox to your target storage. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you.
+You have now set up live replication from your CDH Sandbox to your target storage. Contact [WANdisco](https://wandisco.com/contact) for further information about LiveData Plane and what it can offer you.
 
 ## References
 

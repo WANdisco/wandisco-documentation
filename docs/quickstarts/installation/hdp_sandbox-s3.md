@@ -4,12 +4,12 @@ title: Hortonworks (HDP) Sandbox to AWS S3
 sidebar_label: HDP Sandbox to AWS S3
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an AWS S3 bucket.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an AWS S3 bucket.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with AWS S3.
+- Installing LiveData Plane and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with AWS S3.
 
 If you would like to try something different with the HDP Sandbox, see:
 
@@ -50,9 +50,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/hdp-s3.git`
 
@@ -115,6 +115,6 @@ Follow our [HDP Sandbox LiveData testing guide](../testing/test-hdp-sandbox-live
 
 ![Architecture: HDP Sandbox to S3](/wandisco-documentation/img/arch_hdp_sandbox_s3.jpg)
 
-1. If a HDFS write request is on a path that matches a HCFS rule, the Fusion Server in the HDP zone will coordinate with the Fusion Server in the S3 zone (read requests are passed through to HDFS).
-1. HDFS writes/changes are then read by the Fusion IHC in the HDP zone, and replicated to the Fusion Server in the S3 zone.
-1. The Fusion Server in the S3 zone will transform the HDFS data to equivalent S3 bucket changes.
+1. If a HDFS write request is on a path that matches a HCFS rule, the LiveData Plane Server in the HDP zone will coordinate with the LiveData Plane Server in the S3 zone (read requests are passed through to HDFS).
+1. HDFS writes/changes are then read by the IHC Server in the HDP zone, and replicated to the LiveData Plane Server in the S3 zone.
+1. The LiveData Plane Server in the S3 zone will transform the HDFS data to equivalent S3 bucket changes.

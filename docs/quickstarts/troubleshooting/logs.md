@@ -6,9 +6,9 @@ sidebar_label: Logs
 
 ## Components
 
-Log files are split into the various components that make up a Fusion installation.
+Log files are split into the various components that make up a LiveData Plane installation.
 
-* Fusion Server - one per zone.
+* LiveData Plane Server - one per zone.
 * IHC Server - one per zone.
 * UI Server - one per zone.
 * OneUI - one per installation.
@@ -42,11 +42,11 @@ fusion_sshd-sandbox-hdp_1                    /usr/local/bin/entrypointd ...   Up
 
 ### Individual containers
 
-You can log in to a container and view the logs for a specific component in a zone. For example, if you are wanting to view the Fusion Server's logs for the HDP Sandbox zone, run:
+You can log in to a container and view the logs for a specific component in a zone. For example, if you are wanting to view the LiveData Plane Server's logs for the HDP Sandbox zone, run:
 
 `docker-compose exec fusion-server-sandbox-hdp bash`
 
-Once inside, you can access the log directory for the Fusion Server.
+Once inside, you can access the log directory for the LiveData Plane Server.
 
 `cd /var/log/fusion/server`
 
@@ -54,27 +54,27 @@ Once inside, you can access the log directory for the Fusion Server.
 
 The list below highlights the log directory for each component in their individual containers:
 
-_Fusion Server:_
+_LiveData Plane Server:_
 `/var/log/fusion/server/`
 
-_Fusion IHC Server:_
+_IHC Server:_
 `/var/log/fusion/ihc/server/`
 
-_Fusion UI Server:_
+_UI Server:_
 `/var/log/fusion/ui/`
 
-_Fusion NameNode Proxy:_
+_NameNode Proxy:_
 `/var/log/fusion/plugins/live-nn/`
 
-_Fusion Live Hive Proxy:_
+_Live Hive Proxy:_
 `/var/log/fusion/plugins/live-hive-proxy/`
 
-_Fusion OneUI:_
+_LiveData Plane UI:_
 `/var/log/wandisco/ui/`
 
 ### Debug container
 
-The debug container holds all the Fusion log files for each component. You can log in to this container to view any log file in either zone.
+The debug container holds all the LiveData Plane log files for each component. You can log in to this container to view any log file in either zone.
 
 `docker-compose exec debug bash`
 
@@ -84,7 +84,7 @@ The `vim` and `less` commands are not available by default, to install them:
 
 #### Log locations
 
-You will be logged inside of the `/debug` directory, which contains directories for each Fusion zone and the OneUI (which is not linked to a specific zone).
+You will be logged inside of the `/debug` directory, which contains directories for each LiveData Plane zone and the OneUI (which is not linked to a specific zone).
 
 _Example_
 ```bash
@@ -95,7 +95,7 @@ drwxr-xr-x 7 1000 1000 4096 Mar 31 11:51 sandbox-hdp
 
 The log locations for each component are slightly different to that of the individual containers.
 
-Fusion Server:
+LiveData Plane Server:
 `/debug/<zone-name>/server/`
 
 IHC Server:
@@ -110,7 +110,7 @@ NameNode Proxy:
 Live Hive Proxy:
 `/debug/<zone-name>/plugins/live-hive-proxy/`
 
-OneUI:
+LiveData Plane UI:
 `/debug/oneui-server/ui/`
 
 ## Obtaining log files

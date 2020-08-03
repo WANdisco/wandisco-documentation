@@ -14,11 +14,11 @@ The IHC distribution version of the zone, this is referenced in all IHC service 
 
 - Example of value: `hdp_2_6_5`
 - Example of usage: `service fusion-ihc-server-<ihc-version> restart`
-- Where to find: `/etc/init.d` directory on the Fusion server.
+- Where to find: `/etc/init.d` directory on the LiveData Plane server.
 
 ### &lt;fusion-version&gt;
 
-The version of WANdisco Fusion, this may include the distribution version within the value.
+The version of LiveData Plane, this may include the distribution version within the value.
 
 - Example of value: `2.14.2.2.2.6.5`
 - Example of usage: `ls -l /opt/cloudera/parcels/FUSION-<fusion-version>-cdh5.16.1-el7/lib/`
@@ -85,7 +85,7 @@ The name assigned to the docker container.
 
 ### &lt;service-name&gt;
 
-The service name for a Fusion docker container.
+The service name for a LiveData Plane docker container.
 
 - Example of value: `fusion-ui-server-hdp`
 - Example of usage: `docker-compose restart <service-name>`
@@ -93,7 +93,7 @@ The service name for a Fusion docker container.
 
 ### &lt;zone-name&gt;
 
-The zone name of a Fusion environment.
+The zone name of a LiveData Plane environment.
 
 - Example of value: `hdp`
 - Example of usage: `fusion-server-<zone-name>`

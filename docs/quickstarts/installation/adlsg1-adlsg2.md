@@ -4,12 +4,12 @@ title: ADLS Gen1 to ADLS Gen2
 sidebar_label: ADLS Gen1 to ADLS Gen2
 ---
 
-Use this quickstart to configure Fusion to replicate from ADLS Gen1 to ADLS Gen2 storage.
+Use this quickstart to configure LiveData Plane to replicate from ADLS Gen1 to ADLS Gen2 storage.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with ADLS Gen1 and ADLS Gen2 storage.
+- Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with ADLS Gen1 and ADLS Gen2 storage.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ To complete this install, you will need:
     * The following [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/dls/account?view=azure-cli-latest#az-dls-account-list) command will get a list of Data Lake Store accounts and endpoints:
     `az dls account list --output table`
   * [Home Mount Point / Directory](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#createfolder) (Example: `/` or `/path/to/mountpoint`)
-    * Fusion will be able to read and write to everything contained within the Mount Point.
+    * LiveData Plane will be able to read and write to everything contained within the Mount Point.
   * [Client ID / Application ID](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) (Example: `a73t6742-2e93-45ty-bd6d-4a8art6578ip`)
   * [Refresh URL](https://docs.microsoft.com/en-us/azure/active-directory/azuread-dev/v1-oauth2-on-behalf-of-flow#service-to-service-access-token-request) (Example: `https://login.microsoftonline.com/<tenant-id>/oauth2/token`)
     * The `<tenant-id>` is a value given to the service principal during creation, see the [Microsoft docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) for how to retrieve this.
@@ -55,9 +55,9 @@ To complete this install, you will need:
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/adls1-adls2.git`
 
@@ -109,6 +109,6 @@ Follow our [ADLS Gen1 testing guide](../testing/test-adlsg1.md) to perform a sam
 
 ![Architecture: ADLS Gen1 to ADLS Gen2](/wandisco-documentation/img/arch_adlsg1_adlsg2.jpg)
 
-1. When initiating a migration, Fusion LiveMigrator will scan the ADLS Gen1 storage.
-1. Any new files or differences are read by the Fusion IHC in the ADLS Gen1 zone, and replicated to the Fusion Server in the ADLS Gen2 zone.
-1. The Fusion Server in the ADLS Gen2 zone will transform the ADLS Gen1 data to equivalent ADLS Gen2 changes. LiveMigrator will overwrite or skip existing files on the ADLS Gen2 storage depending on the settings used.
+1. When initiating a migration, LiveMigrator will scan the ADLS Gen1 storage.
+1. Any new files or differences are read by the IHC Server in the ADLS Gen1 zone, and replicated to the LiveData Plane Server in the ADLS Gen2 zone.
+1. The LiveData Plane Server in the ADLS Gen2 zone will transform the ADLS Gen1 data to equivalent ADLS Gen2 changes. LiveMigrator will overwrite or skip existing files on the ADLS Gen2 storage depending on the settings used.

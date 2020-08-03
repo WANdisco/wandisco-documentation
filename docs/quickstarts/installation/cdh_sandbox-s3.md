@@ -4,12 +4,12 @@ title: Cloudera (CDH) Sandbox to AWS S3
 sidebar_label: CDH Sandbox to AWS S3
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Cloudera (CDH) Sandbox to an AWS S3 bucket.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Cloudera (CDH) Sandbox to an AWS S3 bucket.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with AWS S3.
+- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with AWS S3.
 
 If you would like to try something different with the CDH Sandbox, see:
 
@@ -50,9 +50,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/cdh-s3.git`
 

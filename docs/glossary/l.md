@@ -9,3 +9,13 @@ It is a Paxos term used in content distribution for a node which delivers and ex
 
 ## Lightweight Directory Access Protocol (LDAP)
 An Internet protocol that enables client programs to access distributed directory services.
+
+## LiveData Plane Client
+Client jar files to be installed on each Hadoop client, such as mappers and reducers that are connected to the cluster. The client is designed to have a minimal memory footprint and impact on CPU utilization.
+
+## LiveData Plane
+LiveData Plane, our software application, which allows Hadoop deployments to replicate HDFS data between Hadoop clusters that are running different, even incompatible versions of Hadoop. It is even possible to replicate between different vendor distributions and versions of Hadoop.
+
+## LiveData Plane UI
+
+The centralized management user interface that is used to connect to storages and initiate replication and/or migration tasks.

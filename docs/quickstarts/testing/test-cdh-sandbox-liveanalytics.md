@@ -157,4 +157,4 @@ Your Databricks cluster must be **running** before testing Hive replication. Sam
 
 ## Next steps
 
-You have now successfully replicated data from your CDH Sandbox to your target storage and Databricks cluster. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you.
+You have now successfully replicated data from your CDH Sandbox to your target storage and Databricks cluster. Contact [WANdisco](https://wandisco.com/contact) for further information about LiveData Plane and what it can offer you.

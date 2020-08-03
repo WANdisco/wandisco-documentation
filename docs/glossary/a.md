@@ -14,7 +14,7 @@ Each step that the DConE replicated state machine executes is called an agreemen
 Individual agreement steps of the replicated state machine are executed under the purview of one or more Agreement Managers.
 
 ## Amazon Web Services (AWS)
-AWS is a subsidiary of Amazon.com which provides cloud computing platforms on a subscription basis. WANdisco Fusion can be run on this platform.
+AWS is a subsidiary of Amazon.com which provides cloud computing platforms on a subscription basis. LiveData Plane can be run on this platform.
 
 ## Ambari
 It is an open source management platform for provisioning, managing, monitoring and securing Apache Hadoop clusters.

@@ -4,7 +4,7 @@ title: Upgrade your License
 sidebar_label: License Upgrade
 ---
 
-You can upgrade your Fusion license through the UI, either by uploading one you already have or by purchasing a new one. 
+You can upgrade your LiveData Plane license through the UI, either by uploading one you already have or by purchasing a new one. 
 
 1. Click the **Upgrade License** option on the dashboard.
 1. If you do not have a new license, click on the option to purchase a license now. Follow the provided instructions to obtain your license.

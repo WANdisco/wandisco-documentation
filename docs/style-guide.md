@@ -56,7 +56,7 @@ Please use the following terms, punctuation etc for consistency.
 
 | Correct   |    Variants (don't use)    |                
 |----------|---------------|
-| WANdisco Fusion or Fusion | WD Fusion   |
+| WANdisco LiveData Plane or LiveData Plane | Live Data Plane   |
 | On-premise | On premises, on premise |
 
 #### Common misuses
@@ -81,13 +81,13 @@ If there are any missing, please add them! https://wandisco.github.io/wandisco-d
 For page titles and sidebar/ToC, use capital letters at the start of significant words. Prepositions such as 'of' and 'from' should be in lower case unless they begin the title.
 
 Title/sidebar examples:
-- Installation of WANdisco Fusion in Docker
+- Installation of LiveData Plane in Docker
 - Create a Rule
 
 For headers, capitalization rules are standard English.
 
 Header examples:
-- Live Hive activation
+- Hive Plugin activation
 - Integrate LiveAnalytics with your Databricks cluster
 
 Follow the style of existing quickstarts when deciding on subheadings.

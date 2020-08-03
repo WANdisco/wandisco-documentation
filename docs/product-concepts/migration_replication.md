@@ -4,7 +4,7 @@ title: Migration vs. Replication
 sidebar_label: Migration vs. Replication
 ---
 
-WANdisco Fusion provides [LiveMigrator](https://wandisco.com/products/live-migrator) as part of its standard Dockerized deployment. This allows you to conduct bulk migrations as well as continual live replication on selected paths.
+LiveData Plane provides the [LiveMigrator plugin](https://wandisco.com/products/live-migrator) as part of its standard Dockerized deployment. This allows you to conduct bulk migrations as well as continual live replication on selected paths.
 
 ## What is a Migration?
 
@@ -15,13 +15,13 @@ You can manually trigger a migration whenever you are ready to begin.
 
 ## What is Replication?
 
-Replication is the standard functionality provided by the Fusion software. Fusion provides the capability of active file transfers to and from source and target filesystems. Replication occurs once a specific path in a filesystem is associated as a [replication rule](./concepts_replication_rules.md).
+Replication is the standard functionality provided by the LiveData Plane software. LiveData Plane provides the capability of active file transfers to and from source and target filesystems. Replication occurs once a specific path in a filesystem is associated as a [replication rule](./concepts_replication_rules.md).
 
-Client requests are intercepted by the Fusion Client. This sends the requests to the Fusion Server and coordinates it with the associated Fusion servers in its ecosystem. The Fusion Servers will then run those operations on their configured filesystem(s). This action is called replication and unlike migrations it is automatically enabled once a replication rule is defined.
+Client requests are intercepted by the LiveData Plane Client. This sends the requests to the LiveData Plane Server and coordinates it with the associated LiveData Plane servers in its ecosystem. The LiveData Plane Servers will then run those operations on their configured filesystem(s). This action is called replication and unlike migrations it is automatically enabled once a replication rule is defined.
 
 ## When should I use them?
 
-How you choose to use Fusion will depend on your [deployment model](./deployment_models.md).
+How you choose to use LiveData Plane will depend on your [deployment model](./deployment_models.md).
 
 For a Migration, you may only need to perform a one-time transfer of data from a source to a target filesystem. As such, a migration using LiveMigrator will be required to perform this task.
 

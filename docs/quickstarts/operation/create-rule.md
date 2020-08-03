@@ -6,7 +6,7 @@ sidebar_label: Create a Rule
 
 Before you can migrate or replicate data, you will need to create [replication rules](../../glossary/r.md#replication-rules).
 
-From the rules section of the dashboard, you can create a rule. By default, this will be a **HCFS** rule. If you have Live Hive installed, you will also have the **Hive** rule option.
+From the rules section of the dashboard, you can create a rule. By default, this will be a **HCFS** rule. If you have the Hive Plugin installed, you will also have the **Hive** rule option.
 
 ## HCFS
 
@@ -14,7 +14,7 @@ From the rules section of the dashboard, you can create a rule. By default, this
    - Give the rule a unique name (i.e. one you haven't used before).
    - Provide the path for all storages. If wanting to **replicate to a different path on target**, select the option and provide the paths for the [source storage](../../glossary/s.md#source) and [target storage](../../glossary/t.md#target).
 1. Files or directories can be excluded from replication using glob patterns:
-   - The default exclusions shown are for Fusion’s housekeeping files, trash directories and Hive staging directories.
+   - The default exclusions shown are for LiveData Plane’s housekeeping files, trash directories and Hive staging directories.
    - You can add any other exclusions required.
 1. Additional rule options can be applied:
    - **Preserve HCFS Block Size** - Must be enabled when your path contains columnar file formats, such as ORC, Parquet, Avro. These are commonly used in Hadoop for Hive tables.

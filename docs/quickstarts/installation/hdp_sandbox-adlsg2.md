@@ -4,12 +4,12 @@ title: Hortonworks (HDP) Sandbox to ADLS Gen2
 sidebar_label: HDP Sandbox to ADLS Gen2
 ---
 
-Use this quickstart to configure Fusion to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an ADLS Gen2 container.
+Use this quickstart to configure LiveData Plane to replicate from a non-kerberized Hortonworks (HDP) Sandbox to an ADLS Gen2 container.
 
 What this guide will cover:
 
-- Installing WANdisco Fusion and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating WANdisco Fusion with ADLS Gen2 storage.
+- Installing LiveData Plane and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+- Integrating LiveData Plane with ADLS Gen2 storage.
 
 If you would like to try something different with the HDP Sandbox, see:
 
@@ -50,9 +50,9 @@ _These instructions have been tested on Ubuntu LTS._
 
 Log in to your VM prior to starting these steps.
 
-### Setup Fusion
+### Setup LiveData Plane
 
-1. Clone the Fusion docker repository:
+1. Clone the LiveData Plane docker repository:
 
    `git clone https://github.com/WANdisco/hdp-adls2.git`
 
@@ -109,7 +109,7 @@ Follow our [HDP Sandbox LiveData testing guide](../testing/test-hdp-sandbox-live
 
 ## Troubleshooting
 
-* If you are unable to access the Ambari or Fusion UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
+* If you are unable to access the Ambari or LiveData Plane UI, you may need admin assistance with your network configuration. See our [Azure specific troubleshooting](../troubleshooting/general_troubleshooting.md#unable-to-access-ambari-cloudera-or-fusion-ui-on-vm) section for more detail.
 
 * See our [Troubleshooting](../troubleshooting/general_troubleshooting.md) guide for help.
 
@@ -119,6 +119,6 @@ Follow our [HDP Sandbox LiveData testing guide](../testing/test-hdp-sandbox-live
 
 ![Architecture: HDP Sandbox to ADLS Gen2](/wandisco-documentation/img/arch_hdp_sandbox_adlsg2.jpg)
 
-1. If a HDFS write request is on a path that matches a HCFS rule, the Fusion Server in the HDP zone will coordinate with the Fusion Server in the ADLS Gen2 zone (read requests are passed through to HDFS).
-1. HDFS writes/changes are then read by the Fusion IHC in the HDP zone, and replicated to the Fusion Server in the ADLS Gen2 zone.
-1. The Fusion Server in the ADLS Gen2 zone will transform the HDFS data to equivalent ADLS Gen2 storage changes.
+1. If a HDFS write request is on a path that matches a HCFS rule, the LiveData Plane Server in the HDP zone will coordinate with the LiveData Plane Server in the ADLS Gen2 zone (read requests are passed through to HDFS).
+1. HDFS writes/changes are then read by the IHC Server in the HDP zone, and replicated to the LiveData Plane Server in the ADLS Gen2 zone.
+1. The LiveData Plane Server in the ADLS Gen2 zone will transform the HDFS data to equivalent ADLS Gen2 storage changes.

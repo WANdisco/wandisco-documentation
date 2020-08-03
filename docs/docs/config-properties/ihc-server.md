@@ -74,7 +74,7 @@ Format of key store
 
 ### `ihc.ssl.truststore`
 
-Local filesystem path of trust store used to validate certificates sent by other IHC servers or Fusion Servers.
+Local filesystem path of trust store used to validate certificates sent by other IHC servers or LiveData Plane Servers.
 
 - Absolute path to trust store
 

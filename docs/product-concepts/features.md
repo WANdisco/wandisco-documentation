@@ -5,7 +5,7 @@ sidebar_label: Features
 ---
 
 Keeping data consistent in a distributed environment is a massive challenge.
-WANdisco Fusion solves the exponentially growing challenge of keeping unstructured data available across diverse environments regardless of geographic location, architecture, or cloud storage provider.
+WANdisco LiveData Plane solves the exponentially growing challenge of keeping unstructured data available across diverse environments regardless of geographic location, architecture, or cloud storage provider.
 Here are some examples of the features WANdisco offer:
 
 
@@ -17,7 +17,7 @@ Here are some examples of the features WANdisco offer:
 
 * Replicate encrypted at-rest data between different platforms.
 
-* Network trace is between WANdisco Fusion servers so that application environments can stay isolated.
+* Network trace is between LiveData Plane servers so that application environments can stay isolated.
 
 * UI-controlled throttling of network bandwidth utilization.
 

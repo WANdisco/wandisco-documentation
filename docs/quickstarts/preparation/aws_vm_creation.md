@@ -1,10 +1,10 @@
 ---
 id: aws_vm_creation
-title: Creating an Amazon Web Services Linux VM for a Fusion installation
+title: Creating an Amazon Web Services Linux VM for a LiveData Plane installation
 sidebar_label: AWS VM Creation
 ---
 
-Create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized Fusion installation:
+Create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized LiveData Plane installation:
 
 * Download a [cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) template to initialize the VM and install required services.
 * Obtain [AWS parameters](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) to create the VM.

@@ -1,7 +1,7 @@
 ---
 id: kerberos_cdh
-title: Kerberos (CDH) integration with Fusion
-sidebar_label: Kerberos (CDH) integration with Fusion
+title: Kerberos (CDH) integration with LiveData Plane
+sidebar_label: Kerberos (CDH) integration with LiveData Plane
 ---
 
 _THIS GUIDE IS WORK IN PROGRESS, PLEASE DO NOT FOLLOW ANYTHING HERE UNTIL THIS WARNING IS REMOVED_
@@ -10,23 +10,23 @@ _THIS GUIDE IS WORK IN PROGRESS, PLEASE DO NOT FOLLOW ANYTHING HERE UNTIL THIS W
 
 ## Considerations
 
-There are a number considerations when enabling Fusion to function with a kerberized cluster.
+There are a number considerations when enabling LiveData Plane to function with a kerberized cluster.
 
-An existing keytab and principal that the cluster provides can be used with Fusion (e.g. the `hdfs` keytab). The cluster is already likely to be configured to work with an existing keytab. As such, a restart of cluster services should not be required for Fusion to use an existing keytab.
+An existing keytab and principal that the cluster provides can be used with LiveData Plane (e.g. the `hdfs` keytab). The cluster is already likely to be configured to work with an existing keytab. As such, a restart of cluster services should not be required for LiveData Plane to use an existing keytab.
 
-Alternatively, you can create a new principal/keytab for use with Fusion but additional configuration will be needed. Please consider your own security requirements before deciding on the options available.
+Alternatively, you can create a new principal/keytab for use with LiveData Plane but additional configuration will be needed. Please consider your own security requirements before deciding on the options available.
 
-If creating a new principal/keytab for Fusion, the following configuration is required. If selecting an existing keytab, ensure that the following configuration requirements are already met.
+If creating a new principal/keytab for LiveData Plane, the following configuration is required. If selecting an existing keytab, ensure that the following configuration requirements are already met.
 
-* The Kerberos principal to be used with Fusion can be headless, or mapped to a hostname.
+* The Kerberos principal to be used with LiveData Plane can be headless, or mapped to a hostname.
 
   _Example of a headless principal:_ `fusion@REALM.COM`
 
   _Example of a service/host principal:_ `fusion/hostname@REALM.COM`
 
-  Please note that if a _service/host principal_ is to be used, the hostname must match that of the Fusion docker host.
+  Please note that if a _service/host principal_ is to be used, the hostname must match that of the LiveData Plane docker host.
 
-* An appropriate [auth_to_local](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html#realms) rule must exist for the principal to be used with Fusion. This must align to a superuser (e.g. `hdfs`).
+* An appropriate [auth_to_local](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html#realms) rule must exist for the principal to be used with LiveData Plane. This must align to a superuser (e.g. `hdfs`).
 
   _Example to map fusion principal to local superuser_
 
@@ -50,7 +50,7 @@ If creating a new principal/keytab for Fusion, the following configuration is re
 
   `usermod -G hdfs fusion`
 
-* Appropriate proxyuser rules must exist in the HDFS configuration (`core-site.xml`) for the Fusion user. In the example below, the Fusion user is `fusion`:
+* Appropriate proxyuser rules must exist in the HDFS configuration (`core-site.xml`) for the LiveData Plane user. In the example below, the LiveData Plane user is `fusion`:
 
   _Example_
 
@@ -62,12 +62,12 @@ If creating a new principal/keytab for Fusion, the following configuration is re
 
 ## Prerequisites
 
-* The Kerberos keytab and principal to be used with Fusion has already been created.
+* The Kerberos keytab and principal to be used with LiveData Plane has already been created.
 * Root access to the Kerberos KDC or a cluster node to retrieve the keytab and `krb5.conf` files.
 
 ## Guidance
 
-1. Transfer the keytab and `krb5.conf` to the Fusion docker host from the Kerberos KDC or a cluster node that contains the required files. This can be done by copying the files to your local machine, and then copying them to the Fusion docker host.
+1. Transfer the keytab and `krb5.conf` to the LiveData Plane docker host from the Kerberos KDC or a cluster node that contains the required files. This can be done by copying the files to your local machine, and then copying them to the LiveData Plane docker host.
 
    _Example for local transfer_
 
@@ -77,7 +77,7 @@ If creating a new principal/keytab for Fusion, the following configuration is re
 
    `scp $HOSTNAME:/etc/security/keytabs/${fusion.keytab} .`
 
-   Once obtained locally, transfer the files to the Fusion docker host.
+   Once obtained locally, transfer the files to the LiveData Plane docker host.
 
    `scp krb5.conf $DOCKER_HOST:~`
 
@@ -87,11 +87,11 @@ If creating a new principal/keytab for Fusion, the following configuration is re
 
    Cloudera Manager UI -> HDFS -> Actions -> Download Client Configuration
 
-3. Transfer the Client config to the Fusion docker host.
+3. Transfer the Client config to the LiveData Plane docker host.
 
    `scp hdfs1-clientconfig.zip $DOCKER_HOST:~`
 
-4. Log into the Fusion docker host, and copy the keytab and `krb5.conf` into the specified staging directories within the git repository.
+4. Log into the LiveData Plane docker host, and copy the keytab and `krb5.conf` into the specified staging directories within the git repository.
 
    Ensure the keytab is renamed to `fusion.keytab` inside the `fusion-docker-compose/keytabs` directory.
 
@@ -171,9 +171,9 @@ If creating a new principal/keytab for Fusion, the following configuration is re
 
    As this location is shared amongst all containers in the zone, it is only necessary to transfer these files to one of them.
 
-7. Log into the Fusion UI container for the CDH zone, and edit the `ui.properties` file.
+7. Log into the LiveData Plane UI container for the CDH zone, and edit the `ui.properties` file.
 
-   You will first need to obtain an Container ID from the CDH zone for the Fusion UI, this will be a 12 digit hexadecimal string. The name of the image will appear much like this example - `fusion-docker-compose_fusion-ui-server-cdh_1`.
+   You will first need to obtain an Container ID from the CDH zone for the LiveData Plane UI, this will be a 12 digit hexadecimal string. The name of the image will appear much like this example - `fusion-docker-compose_fusion-ui-server-cdh_1`.
 
    `docker ps` _- obtain ID._
 

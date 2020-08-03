@@ -1,7 +1,7 @@
 ---
 id: cdh_sandbox_fusion_stop_start
-title: Shut down or start up CDH Sandbox and WANdisco Fusion
-sidebar_label: Stop/Start CDH Sandbox & WANdisco Fusion
+title: Shut down or start up CDH Sandbox and LiveData Plane
+sidebar_label: Stop/Start CDH Sandbox & LiveData Plane
 ---
 
 ## Shutting down

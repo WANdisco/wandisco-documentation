@@ -43,7 +43,7 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 
 ## Next steps
 
-You have now successfully migrated data from your AWS S3 storage to your target storage using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about Fusion and what it can offer you.
+You have now successfully migrated data from your AWS S3 storage to your target storage using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about LiveData Plane and what it can offer you.
 
 :::note
 If you plan on doing additional migration testing with AWS S3 as a [target](../../glossary/t.md#target) storage, delete the sample data beforehand (as other LiveMigrator tests use the same sample data).

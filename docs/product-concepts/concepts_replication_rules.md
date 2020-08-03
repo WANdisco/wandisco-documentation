@@ -6,10 +6,10 @@ sidebar_label: Replication Rules
 
 ## Overview
 
-WANdisco Fusion allows users to define which data sets they want to replicate to target storage(s). This is defined using replication rules.
-You can replicate or migrate HCFS data, and if using the Fusion Plugin for Live Hive, Hive metadata can also be replicated.
+LiveData Plane allows users to define which data sets they want to replicate to target storage(s). This is defined using replication rules.
+You can replicate or migrate HCFS data, and if using the Hive Plugin, Hive metadata can also be replicated.
 
-Once WANdisco Fusion is installed, connected to at least two storages and the Fusion Servers inducted together, you can create replication rules. These define the directory paths enabled for replication between the chosen storages within the replicated ecosystem.
+Once LiveData Plane is installed, connected to at least two storages and the LiveData Plane Servers inducted together, you can create replication rules. These define the directory paths enabled for replication between the chosen storages within the replicated ecosystem.
 
 Once a replication rule is created, live data replication is then possible on the defined path. You can also choose to start a migration on that path. When replication is no longer required on a path or a migration is complete, replication rules can be deleted.
 

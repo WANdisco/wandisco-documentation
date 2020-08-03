@@ -10,9 +10,9 @@ See the [Useful information](./useful_info.md) section for additional commands a
 
 ### No Route to Host after docker container restart
 
-After restarting a single docker container, such as the HDP Sandbox, you may encounter connectivity issues between Fusion and the Sandbox.
+After restarting a single docker container, such as the HDP Sandbox, you may encounter connectivity issues between LiveData Plane and the Sandbox.
 
-The internal IP address of the container can change when restarting the container. This can cause the `No Route to Host` error as Fusion will have cached the old address.
+The internal IP address of the container can change when restarting the container. This can cause the `No Route to Host` error as LiveData Plane will have cached the old address.
 
 To resolve, you must restart all containers within the `fusion-docker-compose` directory:
 
@@ -22,7 +22,7 @@ To resolve, you must restart all containers within the `fusion-docker-compose` d
 
 The Hiveserver2 component in the HDP sandbox may be down after starting the cluster. To start it up:
 
-1. On the docker host, change to the `fusion-docker-compose` directory and restart the Fusion Server container for the HDP zone.
+1. On the docker host, change to the `fusion-docker-compose` directory and restart the LiveData Plane Server container for the HDP zone.
 
    `docker-compose restart fusion-server-sandbox-hdp`
 
