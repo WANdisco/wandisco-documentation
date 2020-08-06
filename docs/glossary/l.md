@@ -14,7 +14,7 @@ An Internet protocol that enables client programs to access distributed director
 Client jar files to be installed on each Hadoop client, such as mappers and reducers that are connected to the cluster. The client is designed to have a minimal memory footprint and impact on CPU utilization.
 
 ## LiveData Plane
-LiveData Plane, our software application, which allows Hadoop deployments to replicate HDFS data between Hadoop clusters that are running different, even incompatible versions of Hadoop. It is even possible to replicate between different vendor distributions and versions of Hadoop.
+LiveData Plane is our software application that allows Hadoop deployments to replicate HDFS data between Hadoop clusters that are running the same or different versions of Hadoop. It is even possible to replicate between different vendor distributions and versions of Hadoop.
 
 ## LiveData Plane UI
 
