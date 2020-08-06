@@ -57,7 +57,7 @@ The variables required to create a suitable VM are:
 
   If you are intending to replicate large amounts of data (e.g. over 10GB), use a greater instance type.
 
-  _Example:_ `--instance-type r5.xlarge`
+  _Example:_ `--instance-type m5.2xlarge`
 
 * The [Block Device settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#block-device-mapping).
 

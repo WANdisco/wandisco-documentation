@@ -27,7 +27,7 @@ To complete this install, you will need:
   * Only [regions that support Signature Version 2](https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html) are currently supported.
 
 * Linux Virtual Machine (e.g. AWS EC2 instance).
-  * Minimum size recommendation = **4 vcpus, 32 GiB memory** (e.g. [r5.xlarge](https://aws.amazon.com/ec2/instance-types/)).
+  * Minimum size recommendation = **8 vcpus, 32 GiB memory** (e.g. [m5.2xlarge](https://aws.amazon.com/ec2/instance-types/)).
   * A minimum of 24GB available storage for the `/var/lib/docker` directory.
 
 * The following services must be installed on the VM:
