@@ -8,8 +8,8 @@ Use this quickstart to configure LiveData Plane to replicate from a non-kerberiz
 
 What this guide will cover:
 
-- Installing LiveData Plane and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with ADLS Gen2 storage.
+* Installing LiveData Plane and a HDP Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with ADLS Gen2 storage.
 
 If you would like to try something different with the HDP Sandbox, see:
 

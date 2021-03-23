@@ -8,8 +8,8 @@ Use this quickstart to configure LiveData Plane to replicate from ADLS Gen1 to A
 
 What this guide will cover:
 
-- Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with ADLS Gen1 and ADLS Gen2 storage.
+* Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with ADLS Gen1 and ADLS Gen2 storage.
 
 ## Prerequisites
 

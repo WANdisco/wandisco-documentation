@@ -41,4 +41,4 @@ Enter your email address and create a password.
 
 ## Next steps
 
-[Connect to storages](./connect-to-storages.md) (i.e existing deployments) using the UI. 
+[Connect to storages](./connect-to-storages.md) (i.e existing deployments) using the UI.

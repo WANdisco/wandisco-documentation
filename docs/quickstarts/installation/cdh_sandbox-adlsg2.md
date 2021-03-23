@@ -8,8 +8,8 @@ Use this quickstart to configure LiveData Plane to replicate from a non-kerberiz
 
 What this guide will cover:
 
-- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with ADLS Gen2 storage.
+* Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with ADLS Gen2 storage.
 
 If you would like to try something different with the CDH Sandbox, see:
 
@@ -42,7 +42,7 @@ To complete this install, you will need:
 
   * [Account name](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) (Example: `adlsg2storage`)
   * [Container name](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) (Example: `fusionreplication`)
-  * Access Management - choose one of the options below.
+  * Access Management * choose one of the options below.
     * [Access key](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage#view-access-keys-and-connection-string) (Example: `eTFdESnXOuG2qoUrqlDyCL+e6456789opasweghtfFMKAHjJg5JkCG8t1h2U1BzXvBwtYfoj5nZaDF87UK09po==`)
     * [Managed identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)
       * Assign your managed identity to the two roles shown below on your ADLS Gen2 storage account:  

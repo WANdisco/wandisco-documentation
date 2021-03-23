@@ -8,8 +8,8 @@ Use this quickstart to configure LiveData Plane to replicate from a non-kerberiz
 
 What this guide will cover:
 
-- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with AWS S3.
+* Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with AWS S3.
 
 If you would like to try something different with the CDH Sandbox, see:
 

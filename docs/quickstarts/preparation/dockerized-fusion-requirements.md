@@ -23,7 +23,7 @@ Alternatively, create and use one of your own hosts and install the required pac
 
 Ensure that the host meets the minimum size recommendation specified in the installation guides for Dockerized LiveData Plane.
 
-For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hdp_sandbox-adlsg2_lm.md#prerequisites) guide requires the following:
+For example, the [HDP Sandbox to ADLS Gen2 with LiveMigrator](../installation/hdp_sandbox-adlsg2.md#prerequisites) guide requires the following:
 
 * 8 cpus.
 * 32 GiB memory.

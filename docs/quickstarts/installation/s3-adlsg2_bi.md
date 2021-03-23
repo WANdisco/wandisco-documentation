@@ -9,8 +9,8 @@ The set up is the same for either scenario, just choose the direction when start
 
 What this guide will cover:
 
-- Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with AWS S3 and ADLS Gen2 storage.
+* Installing LiveData Plane using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with AWS S3 and ADLS Gen2 storage.
 
 ## Prerequisites
 

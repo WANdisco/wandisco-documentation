@@ -10,8 +10,8 @@ This uses the [WANdisco LiveAnalytics](https://wandisco.com/products/live-analyt
 
 What this guide will cover:
 
-- Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
-- Integrating LiveData Plane with Azure Databricks.
+* Installing LiveData Plane and a CDH Sandbox using the [docker-compose](https://docs.docker.com/compose/) tool.
+* Integrating LiveData Plane with Azure Databricks.
 
 If you would like to try something different with the CDH Sandbox, see:
 
