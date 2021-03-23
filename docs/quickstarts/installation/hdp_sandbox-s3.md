@@ -113,7 +113,7 @@ Follow our [HDP Sandbox LiveData testing guide](../testing/test-hdp-sandbox-live
 
 ## Reference architecture
 
-![Architecture: HDP Sandbox to S3](/wandisco-documentation/img/arch_hdp_sandbox_s3.jpg)
+![Architecture: HDP Sandbox to S3](/img/arch_hdp_sandbox_s3.jpg)
 
 1. If a HDFS write request is on a path that matches a HCFS rule, the LiveData Plane Server in the HDP zone will coordinate with the LiveData Plane Server in the S3 zone (read requests are passed through to HDFS).
 1. HDFS writes/changes are then read by the IHC Server in the HDP zone, and replicated to the LiveData Plane Server in the S3 zone.

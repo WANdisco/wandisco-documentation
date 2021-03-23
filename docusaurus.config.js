@@ -1,12 +1,23 @@
 const path = require("path");
 
-//const baseUrl = process.env.DEPLOY_ENV ? 'https://wandisco.github.io/wandisco-documentation/' : '/'
+const site_urls = {
+  wandisco: {
+    url: 'https://docs.wandisco.com',
+    baseUrl: '/live-data-plane/',
+  },
+  github: {
+    url: 'https://wandisco.github.io',
+    baseUrl: '/wandisco-documentation/',
+  }
+}
+
+const { url = "http://localhost", baseUrl = "/" } = site_urls[process.env.WAND_BUILD];
 
 module.exports = {
-  title: "WANdisco docs",
-  tagline: "What's new",
-  url: "https://wandisco.github.io/wandisco-documentation/",
-  baseUrl: "/wandisco-documentation/",
+  title: "WANdisco LiveData Plane",
+  tagline: "Documentation",
+  url,
+  baseUrl,
   favicon: "img/favicon.png",
   organizationName: "WANdisco",
   projectName: "wandisco-documentation",
@@ -18,7 +29,7 @@ module.exports = {
         alt: "WANdisco Fusion Logo",
         src: "img/favicon.png",
       },
-      links: [
+      items: [
         {
           to: "docs/product-concepts/benefits",
           label: "Product Concepts",
@@ -38,7 +49,13 @@ module.exports = {
     algolia: {
       apiKey: "456e573413aa88e9ec072a585bec45683",
       indexName: "wandisco",
-      algoliaOptions: {},
+
+      //contextualSearch: true,
+
+      // Optional: Algolia search parameters
+      searchParameters: {
+        facetFilters: [`tags:${process.env.WAND_BUILD}`]
+      },
     },
     footer: {
       links: [
@@ -103,7 +120,7 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          path: "../docs",
+          path: 'docs',
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           //editUrl:

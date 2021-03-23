@@ -29,7 +29,7 @@ If any emergency fixes are required, these can be done via feature branch/PR fro
 
 This only changes the [GitHub version of the docs](https://github.com/WANdisco/wandisco-documentation/tree/develop/docs), the docs team will control promoting to the [live/Docusaurus version](https://wandisco.github.io/wandisco-documentation/).
 
-![Branching strategy](../website/static/img/branching.jpg)
+![Branching strategy](/img/branching.jpg)
 
 
 ## What it should sound like
@@ -313,7 +313,7 @@ _Example_
 
 Use:
 ```
-![Image description](/wandisco-documentation/img/screenshot.png)
+![Image description](/img/screenshot.png)
 ```
 
 Due to the migration to Docusaurus 2, at time of writing, images will not be visible in the markdown pages viewed in GitHub. See the Docusaurus docs themselves as an example:
@@ -330,13 +330,13 @@ Use dev tools to remove any potentially sensitive info.
 
 _Good example_
 ```
-![Good example](/wandisco-documentation/img/good.png)
+![Good example](/img/good.png)
 ```
-![Good example](/wandisco-documentation/img/good.png)
+![Good example](/img/good.png)
 
 _Bad example_
 
-![Bad example](/wandisco-documentation/img/bad.png)
+![Bad example](/img/bad.png)
 
 #### Diagrams
 These should be used alongside architectural sections, or to illustrate the workflow of a product.

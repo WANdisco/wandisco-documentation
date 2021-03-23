@@ -22,7 +22,7 @@ The Live Hive Proxy passes on read commands directly to the local Hive Metastore
 
 The Hive Plugin will automatically start to replicate Hive databases and tables when their names match a user defined rule. This must also include a matching HCFS rule for the underlying filesystem data of the database/table.
 
-![Hive Plugin Replication - workflow example](/wandisco-documentation/img/arch_live_hive.png)
+![Hive Plugin Replication - workflow example](/img/arch_live_hive.png)
 
 1. Write access needs to be coordinated by LiveData Plane before executing the command on the Hive Metastore.
 1. Read commands are 'passed-through' straight to the Hive Metastore as they do not need to be coordinated via LiveData Plane.

@@ -4,7 +4,7 @@ title: The Benefits of WANdisco LiveData Plane
 sidebar_label: Benefits
 ---
 
-![world map](/wandisco-documentation/img/worldmap.jpg "")
+![world map](/img/worldmap.jpg "")
 
 ### Business continuity in a distributed environment
 

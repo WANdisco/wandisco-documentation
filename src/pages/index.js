@@ -8,9 +8,9 @@ import styles from "./styles.module.css";
 
 const features = [
   {
-    title: "LiveMigrator",
+    title: "LiveData Plane",
     imageUrl: "img/hybrid-cloud.png",
-    description: "Migrate data to cloud without disruption or downtime.",
+    description: "Replicate data to on-premise or cloud without disruption or downtime.",
   },
   {
     title: "LiveAnalytics",
@@ -23,9 +23,9 @@ const features = [
     description: "Get up and running in minutes with LiveData Plane & Docker.",
   },
   {
-    title: "OneUI",
+    title: "LiveData UI",
     imageUrl: "img/WD_Oracle_Benefits-03.png",
-    description: "Manage your whole Fusion ecosystem in one place.",
+    description: "Manage your LiveData Plane ecosystem in one place.",
   },
 ];
 
@@ -62,24 +62,6 @@ function Home() {
               to={useBaseUrl("docs/quickstarts/preparation/get-started")}
             >
               Get Started
-            </Link>
-            <Link
-              className={clsx(
-                "button button--outline button--secondary button--lg",
-                styles.heroLink
-              )}
-              to="https://wandisco.com/support/fusion-for-administrators"
-            >
-              Free Trial
-            </Link>
-            <Link
-              className={clsx(
-                "button button--outline button--secondary button--lg",
-                styles.heroLink
-              )}
-              to="https://www.docker.com/get-started"
-            >
-              Get Docker
             </Link>
           </div>
         </div>

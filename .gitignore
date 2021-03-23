@@ -1,8 +1,8 @@
 # dependencies
-website/node_modules
+node_modules/
 
 # production
-website/build
+build/
 
 # generated files
 .docusaurus
@@ -21,8 +21,6 @@ yarn-error.log*
 
 *.iml
 
-website/yarn.lock
-website/i18n/*
-
-# VS Code
+yarn.lock
+i18n/*
 .vscode/

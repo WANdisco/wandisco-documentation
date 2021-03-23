@@ -6,7 +6,7 @@ sidebar_label: Bandwidth Considerations
 
 The graph and table below illustrate network bandwidth capacities and the impact they have on data migration.
 
-![Data migration - illustration of bandwidth measurement](/wandisco-documentation/img/network_bandwidth.jpg)
+![Data migration - illustration of bandwidth measurement](/img/network_bandwidth.jpg)
 
 |Data size / bandwidth|10 Mbps|100 Mbps|500 Mbps|1 Gbps|10 Gbps|
 |---|---|---|---|---|---|

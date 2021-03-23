@@ -131,7 +131,7 @@ Follow our [HDP Sandbox LiveAnalytics testing guide](../testing/test-hdp-sandbox
 
 ## Reference architecture
 
-![Architecture: HDP Sandbox to Azure Databricks with LiveAnalytics](/wandisco-documentation/img/arch_hdp_sandbox_az_databricks_lan.jpg)
+![Architecture: HDP Sandbox to Azure Databricks with LiveAnalytics](/img/arch_hdp_sandbox_az_databricks_lan.jpg)
 
 1. Live Hive Proxy will intercept and co-ordinate the Hive request with the LiveData Plane Server on the HDP zone.
 1. If the request is on a database/table that matches a Hive rule, the LiveData Plane Server in the HDP zone will coordinate with the LiveData Plane Server in the ADLS Gen2 zone (read requests are passed through to Hive). Metadata is replicated from the HDP zone to the ADLS Gen2 zone.
