@@ -1,36 +1,45 @@
 module.exports = {
 "Guides": {
     "Preparation": [
-        "quickstarts/preparation/get-started",
-        "quickstarts/preparation/prerequisites-ui"
+        "preparation/get-started",
+        "preparation/prerequisites-ui"
     ],
     "Installation": [
-        "quickstarts/installation/install-ui",
-        "quickstarts/installation/connect-to-storages"
-    ],
-    "Testing": [
-        "quickstarts/testing/test-ui"
+        "installation/install-ui",
+        "installation/connect-to-storages"
     ],
     "Operation": [
-        "quickstarts/operation/create-rule",
-        "quickstarts/operation/consistency-check",
-        "quickstarts/operation/migration",
-        "quickstarts/operation/license_upgrade",
-        "quickstarts/operation/advanced-settings"
+        "operation/create-rule",
+        "operation/consistency-check",
+        "operation/migration",
+        "operation/license_upgrade",
+        "operation/advanced-settings"
+    ],
+    "Configuration": [
+        "configuration/config-properties/config-properties",
+        "configuration/config-properties/application.properties",
+        "configuration/config-properties/ihc.server"
+    ],
+    "Testing": [
+        "testing/test-ui"
     ],
     "Troubleshooting": [
-        "quickstarts/troubleshooting/ui-troubleshooting"
+        "troubleshooting/ui-troubleshooting"
     ],
-    "Core Concepts": [
-        "product-concepts/benefits",
-        "product-concepts/features",
-        "product-concepts/deployment_models",
-        "product-concepts/core_platform_and_dcone",
-        "product-concepts/concepts_replication_rules",
-        "product-concepts/concepts_consistency_checks",
-        "product-concepts/migration_replication",
-        "product-concepts/bandwidth_considerations",
-        "product-concepts/hive_replication"
+    "Reference": [
+        {
+        "Concepts": [
+        "reference/concepts/benefits",
+        "reference/concepts/features",
+        "reference/concepts/deployment_models",
+        "reference/concepts/core_platform_and_dcone",
+        "reference/concepts/concepts_replication_rules",
+        "reference/concepts/concepts_consistency_checks",
+        "reference/concepts/migration_replication",
+        "reference/concepts/bandwidth_considerations",
+        "reference/concepts/hive_replication"
+        ]
+    }
     ]
 },
 
@@ -72,8 +81,11 @@ module.exports = {
         },
     ],
     "Operation": [
+        "quickstarts/operation/create-rule",
+        "quickstarts/operation/consistency-check",
+        "quickstarts/operation/migration",
         "quickstarts/operation/cdh_sandbox_fusion_stop_start",
-        "quickstarts/operation/hdp_sandbox_fusion_stop_start",
+        "quickstarts/operation/hdp_sandbox_fusion_stop_start"
     ],
     "Troubleshooting": [
         "quickstarts/troubleshooting/general_troubleshooting",
@@ -92,32 +104,32 @@ module.exports = {
         "help/variables",
     ],
     "Glossary": [
-        "glossary/a",
-        "glossary/b",
-        "glossary/c",
-        "glossary/d",
-        "glossary/e",
-        "glossary/f",
-        "glossary/g",
-        "glossary/h",
-        "glossary/i",
-        "glossary/j",
-        "glossary/k",
-        "glossary/l",
-        "glossary/m",
-        "glossary/n",
-        "glossary/o",
-        "glossary/p",
-        "glossary/q",
-        "glossary/r",
-        "glossary/s",
-        "glossary/t",
-        "glossary/u",
-        "glossary/v",
-        "glossary/w",
-        "glossary/x",
-        "glossary/y",
-        "glossary/z"
+        "help/glossary/a",
+        "help/glossary/b",
+        "help/glossary/c",
+        "help/glossary/d",
+        "help/glossary/e",
+        "help/glossary/f",
+        "help/glossary/g",
+        "help/glossary/h",
+        "help/glossary/i",
+        "help/glossary/j",
+        "help/glossary/k",
+        "help/glossary/l",
+        "help/glossary/m",
+        "help/glossary/n",
+        "help/glossary/o",
+        "help/glossary/p",
+        "help/glossary/q",
+        "help/glossary/r",
+        "help/glossary/s",
+        "help/glossary/t",
+        "help/glossary/u",
+        "help/glossary/v",
+        "help/glossary/w",
+        "help/glossary/x",
+        "help/glossary/y",
+        "help/glossary/z"
     ]
 },
 };

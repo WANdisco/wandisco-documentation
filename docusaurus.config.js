@@ -31,7 +31,7 @@ module.exports = {
       },
       items: [
         {
-          to: "docs/quickstarts/preparation/get-started",
+          to: "docs/preparation/get-started",
           label: "Guides",
           position: "right",
         },
@@ -65,7 +65,7 @@ module.exports = {
           items: [
             {
               label: "Getting Started",
-              to: "docs/quickstarts/preparation/get-started",
+              to: "docs/preparation/get-started",
             },
             {
               label: "Product User Guides",
