@@ -12,7 +12,7 @@ From the rules section of the dashboard, you can create a rule. By default, this
 
 1. Define the rule you wish to create:
    - Give the rule a unique name (i.e. one you haven't used before).
-   - Provide the path for all storages. If wanting to **replicate to a different path on target**, select the option and provide the paths for the [source storage](../glossary/s.md#source) and [target storage](../glossary/t.md#target).
+   - Provide the path for all storages. If wanting to **replicate to a different path on target**, select the option and provide the paths for the [source storage](../help/glossary/s.md#source) and [target storage](../help/glossary/t.md#target).
 1. Files or directories can be excluded from replication using glob patterns:
    - The default exclusions shown are for LiveData Plane’s housekeeping files, trash directories and Hive staging directories.
    - You can add any other exclusions required.

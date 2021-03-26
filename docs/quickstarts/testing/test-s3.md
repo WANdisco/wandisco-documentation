@@ -8,7 +8,7 @@ sidebar_label: Test AWS S3
 
 Follow the steps below to demonstrate the migration of HCFS data from your AWS S3 storage to a target storage.
 
-The AWS S3 storage will be the [source](../../glossary/s.md#source) storage in all instances.
+The AWS S3 storage will be the [source](../../help/glossary/s.md#source) storage in all instances.
 
 ### Get sample data
 
@@ -46,5 +46,5 @@ On the dashboard, create a **HCFS** rule with the following parameters:
 You have now successfully migrated data from your AWS S3 storage to your target storage using LiveMigrator. Contact [WANdisco](https://wandisco.com/contact) for further information about LiveData Plane and what it can offer you.
 
 :::note
-If you plan on doing additional migration testing with AWS S3 as a [target](../../glossary/t.md#target) storage, delete the sample data beforehand (as other LiveMigrator tests use the same sample data).
+If you plan on doing additional migration testing with AWS S3 as a [target](../../help/glossary/t.md#target) storage, delete the sample data beforehand (as other LiveMigrator tests use the same sample data).
 :::

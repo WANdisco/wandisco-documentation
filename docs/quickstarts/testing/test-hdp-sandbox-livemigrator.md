@@ -6,7 +6,7 @@ sidebar_label: LiveMigrator
 
 Follow the steps below to demonstrate the migration of HCFS data from your HDP Sandbox to a target storage.
 
-The HDP Sandbox will be the [source](../../glossary/s.md#source) storage in all instances.
+The HDP Sandbox will be the [source](../../help/glossary/s.md#source) storage in all instances.
 
 ### Create replication rule
 

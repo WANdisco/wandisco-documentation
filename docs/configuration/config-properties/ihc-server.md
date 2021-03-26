@@ -1,7 +1,7 @@
 ---
 id: ihc.server
-title: ihc.server
-sidebar_label: ihc.server
+title: Inter-Hadoop Communication Server
+sidebar_label: IHC Server
 ---
 
 The Inter-Hadoop Communication (IHC) Server is configured from a single file located at `/etc/wandisco/fusion/ihc/server/{distro}/{version string}.ihc`.

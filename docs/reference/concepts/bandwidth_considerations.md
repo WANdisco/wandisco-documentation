@@ -26,6 +26,6 @@ If your data set contains mainly small files, this will impact the time it will 
 
 ## Round-trip time (RTT)
 
-The RTT between your [source](../glossary/s.md#source) and [target](../glossary/t.md#target) environments can prevent you from taking advantage of higher bandwidth levels (if available to you).
+The RTT between your [source](../../help/glossary/s.md#source) and [target](../../help/glossary/t.md#target) environments can prevent you from taking advantage of higher bandwidth levels (if available to you).
 
 For instance, when using a 1Gbps link, the difference between 10ms and 20ms is negligible. When using a 10Gbps link, the difference between 10ms and 20ms can cut your migration time in half.

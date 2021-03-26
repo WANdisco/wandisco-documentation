@@ -6,7 +6,7 @@ sidebar_label: LiveAnalytics
 
 Follow the steps below to demonstrate live replication of HCFS data and Hive metadata from the HDP sandbox to your Databricks cluster.
 
-The HDP Sandbox will be the [source](../../glossary/s.md#source) storage in all instances.
+The HDP Sandbox will be the [source](../../help/glossary/s.md#source) storage in all instances.
 
 ### Create replication rules
 

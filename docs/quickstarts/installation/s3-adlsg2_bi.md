@@ -106,9 +106,9 @@ Log in to your VM prior to starting these steps.
 
 ## Next steps
 
-* Follow our [S3 testing guide](../testing/test_s3.md) to perform a sample data migration using the S3 storage as the [source](../../glossary/s.md#source).
+* Follow our [S3 testing guide](../testing/test-s3.md) to perform a sample data migration using the S3 storage as the [source](../../help/glossary/s.md#source).
 
-* Follow our [ADLS Gen2 testing guide](../testing/test_adlsg2.md) to perform a sample data migration using the ADLS Gen2 storage as the [source](../../glossary/s.md#source).
+* Follow our [ADLS Gen2 testing guide](../testing/test-adlsg2.md) to perform a sample data migration using the ADLS Gen2 storage as the [source](../../help/glossary/s.md#source).
 
 ## Troubleshooting
 
@@ -120,6 +120,6 @@ _Contact [WANdisco](https://wandisco.com/contact) for further information about 
 
 ![Architecture: S3 and ADLS Gen2](/img/arch_s3_adlsg2_bi.jpg)
 
-1. When initiating a migration, LiveMigrator will scan the S3 or ADLS Gen2 storage depending on which is selected as [source](../../glossary/s.md#source)).
-1. Any new files or differences are read by the IHC Server in the source zone, and replicated to the LiveData Plane Server in the [target](../../glossary/t.md#target) zone.
+1. When initiating a migration, LiveMigrator will scan the S3 or ADLS Gen2 storage depending on which is selected as [source](../../help/glossary/s.md#source)).
+1. Any new files or differences are read by the IHC Server in the source zone, and replicated to the LiveData Plane Server in the [target](../../help/glossary/t.md#target) zone.
 1. The LiveData Plane Server in the target zone will transform the data to equivalent target storage changes. LiveMigrator will overwrite or skip existing files on the target storage depending on the settings used.

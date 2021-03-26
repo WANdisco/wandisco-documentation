@@ -12,7 +12,7 @@ Create an Amazon Web Services Linux VM (EC2 instance) suitable for a Dockerized 
   * Log in to the VM for the first time.
 
 :::note
-Check the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
+Check the [Requirements](./ get-started-trial.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
 :::
 
 ## Prerequisites

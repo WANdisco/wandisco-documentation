@@ -6,7 +6,7 @@ sidebar_label: LiveData
 
 Follow the steps below to demonstrate live replication of HCFS data from the CDH sandbox to a target storage.
 
-The CDH Sandbox will be the [source](../../glossary/s.md#source) storage in all instances.
+The CDH Sandbox will be the [source](../../help/glossary/s.md#source) storage in all instances.
 
 ## Create replication rule
 

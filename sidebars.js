@@ -16,9 +16,13 @@ module.exports = {
         "operation/advanced-settings"
     ],
     "Configuration": [
-        "configuration/config-properties/config-properties",
-        "configuration/config-properties/application.properties",
-        "configuration/config-properties/ihc.server"
+        {
+        "Configuration Properties": [
+            "configuration/config-properties/component-files",
+            "configuration/config-properties/application.properties",
+            "configuration/config-properties/ihc.server"
+            ]
+        }
     ],
     "Testing": [
         "testing/test-ui"
@@ -45,7 +49,7 @@ module.exports = {
 
 "Try LiveData Plane": {
     "Preparation": [
-        "quickstarts/preparation/dockerized-fusion-requirements",
+        "quickstarts/preparation/get-started-trial",
         "quickstarts/preparation/aws_vm_creation",
         "quickstarts/preparation/azure_vm_creation",
         "quickstarts/preparation/vm_prep"

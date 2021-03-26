@@ -1,7 +1,7 @@
 ---
-id: config-properties
-title: Configuration Properties
-sidebar_label: Configuration Properties
+id: component-files
+title: Component files
+sidebar_label: Component files
 ---
 
 You can configure LiveData Plane’s component applications using the following files. Take care when making any configuration changes on your clusters.

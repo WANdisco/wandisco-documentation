@@ -36,7 +36,7 @@ module.exports = {
           position: "right",
         },
         {
-          to: "docs/quickstarts/preparation/dockerized-fusion-requirements",
+          to: "docs/quickstarts/preparation/get-started-trial",
           label: "Try LiveData Plane",
           position: "right",
         },

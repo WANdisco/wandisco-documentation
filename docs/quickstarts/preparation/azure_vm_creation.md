@@ -24,7 +24,7 @@ If you want to use the Azure portal instead of following this guide, then you wi
 The VM will also need to meet certain specifications:
 
 :::note
-Check the [Requirements](./dockerized-fusion-requirements.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
+Check the [Requirements](./ get-started-trial.md#host-specifications) section to ensure your VM meets the minimum specification for your chosen installation guide.
 :::
 
 * Recommended Operating System = **Ubuntu 18.04 LTS**.

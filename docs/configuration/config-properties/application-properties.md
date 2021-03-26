@@ -1,7 +1,7 @@
 ---
 id: application.properties
-title: application.properties
-sidebar_label: application.properties
+title: LiveData Plane Server
+sidebar_label: LiveData Plane Server
 ---
 
 The LiveData Plane Server configuration properties are found in `/etc/wandisco/fusion/server/application.properties`.

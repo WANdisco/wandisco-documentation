@@ -1,14 +1,18 @@
 ---
-id: dockerized-fusion-requirements
-title: Dockerized LiveData Plane Requirements
-sidebar_label: Requirements
+id: get-started-trial
+title: Try LiveData Plane with Docker
+sidebar_label: Try LiveData Plane with Docker
 ---
+
+Try LiveData Plane by using one of our pre-configured environments to test the product for a particular use-case.
+
+Our pre-configured environments use [Docker](https://docs.docker.com/get-started/overview/) to run a containerized deployment of LiveData Plane.
 
 ## Before you begin
 
-Select your [pre-configured environment](../installation/installation-quickstarts.md) before running through these instructions.
+Decide on your [pre-configured environment](../installation/installation-quickstarts.md) before running through these instructions.
 
-All Dockerized LiveData Plane environments require a host machine that meets minimum specifications, and each pre-configured environment may vary in the minimum specification needed.
+All Dockerized LiveData Plane environments require a host machine that meets minimum specifications, and each environment may vary in the minimum specification needed.
 
 ## Create a host machine
 

@@ -104,7 +104,7 @@ Log in to your VM prior to starting these steps.
 
 ## Next steps
 
-Follow our [ADLS Gen1 testing guide](../testing/test_adlsg1.md) to perform a sample data migration.
+Follow our [ADLS Gen1 testing guide](../testing/test-adlsg1.md) to perform a sample data migration.
 
 ## Troubleshooting
 
