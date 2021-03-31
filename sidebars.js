@@ -2,7 +2,7 @@ module.exports = {
 "Guides": {
     "Preparation": [
         "preparation/get-started",
-        "preparation/prerequisites-ui"
+        "preparation/prerequisites"
     ],
     "Installation": [
         "installation/install-ui",
